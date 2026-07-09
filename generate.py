@@ -63,6 +63,17 @@ def flatten_performances(data):
     perfs.sort(key=lambda s: (s.get("date", ""), s.get("time", "00:00")))
     return perfs
 
+def filter_stale(data, cutoff_days=7):
+    """隐藏已结束超过 cutoff_days 天的场次（默认一周），整部剧无剩余场次则移除其 tab。"""
+    cutoff = (get_today() - timedelta(days=cutoff_days)).strftime("%Y-%m-%d")
+    removed = 0
+    for show in data.get("shows", []):
+        before = len(show.get("performances", []))
+        show["performances"] = [p for p in show.get("performances", []) if p.get("date", "") >= cutoff]
+        removed += before - len(show["performances"])
+    data["shows"] = [s for s in data["shows"] if s.get("performances")]
+    return data, removed, len(data.get("shows", []))
+
 def cast_list(cast):
     if isinstance(cast, list):
         return [c for c in cast if c]
@@ -296,10 +307,13 @@ def generate_alert_new(perfs, today):
 # 主函数
 # ============================================================
 def main():
-    data = json.loads(Path("shows.json").read_text(encoding="utf-8"))
+    raw_data = json.loads(Path("shows.json").read_text(encoding="utf-8"))
+    data, removed_stale, kept_shows = filter_stale(raw_data)
     shows = data.get("shows", [])
     perfs = flatten_performances(data)
     today = get_today()
+    if removed_stale:
+        print(f"🗑️ 已隐藏 {removed_stale} 场一周前已结束的演出（保留 {kept_shows} 部剧 / {len(perfs)} 场）")
 
     total = len(perfs)
     af_count = len([p for p in perfs if p.get('is_all_female')])
