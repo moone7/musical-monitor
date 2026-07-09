@@ -5,6 +5,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>音乐剧 · 全女卡司演出日报 — 2026年7月9日</title>
+<link rel="manifest" href="./manifest.json"/>
+<meta name="theme-color" content="#ff4d9d"/>
+<link rel="apple-touch-icon" href="./icon-180.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="音乐剧监控"/>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 
@@ -3083,7 +3090,7 @@
 <span>🎪 虹桥艺术中心</span>
 </div>
 <p>报告由 WorkBuddy 自动化生成 · 监控范围：全女卡司音乐剧 + 全网音乐剧演出（大麦网 + 各剧院官方 + 全网检索）</p>
-<p style="margin-top:6px;">数据截至 2026-07-09 13:20 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
+<p style="margin-top:6px;">数据截至 2026-07-09 13:54 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
 <p style="margin-top:10px;"><a href="https://moone7.github.io/yueju-monitor/" target="_blank" rel="noopener">🎭 姊妹站点：越剧演出售票监控</a></p>
 </div>
 </div>
@@ -3782,6 +3789,17 @@ document.addEventListener("click", (e) => {
   buildCalendar();
   updateMyShowsBanner();
 })();
+
+// ============================================================
+//  PWA — 注册 Service Worker（支持「添加到桌面 / 主屏幕」与离线访问）
+// ============================================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('[PWA] Service Worker 已注册:', reg.scope))
+      .catch(err => console.warn('[PWA] Service Worker 注册失败:', err));
+  });
+}
 </script>
 </body>
 </html>

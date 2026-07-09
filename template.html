@@ -5,6 +5,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>音乐剧 · 全女卡司演出日报 — {{REPORT_DATE}}</title>
+<link rel="manifest" href="./manifest.json"/>
+<meta name="theme-color" content="#ff4d9d"/>
+<link rel="apple-touch-icon" href="./icon-180.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="音乐剧监控"/>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 
@@ -1604,6 +1611,17 @@ document.addEventListener("click", (e) => {
   buildCalendar();
   updateMyShowsBanner();
 })();
+
+// ============================================================
+//  PWA — 注册 Service Worker（支持「添加到桌面 / 主屏幕」与离线访问）
+// ============================================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('[PWA] Service Worker 已注册:', reg.scope))
+      .catch(err => console.warn('[PWA] Service Worker 注册失败:', err));
+  });
+}
 </script>
 </body>
 </html>
