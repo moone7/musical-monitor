@@ -15,11 +15,10 @@ scraper.py — 音乐剧 · 全女卡司演出监控 数据抓取
 3. saoju 音乐剧档期库 (y.saoju.net)
 
 说明：音乐剧票务站多为 JS 动态渲染、反爬严格，运行时抓取常用于「补全字段」。
-稳定兜底数据见 KNOWN_SHOWS（已确认/代表性的全女卡司音乐剧），
-请按实际巡演档期在大麦网 / 各剧院官方渠道核实后修改。
+稳定兜底数据见 KNOWN_SHOWS（已核实真实档期的全女卡司音乐剧，
+数据源：saoju 音乐剧档期库 / 豆瓣戏剧 / 剧方官方公告）。
 
-⚠️ KNOWN_SHOWS 为「示例/待校验」种子数据，日期与场馆为代表性占位，
-正式使用前请替换为真实演出信息。
+✅ KNOWN_SHOWS 为已核实真实档期，抓取到的新场次会并入对应剧，新剧会新建。
 """
 import json
 import re
@@ -46,103 +45,105 @@ SLEEP_BETWEEN = 1.5
 
 # ============================================================
 # 已知演出数据库（种子 / 兜底）—— 嵌套结构
-# ⚠️ 示例数据，请按真实档期替换
+# ✅ 已核实真实档期（数据源：saoju 音乐剧档期库 / 豆瓣戏剧 / 剧方官方公告）
+# 抓取到的新场次会并入对应剧的 performances；未在库中的新剧会新建。
 # ============================================================
 KNOWN_SHOWS = [
     {
-        "id": "six", "title": "音乐剧《SIX》中文版", "subtitle": "六位皇后 · 全女卡司",
-        "troupe": "英方授权 · 中文制作", "is_all_female": True,
-        "note": "同一制作在全国多城巡演，卡司随场次轮换",
+        "id": "tafan", "title": "音乐剧《她对此感到厌烦》", "subtitle": "全女班 · 改编自豆瓣9.0分小说",
+        "troupe": "缪时客 / 染空间 出品", "is_all_female": True,
+        "note": "全女班阵容演绎：莉莉丝/辛西娅/多琳/罗纳德/德国王均由女演员饰演。2026全国巡演，以下为已公布场次。",
         "performances": [
-            {"id": "six-2026-07-10", "date": "2026-07-10", "time": "19:30", "venue": "上海文化广场", "city": "上海", "cast": ["六位皇后 · A组卡司（全女班）", "轮换卡司"], "price": "¥180 — 1080", "is_all_female": True},
-            {"id": "six-2026-07-10-m", "date": "2026-07-10", "time": "14:00", "venue": "上海文化广场", "city": "上海", "cast": ["六位皇后 · B组卡司（全女班）", "轮换卡司"], "price": "¥180 — 1080", "is_all_female": True},
-            {"id": "six-2026-09-19", "date": "2026-09-19", "time": "19:30", "venue": "北京·世纪剧院", "city": "北京", "cast": ["六位皇后卡司（全女班）"], "price": "¥180 — 1080", "is_all_female": True},
-            {"id": "six-2026-09-26", "date": "2026-09-26", "time": "19:30", "venue": "广州大剧院", "city": "广州", "cast": ["六位皇后卡司（全女班）"], "price": "¥180 — 1080", "is_all_female": True}
+            {"id": "tafan-2026-09-04", "date": "2026-09-04", "time": "19:30", "venue": "青岛大剧院歌剧厅", "city": "青岛", "cast": ["莉莉丝：王洁璐", "辛西娅：党韫葳", "多琳：徐郑凯伊", "罗纳德：王竞琦", "德国王：王珏语涵"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-05", "date": "2026-09-05", "time": "14:30", "venue": "青岛大剧院歌剧厅", "city": "青岛", "cast": ["莉莉丝：杜钇樵", "辛西娅：党韫葳", "多琳：田梦", "罗纳德：王竞琦", "德国王：王珏语涵"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-11", "date": "2026-09-11", "time": "19:30", "venue": "河南艺术中心", "city": "郑州", "cast": ["莉莉丝：赵雨卉", "辛西娅：党韫葳", "多琳：田梦", "罗纳德：夏云梦", "德国王：蒋依敏"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-12", "date": "2026-09-12", "time": "19:30", "venue": "河南艺术中心", "city": "郑州", "cast": ["莉莉丝：赵雨卉", "辛西娅：党韫葳", "多琳：田梦", "罗纳德：夏云梦", "德国王：蒋依敏"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-19-a", "date": "2026-09-19", "time": "14:00", "venue": "哈尔滨大剧院歌剧厅", "city": "哈尔滨", "cast": ["莉莉丝：杜钇樵", "辛西娅：张烜尔", "多琳：徐郑凯伊", "罗纳德：王竞琦", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-19-b", "date": "2026-09-19", "time": "19:00", "venue": "哈尔滨大剧院歌剧厅", "city": "哈尔滨", "cast": ["莉莉丝：丁辰西", "辛西娅：张烜尔", "多琳：左一平", "罗纳德：王竞琦", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-26-a", "date": "2026-09-26", "time": "14:00", "venue": "盛京大剧院歌剧厅", "city": "沈阳", "cast": ["莉莉丝：杜钇樵", "辛西娅：郑涵一", "多琳：徐郑凯伊", "罗纳德：夏云梦", "德国王：王珏语涵"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-09-26-b", "date": "2026-09-26", "time": "19:30", "venue": "盛京大剧院歌剧厅", "city": "沈阳", "cast": ["莉莉丝：丁辰西", "辛西娅：杨依泠", "多琳：左一平", "罗纳德：夏云梦", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-06", "date": "2026-10-06", "time": "", "venue": "舟山普陀大剧院", "city": "舟山", "cast": ["阵容以官方公布为准"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-07", "date": "2026-10-07", "time": "", "venue": "舟山普陀大剧院", "city": "舟山", "cast": ["阵容以官方公布为准"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-16", "date": "2026-10-16", "time": "19:30", "venue": "江苏大剧院歌剧厅", "city": "南京", "cast": ["莉莉丝：赵雨卉", "辛西娅：张烜尔", "多琳：胥子含", "罗纳德：恩妤", "德国王：蒋依敏"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-17", "date": "2026-10-17", "time": "19:30", "venue": "江苏大剧院歌剧厅", "city": "南京", "cast": ["莉莉丝：王洁璐", "辛西娅：党韫葳", "多琳：胥子含", "罗纳德：恩妤", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-23", "date": "2026-10-23", "time": "19:30", "venue": "杭州金沙湖大剧院", "city": "杭州", "cast": ["莉莉丝：赵雨卉", "辛西娅：张烜尔", "多琳：胥子含", "罗纳德：恩妤", "德国王：蒋依敏"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-24", "date": "2026-10-24", "time": "19:30", "venue": "杭州金沙湖大剧院", "city": "杭州", "cast": ["莉莉丝：王洁璐", "辛西娅：党韫葳", "多琳：胥子含", "罗纳德：恩妤", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-10-31", "date": "2026-10-31", "time": "19:30", "venue": "温岭大剧院", "city": "台州", "cast": ["莉莉丝：杜钇樵", "辛西娅：马小乔", "多琳：徐郑凯伊", "罗纳德：王竞琦", "德国王：蒋依敏"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-11-01", "date": "2026-11-01", "time": "14:30", "venue": "温岭大剧院", "city": "台州", "cast": ["莉莉丝：王洁璐", "辛西娅：马小乔", "多琳：徐郑凯伊", "罗纳德：王竞琦", "德国王：蒋依敏"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-11-06", "date": "2026-11-06", "time": "19:30", "venue": "二七剧场", "city": "北京", "cast": ["莉莉丝：丁辰西", "辛西娅：郑涵一", "多琳：田梦", "罗纳德：恩妤", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "tafan-2026-11-07", "date": "2026-11-07", "time": "19:30", "venue": "二七剧场", "city": "北京", "cast": ["莉莉丝：丁辰西", "辛西娅：郑涵一", "多琳：田梦", "罗纳德：恩妤", "德国王：王明怡"], "price": "¥180 — 580", "is_all_female": True}
         ]
     },
     {
-        "id": "nv", "title": "音乐剧《女巫》", "subtitle": "全女卡司悬疑音乐剧",
-        "troupe": "独立制作", "is_all_female": True,
+        "id": "chimera", "title": "音乐剧《奇美拉》", "subtitle": "全女班 · 女性反乌托邦",
+        "troupe": "一部以女性视角探讨反乌托邦未来的音乐剧", "is_all_female": True,
+        "note": "全女班阵容。以下为上海二轮（2026.4 艺海剧院小剧场，已售罄）真实场次，供卡司参考；新巡演档期以官方公布为准。",
         "performances": [
-            {"id": "nv-2026-07-18", "date": "2026-07-18", "time": "19:30", "venue": "茉莉花剧场", "city": "上海", "cast": ["全女卡司主演", "特邀女中音"], "price": "¥280 — 680", "is_all_female": True},
-            {"id": "nv-2026-07-19", "date": "2026-07-19", "time": "14:00", "venue": "茉莉花剧场", "city": "上海", "cast": ["全女卡司主演", "青年卡司"], "price": "¥280 — 680", "is_all_female": True}
+            {"id": "chimera-2026-04-03", "date": "2026-04-03", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "郭耀嵘", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-04-a", "date": "2026-04-04", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["吴杭律", "胥子含", "叶嘉雯"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-04-b", "date": "2026-04-04", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["刘乙萱", "郭耀嵘", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-05-a", "date": "2026-04-05", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "赵雨卉", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-05-b", "date": "2026-04-05", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["丁辰西", "宁梦恬", "杜鑫艳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-06-a", "date": "2026-04-06", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["刘乙萱", "赵雨卉", "杜鑫艳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-06-b", "date": "2026-04-06", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "郭耀嵘", "马小乔"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-08", "date": "2026-04-08", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["丁辰西", "宁梦恬", "杜鑫艳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-09", "date": "2026-04-09", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["杜钇樵", "胥子含", "王珏语涵"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-10", "date": "2026-04-10", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["吴杭律", "胥子含", "马小乔"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-11-a", "date": "2026-04-11", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["丁辰西", "宁梦恬", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-11-b", "date": "2026-04-11", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "左一平", "王竞琦"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-12-a", "date": "2026-04-12", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["刘乙萱", "赵雨卉", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-12-b", "date": "2026-04-12", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["杜钇樵", "胥子含", "王珏语涵"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-15", "date": "2026-04-15", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["丁辰西", "宁梦恬", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-16", "date": "2026-04-16", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["郑涵一", "赵雨卉", "马小乔"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-17", "date": "2026-04-17", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "郭耀嵘", "杜鑫艳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-18-a", "date": "2026-04-18", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "左一平", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-18-b", "date": "2026-04-18", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["郑涵一", "王洁璐", "王珏语涵"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-19-a", "date": "2026-04-19", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "郭耀嵘", "杜鑫艳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-19-b", "date": "2026-04-19", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["杜钇樵", "左一平", "马小乔"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-22", "date": "2026-04-22", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["叶嘉雯", "郭耀嵘", "王竞琦"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-23", "date": "2026-04-23", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["吴杭律", "赵雨卉", "党韫葳"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-24", "date": "2026-04-24", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["郑涵一", "王洁璐", "王竞琦"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-25-a", "date": "2026-04-25", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["杜钇樵", "左一平", "马小乔"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-25-b", "date": "2026-04-25", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["吴杭律", "胥子含", "叶嘉雯"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-26-a", "date": "2026-04-26", "time": "14:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["吴杭律", "王洁璐", "王竞琦"], "price": "¥180 — 580", "is_all_female": True},
+            {"id": "chimera-2026-04-26-b", "date": "2026-04-26", "time": "19:30", "venue": "艺海剧院小剧场", "city": "上海", "cast": ["刘乙萱", "赵雨卉", "杜鑫艳"], "price": "¥180 — 580", "is_all_female": True}
         ]
     },
     {
-        "id": "zx", "title": "音乐剧《造星计划》", "subtitle": "全女卡司 · 青春成长",
-        "troupe": "上剧场出品", "is_all_female": True,
+        "id": "witch", "title": "音乐剧《女巫》", "subtitle": "悬疑 · 含男演员饰「女巫猎人」",
+        "troupe": "上海话剧艺术中心 呈现", "is_all_female": False,
+        "note": "卡司以女演员为主，但「女巫猎人」角色由男演员饰演，故不计入全女卡司。上海驻演共12场。",
         "performances": [
-            {"id": "zx-2026-07-25", "date": "2026-07-25", "time": "14:00", "venue": "上剧场", "city": "上海", "cast": ["全女卡司主演"], "price": "¥199 — 599", "is_all_female": True}
+            {"id": "witch-2026-07-23", "date": "2026-07-23", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：余思冉", "玛格丽特：张沁丹", "艾尔西丝：赵雨卉", "女巫猎人：付世刚"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-24", "date": "2026-07-24", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：陈恬", "玛格丽特：丁臻滢", "艾尔西丝：王洁璐", "女巫猎人：曹洪远"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-25", "date": "2026-07-25", "time": "14:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：余思冉", "玛格丽特：丁臻滢", "艾尔西丝：王洁璐", "女巫猎人：覃威尔"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-26-a", "date": "2026-07-26", "time": "14:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：陈恬", "玛格丽特：党韫葳", "艾尔西丝：王洁璐", "女巫猎人：曹洪远"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-26-b", "date": "2026-07-26", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：胥子含", "玛格丽特：张沁丹", "艾尔西丝：赵雨卉", "女巫猎人：付世刚"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-28", "date": "2026-07-28", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：余思冉", "玛格丽特：丁臻滢", "艾尔西丝：党韫葳", "女巫猎人：覃威尔"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-29", "date": "2026-07-29", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：胥子含", "玛格丽特：张沁丹", "艾尔西丝：赵雨卉", "女巫猎人：曹洪远"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-30", "date": "2026-07-30", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：陈玉婷", "玛格丽特：丁辰西", "艾尔西丝：党韫葳", "女巫猎人：付世刚"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-07-31", "date": "2026-07-31", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：陈玉婷", "玛格丽特：党韫葳", "艾尔西丝：赵雨卉", "女巫猎人：曹洪远"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-08-01-a", "date": "2026-08-01", "time": "14:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：叶嘉雯", "玛格丽特：丁辰西", "艾尔西丝：党韫葳", "女巫猎人：覃威尔"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-08-01-b", "date": "2026-08-01", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：陈玉婷", "玛格丽特：丁辰西", "艾尔西丝：党韫葳", "女巫猎人：付世刚"], "price": "¥180 — 986", "is_all_female": False},
+            {"id": "witch-2026-08-02", "date": "2026-08-02", "time": "14:30", "venue": "上剧场", "city": "上海", "cast": ["艾比：叶嘉雯", "玛格丽特：党韫葳", "艾尔西丝：王洁璐", "女巫猎人：覃威尔"], "price": "¥180 — 986", "is_all_female": False}
         ]
     },
     {
-        "id": "wanou", "title": "音乐剧《玩偶》", "subtitle": "全女卡司 · 环境式",
-        "troupe": "环境式音乐剧", "is_all_female": True,
+        "id": "six", "title": "音乐剧《SIX》", "subtitle": "原版中国巡演首站 · 全女卡司六皇后",
+        "troupe": "伦敦西区原版 · 英文演出", "is_all_female": True,
+        "note": "2026.10.1–10.11 苏州湾大剧院 连演14场（全女卡司·原版中国巡演首站），以下为每日夜场，部分日期加演下午场，具体每日场次以官方开票为准。",
         "performances": [
-            {"id": "wanou-2026-08-01", "date": "2026-08-01", "time": "19:30", "venue": "虹桥艺术中心", "city": "上海", "cast": ["全女卡司主演"], "price": "¥380 — 880", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "poqiang", "title": "音乐剧《破墙》", "subtitle": "全女卡司 · 先锋",
-        "troupe": "YOUNG剧场委约", "is_all_female": True,
-        "performances": [
-            {"id": "poqiang-2026-08-08", "date": "2026-08-08", "time": "19:30", "venue": "YOUNG剧场", "city": "上海", "cast": ["全女卡司主演"], "price": "¥180 — 580", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "demian", "title": "音乐剧《德米安》", "subtitle": "全女卡司 · 心理",
-        "troupe": "中文改编", "is_all_female": True,
-        "performances": [
-            {"id": "demian-2026-08-15", "date": "2026-08-15", "time": "19:30", "venue": "兰心大戏院", "city": "上海", "cast": ["全女卡司主演"], "price": "¥280 — 680", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "lianbi", "title": "音乐剧《连璧》", "subtitle": "全女卡司 · 双女主",
-        "troupe": "音乐剧制作", "is_all_female": True,
-        "performances": [
-            {"id": "lianbi-2026-08-22", "date": "2026-08-22", "time": "19:30", "venue": "上海文化广场", "city": "上海", "cast": ["双女主 · 全女卡司"], "price": "¥180 — 880", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "lizi", "title": "音乐剧《丽兹》", "subtitle": "全女卡司 · 黑色幽默",
-        "troupe": "独立制作", "is_all_female": True,
-        "performances": [
-            {"id": "lizi-2026-08-29", "date": "2026-08-29", "time": "19:30", "venue": "茉莉花剧场", "city": "上海", "cast": ["全女卡司主演"], "price": "¥280 — 680", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "xuexing", "title": "音乐剧《嗜血博士》", "subtitle": "全女卡司 · 哥特",
-        "troupe": "上剧场出品", "is_all_female": True,
-        "performances": [
-            {"id": "xuexing-2026-09-05", "date": "2026-09-05", "time": "19:30", "venue": "上剧场", "city": "上海", "cast": ["全女卡司主演"], "price": "¥199 — 599", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "sanfu", "title": "音乐剧《三妇志异》", "subtitle": "全女卡司 · 三部曲",
-        "troupe": "音乐剧制作", "is_all_female": True,
-        "performances": [
-            {"id": "sanfu-2026-09-12", "date": "2026-09-12", "time": "19:30", "venue": "虹桥艺术中心", "city": "上海", "cast": ["全女卡司主演"], "price": "¥380 — 880", "is_all_female": True}
-        ]
-    },
-    {
-        "id": "r1", "title": "音乐剧《剧院魅影》", "subtitle": "经典复排",
-        "troupe": "上海大剧院呈现", "is_all_female": False,
-        "performances": [
-            {"id": "r1-2026-07-15", "date": "2026-07-15", "time": "19:30", "venue": "上海大剧院", "city": "上海", "cast": ["轮换卡司"], "price": "¥280 — 1280", "is_all_female": False}
-        ]
-    },
-    {
-        "id": "r2", "title": "音乐剧《妈妈咪呀！》", "subtitle": "经典 IP 巡演",
-        "troupe": "中文制作", "is_all_female": False,
-        "performances": [
-            {"id": "r2-2026-08-12", "date": "2026-08-12", "time": "19:30", "venue": "上海文化广场", "city": "上海", "cast": ["轮换卡司"], "price": "¥180 — 1080", "is_all_female": False}
-        ]
-    },
-    {
-        "id": "r3", "title": "音乐剧《摇滚红与黑》", "subtitle": "法语原版巡演",
-        "troupe": "法语原版授权", "is_all_female": False,
-        "performances": [
-            {"id": "r3-2026-09-09", "date": "2026-09-09", "time": "19:30", "venue": "兰心大戏院", "city": "上海", "cast": ["法方卡司"], "price": "¥280 — 880", "is_all_female": False}
+            {"id": "six-2026-10-01", "date": "2026-10-01", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-02", "date": "2026-10-02", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-03", "date": "2026-10-03", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-04", "date": "2026-10-04", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-05", "date": "2026-10-05", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-06", "date": "2026-10-06", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-07", "date": "2026-10-07", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-08", "date": "2026-10-08", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-09", "date": "2026-10-09", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-10", "date": "2026-10-10", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True},
+            {"id": "six-2026-10-11", "date": "2026-10-11", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True}
         ]
     },
 ]

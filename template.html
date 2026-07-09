@@ -691,6 +691,8 @@
   .sph-title em { font-style: normal; color: var(--pink-light); font-size: 12px; margin-left: 6px; }
   .sph-meta { font-size: 12px; color: var(--text-muted); margin-top: 5px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .sph-af { color: #ff86c0; }
+  .sph-af.sph-mixed { color: #ffb86c; }
+  .sph-note { font-size: 11.5px; color: var(--text-muted); margin-top: 7px; line-height: 1.6; max-width: 760px; }
 
   /* ===== Cast chips ===== */
   .cast-chips { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; vertical-align: middle; }
@@ -701,6 +703,10 @@
     border: 1px solid rgba(155,93,229,0.28); color: #c9b4f0;
   }
   .cast-chip.cast-none { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: var(--text-dim); }
+  .cast-role {
+    color: var(--pink); font-weight: 700; margin-right: 3px;
+    background: rgba(255,77,157,0.12); border-radius: 7px 0 0 7px; padding: 0 4px;
+  }
 
   /* ===== Stats Bar ===== */
   .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }

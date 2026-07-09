@@ -121,8 +121,14 @@ def generate_card_html(perf, today):
 
     casts = cast_list(perf.get('cast', []))
     if casts:
-        chips = "".join(f'<span class="cast-chip">{html_escape(c)}</span>' for c in casts)
-        cast_html = f'<span class="cast-chips">{chips}</span>'
+        chip_parts = []
+        for c in casts:
+            if '：' in c:
+                role, name = c.split('：', 1)
+                chip_parts.append(f'<span class="cast-chip"><b class="cast-role">{html_escape(role)}</b>{html_escape(name)}</span>')
+            else:
+                chip_parts.append(f'<span class="cast-chip">{html_escape(c)}</span>')
+        cast_html = f'<span class="cast-chips">{"".join(chip_parts)}</span>'
     else:
         cast_html = '<span class="cast-chips"><span class="cast-chip cast-none">卡司待公布</span></span>'
 
@@ -147,7 +153,7 @@ def generate_card_html(perf, today):
 <span><span class="meta-icon">📍</span>{html_escape(perf.get('venue',''))}</span>{city_html}
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>{cast_html}<br/>
+<strong>演员表：</strong>{cast_html}<br/>
 <strong>制作：</strong>{html_escape(perf.get('show_troupe', ''))}
 </div>
 </div>
@@ -183,14 +189,17 @@ def generate_panels(data, today):
         if not perfs:
             continue
         is_af = show.get("is_all_female", False)
-        af_badge = '<span class="sph-af">💜 全女卡司</span>' if is_af else ''
+        af_badge = '<span class="sph-af">💜 全女卡司</span>' if is_af else '<span class="sph-af sph-mixed">⚧ 含男演员</span>'
         city = show.get("city") or (perfs[0].get("city", "") if perfs else "")
+        note = show.get("note")
+        note_html = f'<div class="sph-note">{html_escape(note)}</div>' if note else ''
         cards = "\n".join(generate_card_html(perf_with_show(p, show), today) for p in perfs)
         panel_cls = "show-panel" + (" all-female" if is_af else "")
         header = f"""<div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">{html_escape(show.get('title', ''))} <em>{html_escape(show.get('subtitle', ''))}</em></div>
     <div class="sph-meta">🏛️ {html_escape(show.get('troupe', ''))} · {len(perfs)} 场 · {html_escape(city)} {af_badge}</div>
+    {note_html}
   </div>
 </div>"""
         panels.append(f'<div class="{panel_cls}" data-show="{show["id"]}">\n{header}\n<div class="perf-grid">\n{cards}\n</div>\n</div>')

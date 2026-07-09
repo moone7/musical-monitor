@@ -691,6 +691,8 @@
   .sph-title em { font-style: normal; color: var(--pink-light); font-size: 12px; margin-left: 6px; }
   .sph-meta { font-size: 12px; color: var(--text-muted); margin-top: 5px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .sph-af { color: #ff86c0; }
+  .sph-af.sph-mixed { color: #ffb86c; }
+  .sph-note { font-size: 11.5px; color: var(--text-muted); margin-top: 7px; line-height: 1.6; max-width: 760px; }
 
   /* ===== Cast chips ===== */
   .cast-chips { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; vertical-align: middle; }
@@ -701,6 +703,10 @@
     border: 1px solid rgba(155,93,229,0.28); color: #c9b4f0;
   }
   .cast-chip.cast-none { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: var(--text-dim); }
+  .cast-role {
+    color: var(--pink); font-weight: 700; margin-right: 3px;
+    background: rgba(255,77,157,0.12); border-radius: 7px 0 0 7px; padding: 0 4px;
+  }
 
   /* ===== Stats Bar ===== */
   .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }
@@ -881,20 +887,20 @@
 <div class="cal-tooltip" id="cal-tooltip"></div>
 <!-- ===== STATS ===== -->
 <div class="stats-bar">
-<div class="stat" data-num="17">
-<div class="stat-num">17</div>
+<div class="stat" data-num="69">
+<div class="stat-num">69</div>
 <div class="stat-label">近期演出场次</div>
 </div>
-<div class="stat" data-num="14">
-<div class="stat-num">14</div>
+<div class="stat" data-num="57">
+<div class="stat-num">57</div>
 <div class="stat-label">💜 全女卡司场次</div>
 </div>
 <div class="stat" data-num="0" id="stat-card">
 <div class="stat-num" id="stat-bought">0</div>
 <div class="stat-label">🎟️ 已购场次</div>
 </div>
-<div class="stat" data-num="3">
-<div class="stat-num">3</div>
+<div class="stat" data-num="11">
+<div class="stat-num">11</div>
 <div class="stat-label">涉及城市</div>
 </div>
 </div>
@@ -904,9 +910,7 @@
 <span class="alert-icon">🔥</span> 近期高优提醒
     </div>
 <div class="alert-body">
-      · <strong>明日开演：</strong>7月10日 上海文化广场《SIX》中文版》、7月10日 上海文化广场《SIX》中文版》。<br/>
-      · <strong>💜 全女卡司近期：</strong>7月10日文化广场《SIX》中文版》 → 7月10日文化广场《SIX》中文版》 → 7月18日茉莉花剧场《女巫》 → 7月19日茉莉花剧场《女巫》 → 7月25日上剧场《造星计划》 → 8月1日虹桥艺术中心《玩偶》 → 8月8日YOUNG剧场《破墙》 → 8月15日兰心大戏院《德米安》 → 8月22日文化广场《连璧》 → 8月29日茉莉花剧场《丽兹》 → 9月5日上剧场《嗜血博士》 → 9月12日虹桥艺术中心《三妇志异》 → 9月19日北京·世纪剧院《SIX》中文版》 → 9月26日广州《SIX》中文版》。<br/>
-      · <strong>一周内演出：</strong>7月15日 上海大剧院《剧院魅影》。<br/>
+      · <strong>💜 全女卡司近期：</strong>9月4日青岛歌剧厅《她对此感到厌烦》 → 9月5日青岛歌剧厅《她对此感到厌烦》 → 9月11日河南艺术中心《她对此感到厌烦》 → 9月12日河南艺术中心《她对此感到厌烦》 → 9月19日哈尔滨歌剧厅《她对此感到厌烦》 → 9月19日哈尔滨歌剧厅《她对此感到厌烦》 → 9月26日盛京歌剧厅《她对此感到厌烦》 → 9月26日盛京歌剧厅《她对此感到厌烦》 → 10月1日苏州湾《SIX》 → 10月2日苏州湾《SIX》 → 10月3日苏州湾《SIX》 → 10月4日苏州湾《SIX》 → 10月5日苏州湾《SIX》 → 10月6日舟山普陀《她对此感到厌烦》 → 10月6日苏州湾《SIX》 → 10月7日舟山普陀《她对此感到厌烦》 → 10月7日苏州湾《SIX》 → 10月8日苏州湾《SIX》 → 10月9日苏州湾《SIX》 → 10月10日苏州湾《SIX》 → 10月11日苏州湾《SIX》 → 10月16日江苏歌剧厅《她对此感到厌烦》 → 10月17日江苏歌剧厅《她对此感到厌烦》 → 10月23日杭州金沙湖《她对此感到厌烦》 → 10月24日杭州金沙湖《她对此感到厌烦》 → 10月31日温岭《她对此感到厌烦》 → 11月1日温岭《她对此感到厌烦》 → 11月6日二七剧场《她对此感到厌烦》 → 11月7日二七剧场《她对此感到厌烦》。<br/>
     </div>
 </div>
 <!-- ===== 🆕 今日新动态 ===== -->
@@ -915,8 +919,8 @@
 <span class="alert-icon">🆕</span> 今日新动态
     </div>
 <div class="alert-body">
-      · <strong>💜 全女卡司行程：</strong>共 14 场 — 7月10日文化广场《SIX》中文版》 → 7月10日文化广场《SIX》中文版》 → 7月18日茉莉花剧场《女巫》 → 7月19日茉莉花剧场《女巫》 → 7月25日上剧场《造星计划》 → 8月1日虹桥艺术中心《玩偶》 → 8月8日YOUNG剧场《破墙》 → 8月15日兰心大戏院《德米安》 → 8月22日文化广场《连璧》 → 8月29日茉莉花剧场《丽兹》 → 9月5日上剧场《嗜血博士》 → 9月12日虹桥艺术中心《三妇志异》 → 9月19日北京·世纪剧院《SIX》中文版》 → 9月26日广州《SIX》中文版》。<br/>
-      · <strong>上海近期：</strong>7月10日 上海文化广场《SIX》中文版》、7月10日 上海文化广场《SIX》中文版》、7月15日 上海大剧院《剧院魅影》等。<br/>
+      · <strong>💜 全女卡司行程：</strong>共 29 场 — 9月4日青岛歌剧厅《她对此感到厌烦》 → 9月5日青岛歌剧厅《她对此感到厌烦》 → 9月11日河南艺术中心《她对此感到厌烦》 → 9月12日河南艺术中心《她对此感到厌烦》 → 9月19日哈尔滨歌剧厅《她对此感到厌烦》 → 9月19日哈尔滨歌剧厅《她对此感到厌烦》 → 9月26日盛京歌剧厅《她对此感到厌烦》 → 9月26日盛京歌剧厅《她对此感到厌烦》 → 10月1日苏州湾《SIX》 → 10月2日苏州湾《SIX》 → 10月3日苏州湾《SIX》 → 10月4日苏州湾《SIX》 → 10月5日苏州湾《SIX》 → 10月6日舟山普陀《她对此感到厌烦》 → 10月6日苏州湾《SIX》 → 10月7日舟山普陀《她对此感到厌烦》 → 10月7日苏州湾《SIX》 → 10月8日苏州湾《SIX》 → 10月9日苏州湾《SIX》 → 10月10日苏州湾《SIX》 → 10月11日苏州湾《SIX》 → 10月16日江苏歌剧厅《她对此感到厌烦》 → 10月17日江苏歌剧厅《她对此感到厌烦》 → 10月23日杭州金沙湖《她对此感到厌烦》 → 10月24日杭州金沙湖《她对此感到厌烦》 → 10月31日温岭《她对此感到厌烦》 → 11月1日温岭《她对此感到厌烦》 → 11月6日二七剧场《她对此感到厌烦》 → 11月7日二七剧场《她对此感到厌烦》。<br/>
+      · <strong>上海近期：</strong>7月23日 上剧场《女巫》、7月24日 上剧场《女巫》、7月25日 上剧场《女巫》等。<br/>
     </div>
 </div>
 <!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
@@ -925,234 +929,355 @@
 </h2>
 <div class="tab-bar" id="tab-bar">
 <button class="tab-btn active" data-tab="all">📋 全部场次</button>
-<button class="tab-btn" data-tab="six">SIX》中文版</button>
-<button class="tab-btn" data-tab="nv">女巫</button>
-<button class="tab-btn" data-tab="zx">造星计划</button>
-<button class="tab-btn" data-tab="wanou">玩偶</button>
-<button class="tab-btn" data-tab="poqiang">破墙</button>
-<button class="tab-btn" data-tab="demian">德米安</button>
-<button class="tab-btn" data-tab="lianbi">连璧</button>
-<button class="tab-btn" data-tab="lizi">丽兹</button>
-<button class="tab-btn" data-tab="xuexing">嗜血博士</button>
-<button class="tab-btn" data-tab="sanfu">三妇志异</button>
-<button class="tab-btn" data-tab="r1">剧院魅影</button>
-<button class="tab-btn" data-tab="r2">妈妈咪呀！</button>
-<button class="tab-btn" data-tab="r3">摇滚红与黑</button>
+<button class="tab-btn" data-tab="tafan">她对此感到厌烦</button>
+<button class="tab-btn" data-tab="chimera">奇美拉</button>
+<button class="tab-btn" data-tab="witch">女巫</button>
+<button class="tab-btn" data-tab="six">SIX</button>
 </div>
 <div class="tab-panels" id="tab-panels">
-<div class="show-panel all-female" data-show="six">
+<div class="show-panel all-female" data-show="tafan">
 <div class="show-panel-header">
   <div class="sph-left">
-    <div class="sph-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
-    <div class="sph-meta">🏛️ 英方授权 · 中文制作 · 4 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+    <div class="sph-meta">🏛️ 缪时客 / 染空间 出品 · 18 场 · 青岛 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-note">全女班阵容演绎：莉莉丝/辛西娅/多琳/罗纳德/德国王均由女演员饰演。2026全国巡演，以下为已公布场次。</div>
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card all-female tomorrow" data-all-female="1" data-id="six-2026-07-10-m" data-show="six" data-date="2026-07-10" data-time="14:00" data-title="音乐剧《SIX》中文版" data-venue="上海文化广场">
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-04" data-show="tafan" data-date="2026-09-04" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="青岛大剧院歌剧厅">
 <div class="perf-info">
-<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月10日（周五）14:00</span>
-<span><span class="meta-icon">📍</span>上海文化广场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>9月4日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>青岛大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>青岛</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后 · B组卡司（全女班）</span><span class="cast-chip">轮换卡司</span></span><br/>
-<strong>制作：</strong>英方授权 · 中文制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王珏语涵</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-urgent">🔥 明日开演</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
+<div class="perf-price">¥180 — 580</div></div>
 </div>
-<div class="perf-card all-female tomorrow" data-all-female="1" data-id="six-2026-07-10" data-show="six" data-date="2026-07-10" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="上海文化广场">
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-05" data-show="tafan" data-date="2026-09-05" data-time="14:30" data-title="音乐剧《她对此感到厌烦》" data-venue="青岛大剧院歌剧厅">
 <div class="perf-info">
-<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月10日（周五）19:30</span>
-<span><span class="meta-icon">📍</span>上海文化广场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>9月5日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>青岛大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>青岛</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后 · A组卡司（全女班）</span><span class="cast-chip">轮换卡司</span></span><br/>
-<strong>制作：</strong>英方授权 · 中文制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王珏语涵</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-urgent">🔥 明日开演</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
+<div class="perf-price">¥180 — 580</div></div>
 </div>
-<div class="perf-card all-female" data-all-female="1" data-id="six-2026-09-19" data-show="six" data-date="2026-09-19" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="北京·世纪剧院">
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-11" data-show="tafan" data-date="2026-09-11" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="河南艺术中心">
 <div class="perf-info">
-<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月19日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>北京·世纪剧院</span>
+<span><span class="meta-icon">📅</span>9月11日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>河南艺术中心</span>
+<span><span class="meta-icon">🏙️</span>郑州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-12" data-show="tafan" data-date="2026-09-12" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="河南艺术中心">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>9月12日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>河南艺术中心</span>
+<span><span class="meta-icon">🏙️</span>郑州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-19-a" data-show="tafan" data-date="2026-09-19" data-time="14:00" data-title="音乐剧《她对此感到厌烦》" data-venue="哈尔滨大剧院歌剧厅">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>9月19日（周六）14:00</span>
+<span><span class="meta-icon">📍</span>哈尔滨大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>哈尔滨</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-19-b" data-show="tafan" data-date="2026-09-19" data-time="19:00" data-title="音乐剧《她对此感到厌烦》" data-venue="哈尔滨大剧院歌剧厅">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>9月19日（周六）19:00</span>
+<span><span class="meta-icon">📍</span>哈尔滨大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>哈尔滨</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>左一平</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-26-a" data-show="tafan" data-date="2026-09-26" data-time="14:00" data-title="音乐剧《她对此感到厌烦》" data-venue="盛京大剧院歌剧厅">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>9月26日（周六）14:00</span>
+<span><span class="meta-icon">📍</span>盛京大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>沈阳</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>郑涵一</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>王珏语涵</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-09-26-b" data-show="tafan" data-date="2026-09-26" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="盛京大剧院歌剧厅">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>9月26日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>盛京大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>沈阳</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>杨依泠</span><span class="cast-chip"><b class="cast-role">多琳</b>左一平</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-06" data-show="tafan" data-date="2026-10-06" data-time="" data-title="音乐剧《她对此感到厌烦》" data-venue="舟山普陀大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月6日（周二）</span>
+<span><span class="meta-icon">📍</span>舟山普陀大剧院</span>
+<span><span class="meta-icon">🏙️</span>舟山</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">阵容以官方公布为准</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-07" data-show="tafan" data-date="2026-10-07" data-time="" data-title="音乐剧《她对此感到厌烦》" data-venue="舟山普陀大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月7日（周三）</span>
+<span><span class="meta-icon">📍</span>舟山普陀大剧院</span>
+<span><span class="meta-icon">🏙️</span>舟山</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">阵容以官方公布为准</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-16" data-show="tafan" data-date="2026-10-16" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="江苏大剧院歌剧厅">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月16日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>江苏大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>南京</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-17" data-show="tafan" data-date="2026-10-17" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="江苏大剧院歌剧厅">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月17日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>江苏大剧院歌剧厅</span>
+<span><span class="meta-icon">🏙️</span>南京</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-23" data-show="tafan" data-date="2026-10-23" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="杭州金沙湖大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月23日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>杭州金沙湖大剧院</span>
+<span><span class="meta-icon">🏙️</span>杭州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-24" data-show="tafan" data-date="2026-10-24" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="杭州金沙湖大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月24日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>杭州金沙湖大剧院</span>
+<span><span class="meta-icon">🏙️</span>杭州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-10-31" data-show="tafan" data-date="2026-10-31" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="温岭大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月31日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>温岭大剧院</span>
+<span><span class="meta-icon">🏙️</span>台州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>马小乔</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-11-01" data-show="tafan" data-date="2026-11-01" data-time="14:30" data-title="音乐剧《她对此感到厌烦》" data-venue="温岭大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>11月1日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>温岭大剧院</span>
+<span><span class="meta-icon">🏙️</span>台州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>马小乔</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-11-06" data-show="tafan" data-date="2026-11-06" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="二七剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>11月6日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>二七剧场</span>
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后卡司（全女班）</span></span><br/>
-<strong>制作：</strong>英方授权 · 中文制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>郑涵一</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
+<div class="perf-price">¥180 — 580</div></div>
 </div>
-<div class="perf-card all-female" data-all-female="1" data-id="six-2026-09-26" data-show="six" data-date="2026-09-26" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="广州大剧院">
+<div class="perf-card all-female" data-all-female="1" data-id="tafan-2026-11-07" data-show="tafan" data-date="2026-11-07" data-time="19:30" data-title="音乐剧《她对此感到厌烦》" data-venue="二七剧场">
 <div class="perf-info">
-<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+<div class="perf-title">音乐剧《她对此感到厌烦》 <em>全女班 · 改编自豆瓣9.0分小说</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月26日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>广州大剧院</span>
-<span><span class="meta-icon">🏙️</span>广州</span>
+<span><span class="meta-icon">📅</span>11月7日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>二七剧场</span>
+<span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后卡司（全女班）</span></span><br/>
-<strong>制作：</strong>英方授权 · 中文制作
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="nv">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《女巫》 <em>全女卡司悬疑音乐剧</em></div>
-    <div class="sph-meta">🏛️ 独立制作 · 2 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="nv-2026-07-18" data-show="nv" data-date="2026-07-18" data-time="19:30" data-title="音乐剧《女巫》" data-venue="茉莉花剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《女巫》 <em>全女卡司悬疑音乐剧</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月18日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>茉莉花剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span><span class="cast-chip">特邀女中音</span></span><br/>
-<strong>制作：</strong>独立制作
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 680</div></div>
-</div>
-<div class="perf-card all-female" data-all-female="1" data-id="nv-2026-07-19" data-show="nv" data-date="2026-07-19" data-time="14:00" data-title="音乐剧《女巫》" data-venue="茉莉花剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《女巫》 <em>全女卡司悬疑音乐剧</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月19日（周日）14:00</span>
-<span><span class="meta-icon">📍</span>茉莉花剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span><span class="cast-chip">青年卡司</span></span><br/>
-<strong>制作：</strong>独立制作
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 680</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="zx">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《造星计划》 <em>全女卡司 · 青春成长</em></div>
-    <div class="sph-meta">🏛️ 上剧场出品 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="zx-2026-07-25" data-show="zx" data-date="2026-07-25" data-time="14:00" data-title="音乐剧《造星计划》" data-venue="上剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《造星计划》 <em>全女卡司 · 青春成长</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月25日（周六）14:00</span>
-<span><span class="meta-icon">📍</span>上剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>上剧场出品
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥199 — 599</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="wanou">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《玩偶》 <em>全女卡司 · 环境式</em></div>
-    <div class="sph-meta">🏛️ 环境式音乐剧 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="wanou-2026-08-01" data-show="wanou" data-date="2026-08-01" data-time="19:30" data-title="音乐剧《玩偶》" data-venue="虹桥艺术中心">
-<div class="perf-info">
-<div class="perf-title">音乐剧《玩偶》 <em>全女卡司 · 环境式</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月1日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>虹桥艺术中心</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>环境式音乐剧
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥380 — 880</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="poqiang">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《破墙》 <em>全女卡司 · 先锋</em></div>
-    <div class="sph-meta">🏛️ YOUNG剧场委约 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="poqiang-2026-08-08" data-show="poqiang" data-date="2026-08-08" data-time="19:30" data-title="音乐剧《破墙》" data-venue="YOUNG剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《破墙》 <em>全女卡司 · 先锋</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月8日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>YOUNG剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>YOUNG剧场委约
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>郑涵一</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
 <div class="perf-side">
@@ -1163,232 +1288,993 @@
 </div>
 </div>
 </div>
-<div class="show-panel all-female" data-show="demian">
+<div class="show-panel all-female" data-show="chimera">
 <div class="show-panel-header">
   <div class="sph-left">
-    <div class="sph-title">音乐剧《德米安》 <em>全女卡司 · 心理</em></div>
-    <div class="sph-meta">🏛️ 中文改编 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+    <div class="sph-meta">🏛️ 一部以女性视角探讨反乌托邦未来的音乐剧 · 28 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-note">全女班阵容。以下为上海二轮（2026.4 艺海剧院小剧场，已售罄）真实场次，供卡司参考；新巡演档期以官方公布为准。</div>
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="demian-2026-08-15" data-show="demian" data-date="2026-08-15" data-time="19:30" data-title="音乐剧《德米安》" data-venue="兰心大戏院">
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-03" data-show="chimera" data-date="2026-04-03" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
 <div class="perf-info">
-<div class="perf-title">音乐剧《德米安》 <em>全女卡司 · 心理</em></div>
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月15日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>兰心大戏院</span>
+<span><span class="meta-icon">📅</span>4月3日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>中文改编
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">郭耀嵘</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
+<span class="tag tag-done">✅ 已演</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 680</div></div>
+<div class="perf-price">¥180 — 580</div></div>
 </div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="lianbi">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《连璧》 <em>全女卡司 · 双女主</em></div>
-    <div class="sph-meta">🏛️ 音乐剧制作 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="lianbi-2026-08-22" data-show="lianbi" data-date="2026-08-22" data-time="19:30" data-title="音乐剧《连璧》" data-venue="上海文化广场">
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-04-a" data-show="chimera" data-date="2026-04-04" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
 <div class="perf-info">
-<div class="perf-title">音乐剧《连璧》 <em>全女卡司 · 双女主</em></div>
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月22日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>上海文化广场</span>
+<span><span class="meta-icon">📅</span>4月4日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">双女主 · 全女卡司</span></span><br/>
-<strong>制作：</strong>音乐剧制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">吴杭律</span><span class="cast-chip">胥子含</span><span class="cast-chip">叶嘉雯</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
+<span class="tag tag-done">✅ 已演</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 880</div></div>
+<div class="perf-price">¥180 — 580</div></div>
 </div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="lizi">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《丽兹》 <em>全女卡司 · 黑色幽默</em></div>
-    <div class="sph-meta">🏛️ 独立制作 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="lizi-2026-08-29" data-show="lizi" data-date="2026-08-29" data-time="19:30" data-title="音乐剧《丽兹》" data-venue="茉莉花剧场">
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-04-b" data-show="chimera" data-date="2026-04-04" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
 <div class="perf-info">
-<div class="perf-title">音乐剧《丽兹》 <em>全女卡司 · 黑色幽默</em></div>
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月29日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>茉莉花剧场</span>
+<span><span class="meta-icon">📅</span>4月4日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>独立制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">刘乙萱</span><span class="cast-chip">郭耀嵘</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-on-sale">售票中</span>
+<span class="tag tag-done">✅ 已演</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 680</div></div>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-05-a" data-show="chimera" data-date="2026-04-05" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月5日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">赵雨卉</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-05-b" data-show="chimera" data-date="2026-04-05" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月5日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">丁辰西</span><span class="cast-chip">宁梦恬</span><span class="cast-chip">杜鑫艳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-06-a" data-show="chimera" data-date="2026-04-06" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月6日（周一）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">刘乙萱</span><span class="cast-chip">赵雨卉</span><span class="cast-chip">杜鑫艳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-06-b" data-show="chimera" data-date="2026-04-06" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月6日（周一）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">郭耀嵘</span><span class="cast-chip">马小乔</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-08" data-show="chimera" data-date="2026-04-08" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月8日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">丁辰西</span><span class="cast-chip">宁梦恬</span><span class="cast-chip">杜鑫艳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-09" data-show="chimera" data-date="2026-04-09" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月9日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">杜钇樵</span><span class="cast-chip">胥子含</span><span class="cast-chip">王珏语涵</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-10" data-show="chimera" data-date="2026-04-10" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月10日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">吴杭律</span><span class="cast-chip">胥子含</span><span class="cast-chip">马小乔</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-11-a" data-show="chimera" data-date="2026-04-11" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月11日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">丁辰西</span><span class="cast-chip">宁梦恬</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-11-b" data-show="chimera" data-date="2026-04-11" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月11日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">左一平</span><span class="cast-chip">王竞琦</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-12-a" data-show="chimera" data-date="2026-04-12" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月12日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">刘乙萱</span><span class="cast-chip">赵雨卉</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-12-b" data-show="chimera" data-date="2026-04-12" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月12日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">杜钇樵</span><span class="cast-chip">胥子含</span><span class="cast-chip">王珏语涵</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-15" data-show="chimera" data-date="2026-04-15" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月15日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">丁辰西</span><span class="cast-chip">宁梦恬</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-16" data-show="chimera" data-date="2026-04-16" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月16日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">郑涵一</span><span class="cast-chip">赵雨卉</span><span class="cast-chip">马小乔</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-17" data-show="chimera" data-date="2026-04-17" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月17日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">郭耀嵘</span><span class="cast-chip">杜鑫艳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-18-a" data-show="chimera" data-date="2026-04-18" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月18日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">左一平</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-18-b" data-show="chimera" data-date="2026-04-18" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月18日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">郑涵一</span><span class="cast-chip">王洁璐</span><span class="cast-chip">王珏语涵</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-19-a" data-show="chimera" data-date="2026-04-19" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月19日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">郭耀嵘</span><span class="cast-chip">杜鑫艳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-19-b" data-show="chimera" data-date="2026-04-19" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月19日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">杜钇樵</span><span class="cast-chip">左一平</span><span class="cast-chip">马小乔</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-22" data-show="chimera" data-date="2026-04-22" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月22日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">叶嘉雯</span><span class="cast-chip">郭耀嵘</span><span class="cast-chip">王竞琦</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-23" data-show="chimera" data-date="2026-04-23" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月23日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">吴杭律</span><span class="cast-chip">赵雨卉</span><span class="cast-chip">党韫葳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-24" data-show="chimera" data-date="2026-04-24" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月24日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">郑涵一</span><span class="cast-chip">王洁璐</span><span class="cast-chip">王竞琦</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-25-a" data-show="chimera" data-date="2026-04-25" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月25日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">杜钇樵</span><span class="cast-chip">左一平</span><span class="cast-chip">马小乔</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-25-b" data-show="chimera" data-date="2026-04-25" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月25日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">吴杭律</span><span class="cast-chip">胥子含</span><span class="cast-chip">叶嘉雯</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-26-a" data-show="chimera" data-date="2026-04-26" data-time="14:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月26日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">吴杭律</span><span class="cast-chip">王洁璐</span><span class="cast-chip">王竞琦</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+<div class="perf-card all-female past" data-all-female="1" data-id="chimera-2026-04-26-b" data-show="chimera" data-date="2026-04-26" data-time="19:30" data-title="音乐剧《奇美拉》" data-venue="艺海剧院小剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《奇美拉》 <em>全女班 · 女性反乌托邦</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>4月26日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>艺海剧院小剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">刘乙萱</span><span class="cast-chip">赵雨卉</span><span class="cast-chip">杜鑫艳</span></span><br/>
+<strong>制作：</strong>一部以女性视角探讨反乌托邦未来的音乐剧
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-done">✅ 已演</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
 </div>
 </div>
 </div>
-<div class="show-panel all-female" data-show="xuexing">
+<div class="show-panel" data-show="witch">
 <div class="show-panel-header">
   <div class="sph-left">
-    <div class="sph-title">音乐剧《嗜血博士》 <em>全女卡司 · 哥特</em></div>
-    <div class="sph-meta">🏛️ 上剧场出品 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+    <div class="sph-meta">🏛️ 上海话剧艺术中心 呈现 · 12 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    <div class="sph-note">卡司以女演员为主，但「女巫猎人」角色由男演员饰演，故不计入全女卡司。上海驻演共12场。</div>
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="xuexing-2026-09-05" data-show="xuexing" data-date="2026-09-05" data-time="19:30" data-title="音乐剧《嗜血博士》" data-venue="上剧场">
+<div class="perf-card" data-id="witch-2026-07-23" data-show="witch" data-date="2026-07-23" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
 <div class="perf-info">
-<div class="perf-title">音乐剧《嗜血博士》 <em>全女卡司 · 哥特</em></div>
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月5日（周六）19:30</span>
+<span><span class="meta-icon">📅</span>7月23日（周四）19:30</span>
 <span><span class="meta-icon">📍</span>上剧场</span>
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>上剧场出品
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>余思冉</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>张沁丹</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-24" data-show="witch" data-date="2026-07-24" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月24日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈恬</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁臻滢</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-25" data-show="witch" data-date="2026-07-25" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月25日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>余思冉</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁臻滢</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-26-a" data-show="witch" data-date="2026-07-26" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月26日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈恬</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>党韫葳</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-26-b" data-show="witch" data-date="2026-07-26" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月26日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>胥子含</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>张沁丹</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-28" data-show="witch" data-date="2026-07-28" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月28日（周二）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>余思冉</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁臻滢</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-29" data-show="witch" data-date="2026-07-29" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月29日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>胥子含</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>张沁丹</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-30" data-show="witch" data-date="2026-07-30" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月30日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈玉婷</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁辰西</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-07-31" data-show="witch" data-date="2026-07-31" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月31日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈玉婷</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>党韫葳</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-08-01-a" data-show="witch" data-date="2026-08-01" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月1日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>叶嘉雯</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁辰西</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-08-01-b" data-show="witch" data-date="2026-08-01" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月1日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈玉婷</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁辰西</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+<div class="perf-card" data-id="witch-2026-08-02" data-show="witch" data-date="2026-08-02" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月2日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>上剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>叶嘉雯</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>党韫葳</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>制作：</strong>上海话剧艺术中心 呈现
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 986</div></div>
+</div>
+</div>
+</div>
+<div class="show-panel all-female" data-show="six">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+    <div class="sph-meta">🏛️ 伦敦西区原版 · 英文演出 · 11 场 · 苏州 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-note">2026.10.1–10.11 苏州湾大剧院 连演14场（全女卡司·原版中国巡演首站），以下为每日夜场，部分日期加演下午场，具体每日场次以官方开票为准。</div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-01" data-show="six" data-date="2026-10-01" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月1日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥199 — 599</div></div>
+<div class="perf-price">¥66 — 766</div></div>
 </div>
-</div>
-</div>
-<div class="show-panel all-female" data-show="sanfu">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《三妇志异》 <em>全女卡司 · 三部曲</em></div>
-    <div class="sph-meta">🏛️ 音乐剧制作 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-id="sanfu-2026-09-12" data-show="sanfu" data-date="2026-09-12" data-time="19:30" data-title="音乐剧《三妇志异》" data-venue="虹桥艺术中心">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-02" data-show="six" data-date="2026-10-02" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《三妇志异》 <em>全女卡司 · 三部曲</em></div>
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月12日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>虹桥艺术中心</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>10月2日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
-<strong>制作：</strong>音乐剧制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
 </div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥380 — 880</div></div>
+<div class="perf-price">¥66 — 766</div></div>
 </div>
-</div>
-</div>
-<div class="show-panel" data-show="r1">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《剧院魅影》 <em>经典复排</em></div>
-    <div class="sph-meta">🏛️ 上海大剧院呈现 · 1 场 · 上海 </div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="r1-2026-07-15" data-show="r1" data-date="2026-07-15" data-time="19:30" data-title="音乐剧《剧院魅影》" data-venue="上海大剧院">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-03" data-show="six" data-date="2026-10-03" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《剧院魅影》 <em>经典复排</em></div>
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月15日（周三）19:30</span>
-<span><span class="meta-icon">📍</span>上海大剧院</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>10月3日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">轮换卡司</span></span><br/>
-<strong>制作：</strong>上海大剧院呈现
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
 </div>
 </div>
 <div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 1280</div></div>
+<div class="perf-price">¥66 — 766</div></div>
 </div>
-</div>
-</div>
-<div class="show-panel" data-show="r2">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《妈妈咪呀！》 <em>经典 IP 巡演</em></div>
-    <div class="sph-meta">🏛️ 中文制作 · 1 场 · 上海 </div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="r2-2026-08-12" data-show="r2" data-date="2026-08-12" data-time="19:30" data-title="音乐剧《妈妈咪呀！》" data-venue="上海文化广场">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-04" data-show="six" data-date="2026-10-04" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《妈妈咪呀！》 <em>经典 IP 巡演</em></div>
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月12日（周三）19:30</span>
-<span><span class="meta-icon">📍</span>上海文化广场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>10月4日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">轮换卡司</span></span><br/>
-<strong>制作：</strong>中文制作
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
 </div>
 </div>
 <div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
+<div class="perf-price">¥66 — 766</div></div>
 </div>
-</div>
-</div>
-<div class="show-panel" data-show="r3">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">音乐剧《摇滚红与黑》 <em>法语原版巡演</em></div>
-    <div class="sph-meta">🏛️ 法语原版授权 · 1 场 · 上海 </div>
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="r3-2026-09-09" data-show="r3" data-date="2026-09-09" data-time="19:30" data-title="音乐剧《摇滚红与黑》" data-venue="兰心大戏院">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-05" data-show="six" data-date="2026-10-05" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《摇滚红与黑》 <em>法语原版巡演</em></div>
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月9日（周三）19:30</span>
-<span><span class="meta-icon">📍</span>兰心大戏院</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>10月5日（周一）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">法方卡司</span></span><br/>
-<strong>制作：</strong>法语原版授权
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
 </div>
 </div>
 <div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 880</div></div>
+<div class="perf-price">¥66 — 766</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-06" data-show="six" data-date="2026-10-06" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月6日（周二）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥66 — 766</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-07" data-show="six" data-date="2026-10-07" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月7日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥66 — 766</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-08" data-show="six" data-date="2026-10-08" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月8日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥66 — 766</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-09" data-show="six" data-date="2026-10-09" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月9日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥66 — 766</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-10" data-show="six" data-date="2026-10-10" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月10日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥66 — 766</div></div>
+</div>
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-10-11" data-show="six" data-date="2026-10-11" data-time="19:30" data-title="音乐剧《SIX》" data-venue="苏州湾大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》 <em>原版中国巡演首站 · 全女卡司六皇后</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月11日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>苏州湾大剧院</span>
+<span><span class="meta-icon">🏙️</span>苏州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">六位皇后（原版卡司，以官方公布为准）</span></span><br/>
+<strong>制作：</strong>伦敦西区原版 · 英文演出
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥66 — 766</div></div>
 </div>
 </div>
 </div>
@@ -1406,7 +2292,7 @@
 <span>🎪 虹桥艺术中心</span>
 </div>
 <p>报告由 WorkBuddy 自动化生成 · 监控范围：全女卡司音乐剧 + 全网音乐剧演出（大麦网 + 各剧院官方 + 全网检索）</p>
-<p style="margin-top:6px;">数据截至 2026-07-09 10:45 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
+<p style="margin-top:6px;">数据截至 2026-07-09 11:16 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
 <p style="margin-top:10px;"><a href="https://moone7.github.io/yueju-monitor/" target="_blank" rel="noopener">🎭 姊妹站点：越剧演出售票监控</a></p>
 </div>
 </div>
@@ -1415,25 +2301,63 @@
 //  DATA
 // ============================================================
 const PERF_DATES = {
-  "2026-07-10": ["six-2026-07-10-m", "six-2026-07-10"],
-  "2026-07-15": ["r1-2026-07-15"],
-  "2026-07-18": ["nv-2026-07-18"],
-  "2026-07-19": ["nv-2026-07-19"],
-  "2026-07-25": ["zx-2026-07-25"],
-  "2026-08-01": ["wanou-2026-08-01"],
-  "2026-08-08": ["poqiang-2026-08-08"],
-  "2026-08-12": ["r2-2026-08-12"],
-  "2026-08-15": ["demian-2026-08-15"],
-  "2026-08-22": ["lianbi-2026-08-22"],
-  "2026-08-29": ["lizi-2026-08-29"],
-  "2026-09-05": ["xuexing-2026-09-05"],
-  "2026-09-09": ["r3-2026-09-09"],
-  "2026-09-12": ["sanfu-2026-09-12"],
-  "2026-09-19": ["six-2026-09-19"],
-  "2026-09-26": ["six-2026-09-26"],
+  "2026-04-03": ["chimera-2026-04-03"],
+  "2026-04-04": ["chimera-2026-04-04-a", "chimera-2026-04-04-b"],
+  "2026-04-05": ["chimera-2026-04-05-a", "chimera-2026-04-05-b"],
+  "2026-04-06": ["chimera-2026-04-06-a", "chimera-2026-04-06-b"],
+  "2026-04-08": ["chimera-2026-04-08"],
+  "2026-04-09": ["chimera-2026-04-09"],
+  "2026-04-10": ["chimera-2026-04-10"],
+  "2026-04-11": ["chimera-2026-04-11-a", "chimera-2026-04-11-b"],
+  "2026-04-12": ["chimera-2026-04-12-a", "chimera-2026-04-12-b"],
+  "2026-04-15": ["chimera-2026-04-15"],
+  "2026-04-16": ["chimera-2026-04-16"],
+  "2026-04-17": ["chimera-2026-04-17"],
+  "2026-04-18": ["chimera-2026-04-18-a", "chimera-2026-04-18-b"],
+  "2026-04-19": ["chimera-2026-04-19-a", "chimera-2026-04-19-b"],
+  "2026-04-22": ["chimera-2026-04-22"],
+  "2026-04-23": ["chimera-2026-04-23"],
+  "2026-04-24": ["chimera-2026-04-24"],
+  "2026-04-25": ["chimera-2026-04-25-a", "chimera-2026-04-25-b"],
+  "2026-04-26": ["chimera-2026-04-26-a", "chimera-2026-04-26-b"],
+  "2026-07-23": ["witch-2026-07-23"],
+  "2026-07-24": ["witch-2026-07-24"],
+  "2026-07-25": ["witch-2026-07-25"],
+  "2026-07-26": ["witch-2026-07-26-a", "witch-2026-07-26-b"],
+  "2026-07-28": ["witch-2026-07-28"],
+  "2026-07-29": ["witch-2026-07-29"],
+  "2026-07-30": ["witch-2026-07-30"],
+  "2026-07-31": ["witch-2026-07-31"],
+  "2026-08-01": ["witch-2026-08-01-a", "witch-2026-08-01-b"],
+  "2026-08-02": ["witch-2026-08-02"],
+  "2026-09-04": ["tafan-2026-09-04"],
+  "2026-09-05": ["tafan-2026-09-05"],
+  "2026-09-11": ["tafan-2026-09-11"],
+  "2026-09-12": ["tafan-2026-09-12"],
+  "2026-09-19": ["tafan-2026-09-19-a", "tafan-2026-09-19-b"],
+  "2026-09-26": ["tafan-2026-09-26-a", "tafan-2026-09-26-b"],
+  "2026-10-01": ["six-2026-10-01"],
+  "2026-10-02": ["six-2026-10-02"],
+  "2026-10-03": ["six-2026-10-03"],
+  "2026-10-04": ["six-2026-10-04"],
+  "2026-10-05": ["six-2026-10-05"],
+  "2026-10-06": ["tafan-2026-10-06", "six-2026-10-06"],
+  "2026-10-07": ["tafan-2026-10-07", "six-2026-10-07"],
+  "2026-10-08": ["six-2026-10-08"],
+  "2026-10-09": ["six-2026-10-09"],
+  "2026-10-10": ["six-2026-10-10"],
+  "2026-10-11": ["six-2026-10-11"],
+  "2026-10-16": ["tafan-2026-10-16"],
+  "2026-10-17": ["tafan-2026-10-17"],
+  "2026-10-23": ["tafan-2026-10-23"],
+  "2026-10-24": ["tafan-2026-10-24"],
+  "2026-10-31": ["tafan-2026-10-31"],
+  "2026-11-01": ["tafan-2026-11-01"],
+  "2026-11-06": ["tafan-2026-11-06"],
+  "2026-11-07": ["tafan-2026-11-07"],
 };
 
-const ALL_FEMALE_IDS = new Set(["six-2026-07-10-m", "six-2026-07-10", "nv-2026-07-18", "nv-2026-07-19", "zx-2026-07-25", "wanou-2026-08-01", "poqiang-2026-08-08", "demian-2026-08-15", "lianbi-2026-08-22", "lizi-2026-08-29", "xuexing-2026-09-05", "sanfu-2026-09-12", "six-2026-09-19", "six-2026-09-26"]);
+const ALL_FEMALE_IDS = new Set(["chimera-2026-04-03", "chimera-2026-04-04-a", "chimera-2026-04-04-b", "chimera-2026-04-05-a", "chimera-2026-04-05-b", "chimera-2026-04-06-a", "chimera-2026-04-06-b", "chimera-2026-04-08", "chimera-2026-04-09", "chimera-2026-04-10", "chimera-2026-04-11-a", "chimera-2026-04-11-b", "chimera-2026-04-12-a", "chimera-2026-04-12-b", "chimera-2026-04-15", "chimera-2026-04-16", "chimera-2026-04-17", "chimera-2026-04-18-a", "chimera-2026-04-18-b", "chimera-2026-04-19-a", "chimera-2026-04-19-b", "chimera-2026-04-22", "chimera-2026-04-23", "chimera-2026-04-24", "chimera-2026-04-25-a", "chimera-2026-04-25-b", "chimera-2026-04-26-a", "chimera-2026-04-26-b", "tafan-2026-09-04", "tafan-2026-09-05", "tafan-2026-09-11", "tafan-2026-09-12", "tafan-2026-09-19-a", "tafan-2026-09-19-b", "tafan-2026-09-26-a", "tafan-2026-09-26-b", "six-2026-10-01", "six-2026-10-02", "six-2026-10-03", "six-2026-10-04", "six-2026-10-05", "tafan-2026-10-06", "six-2026-10-06", "tafan-2026-10-07", "six-2026-10-07", "six-2026-10-08", "six-2026-10-09", "six-2026-10-10", "six-2026-10-11", "tafan-2026-10-16", "tafan-2026-10-17", "tafan-2026-10-23", "tafan-2026-10-24", "tafan-2026-10-31", "tafan-2026-11-01", "tafan-2026-11-06", "tafan-2026-11-07"]);
 
 // ============================================================
 //  SHOW DATA INDEX (built from DOM for tooltips)
