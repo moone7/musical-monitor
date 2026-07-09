@@ -93,7 +93,18 @@ def compute_card_class(date_iso, today):
         return "tomorrow"
     return ""
 
-def compute_tags(date_iso, today, is_all_female):
+def is_new_onsale(perf, today):
+    """开票日期在 [今天-14天, 今天] 内 → 视为「新开票」"""
+    on_sale = perf.get("on_sale")
+    if not on_sale:
+        return False
+    try:
+        os_dt = datetime.strptime(on_sale, "%Y-%m-%d")
+    except Exception:
+        return False
+    return (today - timedelta(days=14)) <= os_dt <= today
+
+def compute_tags(date_iso, today, is_all_female, on_sale=None):
     tags = []
     if is_all_female:
         tags.append(("tag-all-female", "💜 全女卡司"))
@@ -101,12 +112,10 @@ def compute_tags(date_iso, today, is_all_female):
         tags.append(("tag-done", "✅ 已演"))
     elif date_iso == date_str(today):
         tags.append(("tag-urgent", "🔥 今日开演"))
-        tags.append(("tag-on-sale", "售票中"))
     elif date_iso == date_str(today + timedelta(days=1)):
         tags.append(("tag-urgent", "🔥 明日开演"))
-        tags.append(("tag-on-sale", "售票中"))
-    else:
-        tags.append(("tag-on-sale", "售票中"))
+    if on_sale and is_new_onsale({"on_sale": on_sale}, today):
+        tags.append(("tag-onsale-new", "🆕 新开票"))
     return tags
 
 # ============================================================
@@ -118,7 +127,7 @@ def html_escape(text):
 def generate_card_html(perf, today):
     is_af = perf.get('is_all_female', False)
     card_class = compute_card_class(perf['date'], today)
-    tags = compute_tags(perf['date'], today, is_af)
+    tags = compute_tags(perf['date'], today, is_af, perf.get('on_sale'))
 
     classes = "perf-card"
     if is_af:
@@ -262,46 +271,49 @@ def format_af_list(perfs):
         parts.append(f"{dt.month}月{dt.day}日{venue_short}《{title_short}》")
     return " → ".join(parts)
 
-def generate_alert_urgent(perfs, today):
-    today_str = date_str(today)
-    tomorrow_str = date_str(today + timedelta(days=1))
-    lines = []
-    today_p = [s for s in perfs if s['date'] == today_str]
-    if today_p:
-        lines.append(f"· <strong>今日开演：</strong>{format_perf_list(today_p)}。<br/>")
-    tomorrow_p = [s for s in perfs if s['date'] == tomorrow_str]
-    if tomorrow_p:
-        lines.append(f"· <strong>明日开演：</strong>{format_perf_list(tomorrow_p)}。<br/>")
-    af_p = [s for s in perfs if s.get('is_all_female') and s['date'] >= today_str]
-    if af_p:
-        lines.append(f"· <strong>💜 全女卡司近期：</strong>{format_af_list(af_p)}。<br/>")
-    week_ahead = date_str(today + timedelta(days=7))
-    upcoming = [s for s in perfs if today_str < s['date'] <= week_ahead and not s.get('is_all_female')]
-    if upcoming:
-        lines.append(f"· <strong>一周内演出：</strong>{format_perf_list(upcoming[:4])}{'等' if len(upcoming) > 4 else ''}。<br/>")
-    if not lines:
-        lines.append("· 暂无近期高优提醒。<br/>")
-    return "\n      ".join(lines)
+def generate_overview_cities(perfs):
+    """按城市汇总：城市 · N 场 · 《剧名》列表（剧名去重，全女剧标 💜）。"""
+    by_city = {}
+    by_city_af = {}
+    count_by_city = {}
+    for p in perfs:
+        city = p.get('city') or '其他'
+        title = clean_title(p['show_title'])
+        by_city.setdefault(city, set()).add(title)
+        if p.get('is_all_female'):
+            by_city_af.setdefault(city, set()).add(title)
+        count_by_city[city] = count_by_city.get(city, 0) + 1
+    parts = []
+    for city in sorted(by_city, key=lambda c: (-count_by_city[c], c)):
+        titles = []
+        for t in sorted(by_city[city]):
+            mark = '💜 ' if t in by_city_af.get(city, set()) else ''
+            titles.append(f'<span class="af-mark">{mark}</span>《{html_escape(t)}》')
+        shows_html = '、'.join(titles)
+        parts.append(
+            f'<div class="ov-city">'
+            f'<div class="ov-city-head"><b>{html_escape(city)}</b>'
+            f'<span class="ov-cnt">{count_by_city[city]} 场</span></div>'
+            f'<div class="ov-shows">{shows_html}</div>'
+            f'</div>'
+        )
+    return "\n".join(parts)
 
-def generate_alert_new(perfs, today):
+def generate_overview_flags(perfs, today):
+    """仅在有发生时显示的紧凑徽章：今日开演 / 新开票 / 7天内开演。"""
     today_str = date_str(today)
-    yesterday_str = date_str(today - timedelta(days=1))
-    lines = []
     today_p = [s for s in perfs if s['date'] == today_str]
+    new_sale = [s for s in perfs if is_new_onsale(s, today)]
+    week = date_str(today + timedelta(days=7))
+    week_p = [s for s in perfs if today_str < s['date'] <= week]
+    chips = []
     if today_p:
-        lines.append(f"· <strong>今日开演：</strong>{format_perf_list(today_p)}。<br/>")
-    yesterday_p = [s for s in perfs if s['date'] == yesterday_str]
-    if yesterday_p:
-        lines.append(f"· <strong>昨日回顾：</strong>{format_perf_list(yesterday_p)} 已圆满演出。<br/>")
-    af_up = [s for s in perfs if s.get('is_all_female') and s['date'] >= today_str]
-    if af_up:
-        lines.append(f"· <strong>💜 全女卡司行程：</strong>共 {len(af_up)} 场 — {format_af_list(af_up)}。<br/>")
-    shanghai = [s for s in perfs if '上海' in (s.get('city', '') + s.get('venue', '')) and s['date'] >= today_str]
-    if shanghai:
-        lines.append(f"· <strong>上海近期：</strong>{format_perf_list(shanghai[:3])}{'等' if len(shanghai) > 3 else ''}。<br/>")
-    if not lines:
-        lines.append("· 今日暂无新动态。<br/>")
-    return "\n      ".join(lines)
+        chips.append(f'<span class="flag-chip flag-today">🔥 今日开演 {len(today_p)} 场</span>')
+    if new_sale:
+        chips.append(f'<span class="flag-chip flag-onsale">🆕 新开票 {len(new_sale)} 场</span>')
+    if week_p:
+        chips.append(f'<span class="flag-chip flag-week">📅 7 天内开演 {len(week_p)} 场</span>')
+    return "\n".join(chips)
 
 # ============================================================
 # 主函数
@@ -329,8 +341,8 @@ def main():
     perf_dates_json = generate_perf_dates(perfs)
     af_ids_json = generate_all_female_ids(perfs)
 
-    alert_urgent = generate_alert_urgent(perfs, today)
-    alert_new = generate_alert_new(perfs, today)
+    overview_cities = generate_overview_cities(perfs)
+    overview_flags = generate_overview_flags(perfs, today)
 
     template = Path("template.html").read_text(encoding="utf-8")
     replacements = {
@@ -344,8 +356,8 @@ def main():
         "{{PANELS_HTML}}": panels_html,
         "{{PERF_DATES_JSON}}": perf_dates_json,
         "{{ALL_FEMALE_IDS_JSON}}": af_ids_json,
-        "{{ALERT_URGENT}}": alert_urgent,
-        "{{ALERT_NEW}}": alert_new,
+        "{{OVERVIEW_CITIES}}": overview_cities,
+        "{{OVERVIEW_FLAGS}}": overview_flags,
     }
     html = template
     for placeholder, value in replacements.items():

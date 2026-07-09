@@ -469,6 +469,34 @@
   .alert-body { padding: 14px 20px 14px 24px; font-size: 13.5px; color: var(--text); line-height: 1.9; }
   .alert-body strong { color: var(--pink-light); }
 
+  /* ===== 演出概览（紧凑） ===== */
+  .overview { margin: 22px 0 10px; }
+  .ov-head { display: flex; align-items: baseline; gap: 12px; margin: 0 4px 12px; }
+  .ov-title { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: var(--pink); }
+  .ov-sub { font-size: 12px; color: var(--text-dim); opacity: .8; }
+  .ov-flags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 4px 14px; }
+  .flag-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 13px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    border: 1px solid transparent;
+  }
+  .flag-today { background: rgba(184,30,90,0.14); border-color: rgba(255,77,157,0.4); color: #ff9ec7; }
+  .flag-onsale { background: rgba(46,230,230,0.1); border-color: rgba(46,230,230,0.35); color: #7ef0f0; }
+  .flag-week { background: rgba(155,93,229,0.12); border-color: rgba(155,93,229,0.3); color: #c9b4f0; }
+  .ov-cities { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .ov-city {
+    background: rgba(26,22,38,0.4);
+    border: 1px solid rgba(255,77,157,0.1); border-radius: 14px;
+    padding: 14px 16px; backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .ov-city-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 7px; }
+  .ov-city-head b { font-size: 16px; color: var(--text); }
+  .ov-cnt { font-size: 12px; color: var(--pink-light); font-weight: 600; }
+  .ov-shows { font-size: 12.5px; color: var(--text-dim); line-height: 1.7; }
+  .ov-shows .af-mark { color: var(--pink); }
+
   /* ===== Section ===== */
   .section-title {
     font-family: 'Noto Serif SC', serif;
@@ -643,6 +671,11 @@
     background: linear-gradient(135deg, rgba(255,77,157,0.22) 0%, rgba(155,93,229,0.22) 100%);
     color: #ff86c0;
     border: 1px solid rgba(255,77,157,0.3);
+  }
+  .tag-onsale-new {
+    background: rgba(46,230,230,0.14);
+    color: #7ef0f0;
+    border: 1px solid rgba(46,230,230,0.4);
   }
 
   /* ===== Tabs (per show) ===== */
@@ -904,24 +937,14 @@
   <div class="stat-label">涉及城市</div>
 </div>
 </div>
-<p class="stats-note" style="margin:4px 6px 0;font-size:12px;color:var(--text-dim);opacity:.85;">仅展示未结束的演出 · 已演满一周自动隐藏</p>
-<!-- ===== 🔥 紧急提醒 ===== -->
-<div class="alert alert-urgent">
-<div class="alert-header">
-<span class="alert-icon">🔥</span> 近期高优提醒
-    </div>
-<div class="alert-body">
-      {{ALERT_URGENT}}
-    </div>
-</div>
-<!-- ===== 🆕 今日新动态 ===== -->
-<div class="alert alert-new">
-<div class="alert-header">
-<span class="alert-icon">🆕</span> 今日新动态
-    </div>
-<div class="alert-body">
-      {{ALERT_NEW}}
-    </div>
+<!-- ===== 演出概览（按城市汇总 + 新开票/今日开演标记） ===== -->
+<div class="overview">
+  <div class="ov-head">
+    <span class="ov-title">📍 演出概览</span>
+    <span class="ov-sub">未结束演出 · 已演满一周自动隐藏</span>
+  </div>
+  <div class="ov-flags" id="ov-flags">{{OVERVIEW_FLAGS}}</div>
+  <div class="ov-cities" id="ov-cities">{{OVERVIEW_CITIES}}</div>
 </div>
 <!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
 <h2 class="section-title"><span class="section-icon">📋</span> 演出一览
