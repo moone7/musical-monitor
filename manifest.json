@@ -1,0 +1,17 @@
+{
+  "name": "全女卡司音乐剧演出监控",
+  "short_name": "音乐剧监控",
+  "description": "全女卡司音乐剧演出每日监控 · 大麦网 + 各剧院官方 + 全网检索",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0910",
+  "theme_color": "#ff4d9d",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./icon-256.png", "sizes": "256x256", "type": "image/png" },
+    { "src": "./icon-384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "./icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

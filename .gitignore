@@ -1,0 +1,6 @@
+# 运行时生成 / 缓存
+shows.json
+.fingerprint_cache
+__pycache__/
+*.pyc
+push_*.py

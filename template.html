@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>音乐剧 · 全女卡司演出日报 — {{REPORT_DATE}}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0910;
+    --surface: #14111d;
+    --surface-raised: #1c1830;
+    --pink: #ff4d9d;
+    --pink-light: #ff86c0;
+    --violet: #9b5de5;
+    --cyan: #2ee6e6;
+    --text: #f2ecf7;
+    --text-muted: #b0a4c8;
+    --text-dim: #6e6585;
+    --border: #2b2440;
+    --tag-new: #2d5a5a;
+    --tag-urgent: #b81e5a;
+    --tag-soon: #4a2d6e;
+    --tag-all-female: #ff4d9d;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 50% 0%,   rgba(255,77,157,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 30%,  rgba(155,93,229,0.08)  0%, transparent 45%),
+      radial-gradient(ellipse at 90% 50%,  rgba(46,230,230,0.06)  0%, transparent 45%),
+      radial-gradient(ellipse at 20% 80%,  rgba(255,77,157,0.05)  0%, transparent 40%),
+      radial-gradient(ellipse at 80% 90%,  rgba(155,93,229,0.05)  0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cdefs%3E%3Cstyle%3Epath%7Bfill:none;stroke:rgba(255%2C77%2C157%2C0.05);stroke-width:0.8%7D%3C/style%3E%3C/defs%3E%3C!-- staff lines ---%3E%3Cline x1='0' y1='40' x2='120' y2='40' stroke='rgba(155%2C93%2C229%2C0.04)'/%3E%3Cline x1='0' y1='60' x2='120' y2='60' stroke='rgba(155%2C93%2C229%2C0.04)'/%3E%3Cline x1='0' y1='80' x2='120' y2='80' stroke='rgba(155%2C93%2C229%2C0.04)'/%3E%3C!-- note ---%3E%3Ccircle cx='40' cy='60' r='4' fill='rgba(255%2C77%2C157%2C0.06)'/%3E%3Crect x='43' y='30' width='1.4' height='32' fill='rgba(255%2C77%2C157%2C0.06)'/%3E%3Ccircle cx='86' cy='60' r='4' fill='rgba(46%2C230%2C230%2C0.05)'/%3E%3Crect x='89' y='30' width='1.4' height='32' fill='rgba(46%2C230%2C230%2C0.05)'/%3E%3C/svg%3E");
+    background-size: auto, auto, auto, auto, auto, 120px 120px;
+  }
+
+  /* ===== Spotlight sweep ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    z-index: -1;
+    background:
+      conic-gradient(from 0deg at 50% 0%,
+        rgba(255,77,157,0.0) 0deg,
+        rgba(255,77,157,0.06) 40deg,
+        rgba(46,230,230,0.05) 120deg,
+        rgba(155,93,229,0.06) 220deg,
+        rgba(255,77,157,0.0) 360deg);
+    animation: spotlight 26s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes spotlight {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .header {
+    text-align: center;
+    padding: 56px 24px 40px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,77,157,0.15);
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255,77,157,0.12) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(10,9,16,0.0) 0%, rgba(10,9,16,0.0) 100%);
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(155,93,229,0.5) 10%,
+      rgba(255,77,157,0.9) 25%,
+      rgba(255,134,192,1) 50%,
+      rgba(46,230,230,0.9) 75%,
+      rgba(155,93,229,0.5) 90%,
+      transparent 100%
+    );
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,77,157,0.5), transparent);
+  }
+  .header-flourish {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    font-size: 48px; opacity: 0.06;
+    pointer-events: none; user-select: none;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--pink);
+    line-height: 1;
+  }
+  .header-flourish.left  { left: 5%; }
+  .header-flourish.right { right: 5%; }
+  .header-icon {
+    font-size: 64px; margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(255,77,157,0.4)) drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    display: block; position: relative; z-index: 1;
+  }
+  .header h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 34px; font-weight: 900;
+    background: linear-gradient(180deg, #ffd0e8 0%, var(--pink-light) 40%, var(--pink) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: 4px;
+    text-shadow: none;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 2px 8px rgba(255,77,157,0.25));
+  }
+  .header .subtitle {
+    color: var(--text-muted); font-size: 13px; margin-top: 10px; letter-spacing: 3px;
+    position: relative; z-index: 1;
+  }
+  .header .date-badge {
+    display: inline-block; margin-top: 18px; padding: 5px 20px;
+    border: 1px solid rgba(255,77,157,0.25);
+    background: rgba(255,77,157,0.06);
+    border-radius: 20px;
+    font-size: 12px; color: rgba(255,134,192,0.8); letter-spacing: 2px;
+    position: relative; z-index: 1;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px 64px; }
+
+  /* ===== MY SHOWS BANNER ===== */
+  #my-shows-banner {
+    background: rgba(255,77,157,0.06);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    border: 1px solid rgba(255,77,157,0.28);
+    border-radius: 14px;
+    margin: 24px 0 0;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,77,157,0.07);
+  }
+  #my-shows-banner.empty-state {
+    border-color: rgba(255,77,157,0.1);
+    background: rgba(255,77,157,0.025);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+  #my-shows-banner .banner-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 20px;
+    background: linear-gradient(90deg, rgba(255,77,157,0.1), rgba(255,77,157,0.04));
+    border-bottom: 1px solid rgba(255,77,157,0.12);
+    font-weight: 600; font-size: 15px; color: var(--pink-light);
+    letter-spacing: 1px;
+  }
+  .sync-btn {
+    background: transparent; border: 1px solid rgba(255,77,157,0.35);
+    color: var(--pink-light); font-size: 12px; padding: 4px 10px;
+    border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .sync-btn:hover { background: rgba(255,77,157,0.15); border-color: var(--pink-light); }
+  .sync-btn:active { transform: scale(0.95); }
+  .empty-state .banner-header { color: var(--text-muted); background: rgba(255,77,157,0.04); }
+  #my-shows-banner .banner-body { padding: 14px 20px; }
+  .my-show-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,77,157,0.1);
+    font-size: 14px;
+  }
+  .my-show-item:last-child { border-bottom: none; }
+  .my-show-countdown {
+    min-width: 64px; text-align: center;
+    padding: 4px 8px; border-radius: 8px;
+    font-weight: 700; font-size: 13px; white-space: nowrap;
+    line-height: 1.3;
+  }
+  .my-show-countdown.today-show { background: var(--pink); color: #fff; }
+  .my-show-countdown.soon-show  { background: rgba(184,30,90,0.25); color: var(--pink-light); }
+  .my-show-countdown.future-show { background: rgba(255,77,157,0.15); color: var(--pink-light); }
+  .my-show-countdown .count-num { font-size: 18px; display: block; line-height: 1; }
+  .my-show-countdown .count-unit { font-size: 10px; opacity: 0.8; }
+  .my-show-detail { flex: 1; }
+  .my-show-title { color: var(--text); font-weight: 500; }
+  .my-show-meta  { color: var(--text-muted); font-size: 12px; margin-top: 3px; }
+  .empty-hint { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+  .empty-hint code {
+    background: rgba(255,77,157,0.1); padding: 1px 6px; border-radius: 4px;
+    font-size: 12px; color: var(--pink-light);
+  }
+
+  /* ===== CALENDAR ===== */
+  #calendar-section {
+    background: rgba(24,20,38,0.35);
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    border: 1px solid rgba(255,77,157,0.18);
+    border-radius: 14px;
+    margin: 24px 0 0;
+    overflow: hidden;
+    box-shadow:
+      0 4px 32px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(255,77,157,0.06),
+      inset 0 1px 0 rgba(255,77,157,0.08);
+    position: relative;
+  }
+  #calendar-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg,
+      rgba(255,77,157,0.0) 0%,
+      rgba(255,77,157,0.5) 20%,
+      rgba(255,134,192,0.8) 50%,
+      rgba(46,230,230,0.5) 80%,
+      rgba(255,77,157,0.0) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+  .cal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,77,157,0.12);
+    background: linear-gradient(180deg,
+      rgba(255,77,157,0.07) 0%,
+      rgba(255,77,157,0.02) 100%
+    );
+  }
+  .cal-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px; font-weight: 700; color: var(--pink);
+    letter-spacing: 2px;
+  }
+  .cal-nav-btns { display: flex; gap: 4px; }
+  .cal-nav-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-dim); border-radius: 8px;
+    width: 30px; height: 30px; cursor: pointer; font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .cal-nav-btn:hover {
+    border-color: var(--pink); color: var(--pink);
+    background: rgba(255,77,157,0.08);
+    box-shadow: 0 0 12px rgba(255,77,157,0.08);
+  }
+  .cal-nav-btn:active { transform: scale(0.95); }
+  .cal-filter-note {
+    font-size: 12px; color: var(--text-muted); padding: 8px 20px;
+    display: none; align-items: center; gap: 8px;
+    background: rgba(184,30,90,0.08);
+    border-bottom: 1px solid rgba(255,77,157,0.08);
+  }
+  .cal-filter-note.active { display: flex; }
+  .cal-clear-btn {
+    margin-left: auto; padding: 4px 12px;
+    background: rgba(184,30,90,0.15); border: 1px solid rgba(184,30,90,0.25);
+    color: var(--pink-light); border-radius: 6px; cursor: pointer;
+    font-size: 11px; transition: all 0.2s;
+  }
+  .cal-clear-btn:hover {
+    background: rgba(184,30,90,0.3);
+    box-shadow: 0 0 8px rgba(184,30,90,0.15);
+  }
+  .cal-weekdays {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; padding: 10px 16px 6px;
+    font-size: 10.5px; color: rgba(255,77,157,0.45);
+    letter-spacing: 2px; font-weight: 500;
+    text-transform: uppercase;
+  }
+  .cal-weekdays span { min-width: 0; }
+  .cal-weekdays span:first-child,
+  .cal-weekdays span:last-child { color: rgba(46,230,230,0.4); }
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 4px; padding: 4px 16px 14px;
+  }
+  .cal-day {
+    min-height: 58px; min-width: 0; padding: 5px 3px; border-radius: 8px;
+    font-size: 12px; cursor: default;
+    position: relative; transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center;
+    border: 1px solid transparent;
+    background: rgba(255,255,255,0.012);
+  }
+  .cal-day.empty { opacity: 0; pointer-events: none; }
+  .cal-day.other-month { opacity: 0.25; }
+  .cal-day.past-day { opacity: 0.45; }
+  .cal-day.past-day .cal-day-num { color: var(--text-dim); }
+  .cal-day.weekend-day .cal-day-num { color: rgba(46,230,230,0.5); }
+  .cal-day.today-cal {
+    background: linear-gradient(135deg, rgba(255,77,157,0.09) 0%, rgba(255,77,157,0.03) 100%);
+    border-color: rgba(255,77,157,0.25);
+    box-shadow: inset 0 0 20px rgba(255,77,157,0.04), 0 0 12px rgba(255,77,157,0.06);
+  }
+  .cal-day.today-cal .cal-day-num {
+    color: var(--pink-light);
+    text-shadow: 0 0 14px rgba(255,77,157,0.35);
+    font-weight: 700;
+  }
+  .cal-day.has-show { cursor: pointer; }
+  .cal-day.has-show:hover {
+    background: rgba(255,77,157,0.08);
+    border-color: rgba(255,77,157,0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+  .cal-day.selected {
+    background: rgba(184,30,90,0.15) !important;
+    border-color: rgba(184,30,90,0.45) !important;
+    box-shadow: 0 0 16px rgba(184,30,90,0.12), inset 0 0 8px rgba(184,30,90,0.05) !important;
+  }
+  .cal-day.selected .cal-day-num { color: var(--pink-light) !important; }
+  .cal-day.has-bought-show {
+    border-color: rgba(74,157,63,0.35) !important;
+    background: linear-gradient(135deg, rgba(45,90,39,0.12) 0%, rgba(45,90,39,0.04) 100%);
+    box-shadow: inset 0 0 12px rgba(74,157,63,0.06);
+  }
+  .cal-day-num {
+    font-size: 13px; font-weight: 600; line-height: 1;
+    margin-bottom: 3px; color: var(--text-muted);
+    font-family: 'Noto Serif SC', serif;
+  }
+  .cal-day.has-bought-show .cal-day-num::after {
+    content: ' ✓';
+    font-size: 9px; color: #6bcc5e;
+    font-weight: 700; opacity: 0.9;
+  }
+  .cal-day-names {
+    display: flex; flex-direction: column; align-items: center; gap: 2.5px;
+    flex: 1; justify-content: center; width: 100%; overflow: hidden;
+    padding: 0 1px;
+  }
+  .cal-day-name {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 9.5px; line-height: 1.35; white-space: nowrap;
+    overflow: hidden; max-width: 100%;
+    justify-content: space-between;
+    padding: 2px 4px; padding-right: 20px; border-radius: 4px;
+    color: rgba(220,220,220,0.75);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.2s;
+    font-weight: 400;
+    position: relative;
+  }
+  .cal-day-name .title-text { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 1; min-width: 0; }
+  .cal-day.has-show:hover .cal-day-name { color: rgba(220,220,220,0.75); background: rgba(255,255,255,0.07); }
+  .cal-day.has-bought-show .cal-day-name {
+    color: rgba(120,220,100,0.9);
+    background: rgba(45,90,39,0.18);
+    border-color: rgba(74,157,63,0.25);
+    font-weight: 500;
+  }
+  .cal-day-name.all-female-name {
+    color: rgba(255,134,192,0.9);
+    background: rgba(255,77,157,0.08);
+    border-color: rgba(255,77,157,0.14);
+  }
+  .cal-day-name.bought-name {
+    color: rgba(120,220,100,0.9);
+    background: rgba(45,90,39,0.18);
+    border-color: rgba(74,157,63,0.25);
+  }
+  .cal-day-name.cal-more {
+    background: transparent; border-color: transparent;
+    color: var(--text-dim); font-size: 10px; font-weight: 400;
+  }
+  .cal-group-legend {
+    display: flex; align-items: center; gap: 14px;
+    padding: 4px 16px 6px;
+    font-size: 10.5px; color: var(--text-dim);
+    border-bottom: 1px solid rgba(255,77,157,0.06);
+    letter-spacing: 0.5px;
+  }
+  .cal-star-badge { /* reused for all-female */
+    position: absolute; top: 1px; right: 2px;
+    font-size: 12px; line-height: 1;
+    filter: drop-shadow(0 0 3px rgba(255,77,157,0.5));
+    pointer-events: none; z-index: 1;
+  }
+  .cal-bought-badge {
+    position: absolute; bottom: 4px; right: 4px;
+    font-size: 7.5px; font-weight: 700;
+    background: linear-gradient(135deg, rgba(45,90,39,0.4) 0%, rgba(74,157,63,0.25) 100%);
+    color: #8fd886; border-radius: 4px;
+    padding: 1.5px 5px;
+    pointer-events: none; z-index: 1;
+    letter-spacing: 1px;
+    border: 1px solid rgba(74,157,63,0.3);
+  }
+
+  /* ===== Tooltip ===== */
+  .cal-tooltip {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    min-width: 240px; max-width: 340px;
+    background: var(--surface-raised);
+    border: 1px solid rgba(255,77,157,0.4);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,77,157,0.1);
+    padding: 14px 16px;
+    font-size: 12px; line-height: 1.7;
+    pointer-events: auto;
+    animation: tooltipIn 0.15s ease;
+  }
+  .cal-tooltip .tt-close {
+    font-size: 14px; color: var(--text-dim); cursor: pointer;
+    padding: 4px; line-height: 1; transition: color 0.2s; user-select: none;
+  }
+  .cal-tooltip .tt-close:hover { color: var(--pink-light); }
+  @keyframes tooltipIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .cal-tooltip .tt-header {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px; font-weight: 700; color: var(--pink-light);
+    margin-bottom: 6px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cal-tooltip .tt-item { padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .cal-tooltip .tt-item:last-child { border-bottom: none; }
+  .cal-tooltip .tt-title { font-weight: 600; color: var(--text); font-size: 12px; }
+  .cal-tooltip .tt-title .tt-af { color: #ff86c0; }
+  .cal-tooltip .tt-title .tt-bought { color: #6bcc5e; font-size: 10px; margin-left: 4px; }
+  .cal-tooltip .tt-meta { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+  .cal-tooltip .tt-cast { color: var(--text-dim); font-size: 10px; margin-top: 1px; }
+  .cal-tooltip .tt-price { color: var(--pink-light); font-size: 11px; font-weight: 600; margin-top: 1px; }
+
+  /* ===== Alerts ===== */
+  .alert {
+    margin: 24px 0 8px; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    position: relative;
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+  }
+  .alert::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+  .alert-urgent { background: rgba(184,30,90,0.08); border: 1px solid rgba(184,30,90,0.28); }
+  .alert-urgent::before { background: linear-gradient(180deg, transparent, var(--pink), transparent); }
+  .alert-new { background: rgba(255,77,157,0.06); border: 1px solid rgba(255,77,157,0.22); }
+  .alert-new::before { background: linear-gradient(180deg, transparent, var(--cyan), transparent); }
+  .alert-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 20px 13px 24px; font-weight: 600; font-size: 15px; letter-spacing: 1.5px;
+  }
+  .alert-urgent .alert-header { color: var(--pink-light); background: rgba(184,30,90,0.1); border-bottom: 1px solid rgba(184,30,90,0.12); }
+  .alert-new .alert-header { color: var(--cyan); background: rgba(46,230,230,0.07); border-bottom: 1px solid rgba(46,230,230,0.1); }
+  .alert-icon { font-size: 18px; }
+  .alert-body { padding: 14px 20px 14px 24px; font-size: 13.5px; color: var(--text); line-height: 1.9; }
+  .alert-body strong { color: var(--pink-light); }
+
+  /* ===== Section ===== */
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700; color: var(--pink);
+    margin: 40px 0 20px;
+    display: flex; align-items: center; gap: 10px; letter-spacing: 2px;
+    position: relative;
+    padding-left: 14px;
+  }
+  .section-title::before {
+    content: '';
+    position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 4px; height: 70%;
+    background: linear-gradient(180deg, var(--pink-light), var(--violet));
+    border-radius: 2px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(255,77,157,0.25), transparent);
+  }
+  .section-icon { font-size: 22px; }
+
+  /* ===== All-female filter toggle ===== */
+  .af-filter-btn {
+    margin-left: auto;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 5px 14px; border-radius: 20px; cursor: pointer;
+    border: 1px solid rgba(255,77,157,0.4);
+    background: rgba(255,77,157,0.08); color: var(--pink-light);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .af-filter-btn:hover { background: rgba(255,77,157,0.18); border-color: var(--pink-light); }
+  .af-filter-btn.active {
+    background: linear-gradient(135deg, var(--pink) 0%, var(--violet) 100%);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 2px 12px rgba(255,77,157,0.35);
+  }
+
+  /* ===== Performance Cards ===== */
+  .perf-grid { display: grid; gap: 16px; }
+
+  .perf-card {
+    background: rgba(26,22,40,0.45);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 20px 20px 20px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "info tags" "info price";
+    gap: 8px 24px;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, opacity 0.3s, background 0.3s;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .perf-card::before {
+    content: '';
+    position: absolute; left: 0; top: 12px; bottom: 12px;
+    width: 3px;
+    background: linear-gradient(180deg, transparent, rgba(255,77,157,0.35), transparent);
+    border-radius: 0 2px 2px 0;
+    transition: background 0.25s;
+  }
+  .perf-card:hover::before { background: linear-gradient(180deg, transparent, rgba(255,77,157,0.7), transparent); }
+  .perf-card:hover {
+    border-color: rgba(255,77,157,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,77,157,0.07);
+  }
+  .perf-card.hidden-by-filter { display: none; }
+  .perf-card.all-female::before { background: linear-gradient(180deg, transparent, rgba(255,77,157,0.6), transparent); }
+  .perf-card.all-female:hover::before { background: linear-gradient(180deg, transparent, rgba(255,134,192,0.9), transparent); }
+
+  .perf-card.past { opacity: 0.55; filter: saturate(0.6); }
+  .perf-card.past::before { background: linear-gradient(180deg, transparent, rgba(110,101,133,0.25), transparent); }
+  .perf-card.past .perf-title { color: var(--text-muted); }
+  .perf-card.past.bought { opacity: 0.7; }
+  .perf-card.past:hover { opacity: 0.8; filter: saturate(0.8); }
+
+  .perf-card.today {
+    border-color: rgba(255,77,157,0.35);
+    background: rgba(255,77,157,0.06);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+  .perf-card.today .perf-title { position: relative; }
+  .perf-card.today .perf-title::after {
+    content: '今日开演';
+    position: absolute; top: -2px; right: 0;
+    background: linear-gradient(135deg, #b81e5a 0%, var(--pink) 100%);
+    color: #fff; font-size: 10px; font-weight: 600;
+    padding: 2px 10px; border-radius: 12px; letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(255,77,157,0.35), 0 0 0 1px rgba(255,255,255,0.08);
+    pointer-events: none; z-index: 2; white-space: nowrap;
+  }
+  .perf-card.today.bought .perf-title::after { content: '今日开演 · 已购'; background: linear-gradient(135deg, #5a1040, #8b2050); }
+  .perf-card.tomorrow { border-color: rgba(255,77,157,0.28); }
+  .perf-card.tomorrow .perf-title { position: relative; }
+  .perf-card.tomorrow .perf-title::after {
+    content: '明日开演';
+    position: absolute; top: -2px; right: 0;
+    background: linear-gradient(135deg, #5a2d8b 0%, #9b5de5 100%);
+    color: #fff9e6; font-size: 10px; font-weight: 600;
+    padding: 2px 10px; border-radius: 12px; letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(155,93,229,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+    pointer-events: none; z-index: 2; white-space: nowrap;
+  }
+
+  .perf-card.bought {
+    border-color: rgba(74,157,63,0.45) !important;
+    background: rgba(45,90,39,0.08) !important;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+  .perf-card.bought .perf-title::after {
+    content: ' ✓ 已购';
+    font-size: 12px; color: #6bcc5e;
+    font-weight: 500; font-style: normal;
+    margin-left: 8px; letter-spacing: 0;
+  }
+
+  .perf-info { grid-area: info; }
+  .perf-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 4px;
+  }
+  .perf-title em { font-style: normal; color: var(--pink-light); font-size: 13px; margin-left: 6px; letter-spacing: 0.5px; }
+  .perf-meta {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-top: 8px; font-size: 13px; color: var(--text-muted);
+  }
+  .perf-meta span { display: flex; align-items: center; gap: 5px; }
+  .perf-meta .meta-icon { font-size: 14px; }
+  .perf-cast { margin-top: 8px; font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .perf-cast strong { color: var(--text-muted); font-weight: 500; }
+
+  .perf-side { grid-area: tags; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .perf-price {
+    grid-area: price; text-align: right;
+    font-family: 'Noto Serif SC', serif; font-weight: 700; font-size: 18px; color: var(--pink-light);
+  }
+  .perf-price small { font-size: 12px; color: var(--text-dim); font-weight: 400; }
+
+  .buy-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px; border-radius: 20px; cursor: pointer;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    border: 1px solid rgba(184,30,90,0.4);
+    background: rgba(184,30,90,0.1); color: var(--pink-light);
+    transition: all 0.2s; white-space: nowrap; margin-top: 4px;
+    user-select: none;
+  }
+  .buy-btn:hover { background: rgba(184,30,90,0.25); border-color: rgba(184,30,90,0.6); }
+  .buy-btn.active { background: rgba(184,30,90,0.25); border-color: rgba(184,30,90,0.6); color: #ff99c2; }
+  .buy-btn .btn-icon { font-size: 13px; }
+
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  .tag-urgent   { background: var(--tag-urgent); color: #ff99c2; }
+  .tag-new      { background: var(--tag-new); color: #7ce0e0; }
+  .tag-soon     { background: var(--tag-soon); color: #c4a8f0; }
+  .tag-status   { background: var(--surface-raised); color: var(--text-muted); }
+  .tag-on-sale  { background: rgba(45,90,39,0.4); color: #7ccd6e; }
+  .tag-limited  { background: rgba(184,30,90,0.3); color: #ff99c2; }
+  .tag-ended    { background: rgba(60,55,48,0.6); color: rgba(150,140,125,0.7); text-decoration: line-through; }
+  .tag-presale  { background: rgba(80,60,20,0.5); color: #c8a050; }
+  .tag-all-female {
+    background: linear-gradient(135deg, rgba(255,77,157,0.22) 0%, rgba(155,93,229,0.22) 100%);
+    color: #ff86c0;
+    border: 1px solid rgba(255,77,157,0.3);
+  }
+
+  /* ===== Stats Bar ===== */
+  .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }
+  .stat {
+    flex: 1; min-width: 120px;
+    background: rgba(26,22,38,0.4);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    border: 1px solid rgba(255,77,157,0.1); border-radius: 14px;
+    padding: 18px 20px; text-align: center;
+    position: relative; overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, background 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
+  }
+  .stat:hover {
+    border-color: rgba(255,77,157,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transform: translateY(-1px);
+  }
+  .stat::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--pink-light) 50%, transparent 100%);
+    opacity: 0.45;
+  }
+  .stat::after {
+    content: attr(data-num);
+    position: absolute; right: 8px; bottom: -4px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 52px; font-weight: 900;
+    color: rgba(255,77,157,0.04);
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+  .stat-num {
+    font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 900;
+    color: var(--pink-light); line-height: 1.1;
+    text-shadow: 0 0 20px rgba(255,77,157,0.2);
+    position: relative; z-index: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 6px; letter-spacing: 1.5px; position: relative; z-index: 1; }
+
+  /* ===== Date Divider ===== */
+  .date-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 32px 0 16px;
+    color: var(--pink); font-size: 14px; font-weight: 600; letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .date-divider::before { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,77,157,0.25)); }
+  .date-divider::after { content: ''; flex: 3; height: 1px; background: linear-gradient(90deg, rgba(255,77,157,0.25), transparent); }
+
+  /* ===== Footer ===== */
+  .footer {
+    margin-top: 48px; padding: 28px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(255,77,157,0.12);
+    font-size: 12px; color: var(--text-dim);
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.2));
+    position: relative;
+  }
+  .footer::before {
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,77,157,0.3), transparent);
+  }
+  .footer a { color: var(--pink); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer .sources { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; font-size: 11px; }
+  .footer .sources span {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 3px 10px; border-radius: 20px;
+    transition: background 0.2s;
+  }
+  .footer .sources span:hover { background: rgba(255,77,157,0.08); border-color: rgba(255,77,157,0.15); }
+
+  @media (max-width: 640px) {
+    .header h1 { font-size: 24px; letter-spacing: 3px; }
+    .header-flourish { display: none; }
+    .perf-card { grid-template-columns: 1fr; grid-template-areas: "info" "price" "tags"; padding: 14px 14px 14px 20px; }
+    .perf-side { flex-direction: row; flex-wrap: wrap; }
+    .perf-price { text-align: left; }
+    .stats-bar { gap: 8px; }
+    .stat { min-width: 80px; padding: 12px; }
+    .container { padding: 0 12px 48px; }
+    #calendar-section { border-radius: 10px; margin-top: 16px; }
+    .cal-header { padding: 10px 12px; }
+    .cal-title { font-size: 14px; letter-spacing: 1px; }
+    .cal-nav-btn { width: 26px; height: 26px; font-size: 13px; }
+    .cal-grid { gap: 3px; padding: 3px 6px 10px; grid-template-columns: repeat(7, 1fr); }
+    .cal-weekdays { padding: 6px 6px 2px; font-size: 10px; letter-spacing: 1px; }
+    .cal-group-legend { padding: 3px 8px 5px; gap: 10px; font-size: 10px; }
+    .cal-day { min-height: 48px; padding: 3px 1px; border-radius: 6px; justify-content: flex-start; }
+    .cal-day-num { font-size: 11px; margin-bottom: 1px; text-align: center; }
+    .cal-day-names { gap: 1.5px; padding: 0; align-items: stretch; }
+    .cal-day-name { font-size: 8px; padding: 1px 3px; padding-right: 16px; border-radius: 3px; gap: 1.5px; width: 100%; justify-content: space-between; position: relative; }
+    .cal-day-name .title-text { max-width: 90%; }
+    .cal-day-name.cal-more { font-size: 9px; width: auto; }
+    .cal-star-badge { font-size: 13px; top: -1px; right: 1px; }
+    .cal-bought-badge { font-size: 7px; font-weight: 700; padding: 1px 4px; border-radius: 3px; bottom: 2px; right: 2px; }
+    .cal-tooltip { max-width: 240px; left: 0; right: 0; margin: 0 auto; }
+    .cal-day.has-bought-show .cal-day-num::after { font-size: 8px; }
+    #my-shows-banner .banner-header { flex-wrap: wrap; gap: 6px; padding: 10px 14px; font-size: 14px; }
+    .sync-btn { font-size: 11px; padding: 3px 8px; }
+    .af-filter-btn { font-size: 11px; padding: 4px 10px; }
+  }
+
+  @media (max-width: 420px) {
+    .container { padding: 0 4px 36px; }
+    #calendar-section { border-radius: 8px; margin-top: 12px; }
+    .cal-header { padding: 8px 8px; }
+    .cal-title { font-size: 12px; letter-spacing: 1px; }
+    .cal-nav-btn { width: 24px; height: 24px; font-size: 12px; border-radius: 6px; }
+    .cal-grid { gap: 2px; padding: 2px 3px 8px; grid-template-columns: repeat(7, 1fr); }
+    .cal-weekdays { padding: 4px 3px 2px; font-size: 9px; letter-spacing: 0.5px; }
+    .cal-group-legend { padding: 2px 5px 4px; gap: 8px; font-size: 8.5px; }
+    .cal-day { min-height: 42px; padding: 2px 0; border-radius: 5px; justify-content: flex-start; }
+    .cal-day-num { font-size: 10px; margin-bottom: 0px; text-align: center; }
+    .cal-day-names { gap: 1px; align-items: stretch; }
+    .cal-day-name { font-size: 7px; padding: 0.5px 2px; padding-right: 14px; border-radius: 2px; gap: 1px; width: 100%; justify-content: space-between; position: relative; }
+    .cal-day-name .title-text { max-width: 85%; }
+    .cal-day-name.cal-more { font-size: 8px; width: auto; }
+    .cal-star-badge { font-size: 14px; top: -2px; right: 0px; }
+    .cal-bought-badge { font-size: 6.5px; font-weight: 700; padding: 1px 3px; border-radius: 2px; bottom: 1px; right: 1px; }
+    .cal-day.has-bought-show .cal-day-num::after { font-size: 7px; }
+    .cal-tooltip { max-width: calc(100vw - 16px); left: 8px; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="header">
+<div class="header-icon">🎵</div>
+<span class="header-flourish left">全</span>
+<span class="header-flourish right">女</span>
+<h1>音乐剧 · 全女卡司演出日报</h1>
+<p class="subtitle">每日监控 · 大麦网 + 各剧院官方 + 全网检索</p>
+<span class="date-badge">📅 {{REPORT_DATE_BADGE}}</span>
+</header>
+<div class="container">
+<!-- ===== 🎟️ 我的演出提醒 ===== -->
+<div class="empty-state" id="my-shows-banner">
+<div class="banner-header">
+      🎟️ 我的演出提醒
+      <span id="my-shows-count" style="font-size:12px;color:var(--text-dim);margin-left:4px;"></span>
+      <span style="flex:1"></span>
+      <button class="sync-btn" onclick="exportBought()" title="复制已购记录到剪贴板">📋 导出</button>
+      <button class="sync-btn" onclick="importBought()" title="从剪贴板导入已购记录">📥 导入</button>
+</div>
+<div class="banner-body" id="my-shows-list"></div>
+</div>
+<!-- ===== 日历组件 ===== -->
+<div id="calendar-section">
+<div class="cal-header">
+<span class="cal-title" id="cal-month-label">2026年7月</span>
+<div class="cal-nav-btns">
+<button class="cal-nav-btn" id="cal-prev" title="上个月">‹</button>
+<button class="cal-nav-btn" id="cal-next" title="下个月">›</button>
+</div>
+</div>
+<div class="cal-filter-note" id="cal-filter-note">
+<span id="cal-filter-text">已筛选</span>
+<button class="cal-clear-btn" id="cal-clear-btn">清除筛选 ✕</button>
+</div>
+<div class="cal-weekdays">
+<span>日</span><span>一</span><span>二</span><span>三</span>
+<span>四</span><span>五</span><span>六</span>
+</div>
+<div class="cal-group-legend">
+<span class="legend-dot"><span style="color:#ff86c0;">💜</span> 全女卡司</span>
+<span class="legend-dot"><span style="color:var(--text-dim);">●</span> 常规卡司</span>
+<span class="legend-dot"><span style="color:#8fd886;">✓</span> 已购</span>
+</div>
+<div class="cal-grid" id="cal-grid"></div>
+</div>
+<!-- Tooltip -->
+<div class="cal-tooltip" id="cal-tooltip"></div>
+<!-- ===== STATS ===== -->
+<div class="stats-bar">
+<div class="stat" data-num="{{STAT_TOTAL}}">
+<div class="stat-num">{{STAT_TOTAL}}</div>
+<div class="stat-label">近期演出场次</div>
+</div>
+<div class="stat" data-num="{{STAT_ALL_FEMALE}}">
+<div class="stat-num">{{STAT_ALL_FEMALE}}</div>
+<div class="stat-label">💜 全女卡司场次</div>
+</div>
+<div class="stat" data-num="0" id="stat-card">
+<div class="stat-num" id="stat-bought">0</div>
+<div class="stat-label">🎟️ 已购场次</div>
+</div>
+<div class="stat" data-num="{{STAT_CITIES}}">
+<div class="stat-num">{{STAT_CITIES}}</div>
+<div class="stat-label">涉及城市</div>
+</div>
+</div>
+<!-- ===== 🔥 紧急提醒 ===== -->
+<div class="alert alert-urgent">
+<div class="alert-header">
+<span class="alert-icon">🔥</span> 近期高优提醒
+    </div>
+<div class="alert-body">
+      {{ALERT_URGENT}}
+    </div>
+</div>
+<!-- ===== 🆕 今日新动态 ===== -->
+<div class="alert alert-new">
+<div class="alert-header">
+<span class="alert-icon">🆕</span> 今日新动态
+    </div>
+<div class="alert-body">
+      {{ALERT_NEW}}
+    </div>
+</div>
+<!-- ===== 📋 近期演出一览 ===== -->
+<h2 class="section-title"><span class="section-icon">📋</span> 近期演出一览
+  <button id="af-filter-btn" class="af-filter-btn" onclick="toggleAllFemaleFilter()">💜 仅看全女卡司</button>
+</h2>
+<div class="date-divider">7 月</div>
+<div class="perf-grid">
+{{PERF_CARDS_JULY}}
+<!-- ---- 8月 ---- -->
+<div class="date-divider">8 月</div>
+<div class="perf-grid">
+{{PERF_CARDS_AUG}}
+<!-- ---- 9月 ---- -->
+<div class="date-divider">9 月</div>
+<div class="perf-grid">
+{{PERF_CARDS_SEP}}
+</div>
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+<div class="sources">
+<span>🎟️ 大麦网 damai.cn</span>
+<span>🎶 东方演出网(音乐剧) shanghaiyinleju.df962388.com</span>
+<span>📊 saoju 音乐剧档期库</span>
+<span>🏛️ 上海文化广场</span>
+<span>🎭 上海大剧院</span>
+<span>🌆 上剧场</span>
+<span>🌸 茉莉花剧场</span>
+<span>🎪 虹桥艺术中心</span>
+</div>
+<p>报告由 WorkBuddy 自动化生成 · 监控范围：全女卡司音乐剧 + 全网音乐剧演出（大麦网 + 各剧院官方 + 全网检索）</p>
+<p style="margin-top:6px;">数据截至 {{DATA_UPDATED}} GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
+<p style="margin-top:10px;"><a href="https://moone7.github.io/yueju-monitor/" target="_blank" rel="noopener">🎭 姊妹站点：越剧演出售票监控</a></p>
+</div>
+</div>
+<script>
+// ============================================================
+//  DATA
+// ============================================================
+const PERF_DATES = {{PERF_DATES_JSON}};
+
+const ALL_FEMALE_IDS = new Set({{ALL_FEMALE_IDS_JSON}});
+
+// ============================================================
+//  SHOW DATA INDEX (built from DOM for tooltips)
+// ============================================================
+let SHOW_INDEX = {};
+
+function buildShowIndex() {
+  SHOW_INDEX = {};
+  document.querySelectorAll(".perf-card[data-id]").forEach(card => {
+    const id = card.dataset.id;
+    const date = card.dataset.date;
+    const title = card.dataset.title;
+    const venue = card.dataset.venue;
+    const time = card.dataset.time;
+    const priceEl = card.querySelector(".perf-price");
+    const price = priceEl ? priceEl.innerText.trim().replace(/\n/g, ' · ') : '';
+    const castEl = card.querySelector(".perf-cast");
+    let cast = '';
+    if (castEl) {
+      cast = castEl.innerText.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+    const isAF = ALL_FEMALE_IDS.has(id);
+    SHOW_INDEX[id] = { id, date, title, venue, time, price, cast, isAF };
+  });
+}
+
+// ============================================================
+//  STORAGE
+// ============================================================
+const STORAGE_KEY = "musical_bought_shows_v1";
+
+function getShowFingerprint(card) {
+  const date = (card.dataset.date || "").trim();
+  const title = (card.dataset.title || "").trim();
+  const venue = (card.dataset.venue || "").trim();
+  let hash = 0;
+  const raw = date + "|" + title + "|" + venue;
+  for (let i = 0; i < raw.length; i++) {
+    hash = ((hash << 5) - hash) + raw.charCodeAt(i);
+    hash |= 0;
+  }
+  return "f" + Math.abs(hash).toString(36);
+}
+
+function stampFingerprints() {
+  document.querySelectorAll(".perf-card[data-date]").forEach(card => {
+    card.dataset.fingerprint = getShowFingerprint(card);
+  });
+}
+
+function getBought() {
+  try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")); }
+  catch(e) { return new Set(); }
+}
+function saveBought(set) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
+}
+
+// ============================================================
+//  TOGGLE BOUGHT
+// ============================================================
+function toggleBought(btn) {
+  const card = btn.closest(".perf-card");
+  const fp = card.dataset.fingerprint;
+  if (!fp) return;
+  const bought = getBought();
+  if (bought.has(fp)) {
+    bought.delete(fp);
+    card.classList.remove("bought");
+    btn.classList.remove("active");
+    btn.querySelector(".btn-text").textContent = "标记已购";
+  } else {
+    bought.add(fp);
+    card.classList.add("bought");
+    btn.classList.add("active");
+    btn.querySelector(".btn-text").textContent = "已购 ✓";
+  }
+  saveBought(bought);
+  updateBoughtStat();
+  updateMyShowsBanner();
+  updateCalendar();
+}
+
+function restoreBoughtState() {
+  const bought = getBought();
+  let legacyBought = new Set();
+  try {
+    legacyBought = new Set(JSON.parse(localStorage.getItem("musical_bought_shows_legacy") || "[]"));
+  } catch(e) {}
+
+  document.querySelectorAll(".perf-card[data-fingerprint]").forEach(card => {
+    const fp = card.dataset.fingerprint;
+    const id = card.dataset.id;
+    const isBought = bought.has(fp) || legacyBought.has(id) || legacyBought.has("id:" + id);
+    if (isBought) {
+      card.classList.add("bought");
+      const btn = card.querySelector(".buy-btn");
+      if (btn) {
+        btn.classList.add("active");
+        btn.querySelector(".btn-text").textContent = "已购 ✓";
+      }
+      if (!bought.has(fp) && id) {
+        bought.add(fp);
+        saveBought(bought);
+      }
+    }
+  });
+}
+
+function updateBoughtStat() {
+  const n = countFutureBought();
+  document.getElementById("stat-bought").textContent = n;
+  const card = document.getElementById("stat-card");
+  if (card) card.setAttribute("data-num", n);
+}
+
+function exportBought() {
+  const ids = [...getBought()];
+  if (ids.length === 0) {
+    alert("暂无已购记录可导出。");
+    return;
+  }
+  const ts = new Date().toISOString().slice(0,10);
+  const payload = `MUSICAL_BOUGHT|${ts}|${ids.join(",")}`;
+  navigator.clipboard.writeText(payload).then(() => {
+    const btns = document.querySelectorAll(".sync-btn");
+    btns[0].textContent = "✅ 已复制";
+    setTimeout(() => { btns[0].textContent = "📋 导出"; }, 1500);
+  }).catch(() => {
+    alert("复制失败，请手动选中文本复制：\n" + payload);
+  });
+}
+
+function importBought() {
+  navigator.clipboard.readText().then(text => {
+    if (!text || !text.startsWith("MUSICAL_BOUGHT|")) {
+      alert("未检测到有效的已购记录。\n请先在另一台设备上点击「📋 导出」，再回到此设备点击「📥 导入」。");
+      return;
+    }
+    const parts = text.split("|");
+    if (parts.length < 3) { alert("记录格式无效。"); return; }
+    const remoteIds = [...new Set(parts[2].split(",").filter(Boolean))];
+    if (remoteIds.length === 0) { alert("记录为空。"); return; }
+    const local = getBought();
+    let added = 0;
+    remoteIds.forEach(id => { if (!local.has(id)) { local.add(id); added++; } });
+    saveBought(local);
+    stampFingerprints();
+    restoreBoughtState();
+    updateBoughtStat();
+    updateMyShowsBanner();
+    updateCalendar();
+    alert(`✅ 导入完成！新增 ${added} 条，合并后共 ${local.size} 条已购记录。`);
+  }).catch(() => {
+    const input = prompt("请粘贴从另一台设备复制的已购记录文本：");
+    if (!input) return;
+    if (!input.startsWith("MUSICAL_BOUGHT|")) { alert("记录格式无效。"); return; }
+    const parts = input.split("|");
+    if (parts.length < 3) { alert("记录格式无效。"); return; }
+    const remoteIds = [...new Set(parts[2].split(",").filter(Boolean))];
+    const local = getBought();
+    let added = 0;
+    remoteIds.forEach(id => { if (!local.has(id)) { local.add(id); added++; } });
+    saveBought(local);
+    stampFingerprints();
+    restoreBoughtState();
+    updateBoughtStat();
+    updateMyShowsBanner();
+    updateCalendar();
+    alert(`✅ 导入完成！新增 ${added} 条，合并后共 ${local.size} 条已购记录。`);
+  });
+}
+
+function refreshTodayTomorrowClasses() {
+  const now = new Date();
+  const WEEKDAY_CN = ["周日","周一","周二","周三","周四","周五","周六"];
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  const tomorrowD = new Date(now); tomorrowD.setDate(tomorrowD.getDate() + 1);
+  const tomorrowStr = `${tomorrowD.getFullYear()}-${String(tomorrowD.getMonth()+1).padStart(2,'0')}-${String(tomorrowD.getDate()).padStart(2,'0')}`;
+
+  document.querySelectorAll(".perf-card[data-date]").forEach(card => {
+    const d = card.dataset.date;
+    card.classList.remove("today", "tomorrow", "past");
+    if (d < todayStr) {
+      card.classList.add("past");
+      card.querySelectorAll(".tag-on-sale, .tag-limited, .tag-soon, .tag-new").forEach(tag => {
+        if (tag.textContent.includes("售票") || tag.textContent.includes("余票") || tag.textContent.includes("开票") || tag.textContent.includes("近期开演")) {
+          tag.className = "tag tag-ended";
+          tag.textContent = "已演完";
+        }
+      });
+    } else if (d === todayStr) {
+      const timeStr = card.dataset.time || "23:59";
+      const [hh, mm] = timeStr.split(":").map(Number);
+      const showTime = new Date(now);
+      showTime.setHours(hh, mm, 0, 0);
+      if (now < showTime) card.classList.add("today");
+      else {
+        card.classList.add("past");
+        card.querySelectorAll(".tag-on-sale, .tag-soon").forEach(tag => {
+          if (tag.textContent.includes("售票") || tag.textContent.includes("近期开演")) {
+            tag.className = "tag tag-ended"; tag.textContent = "已演完";
+          }
+        });
+      }
+    } else if (d === tomorrowStr) {
+      card.classList.add("tomorrow");
+    }
+    const saleDateStr = card.dataset.saleDate;
+    if (saleDateStr && saleDateStr > todayStr) {
+      const [sy, sm, sdd] = saleDateStr.split("-").map(Number);
+      const saleLabel = `${sm}月${sdd}日开票`;
+      card.querySelectorAll(".tag-on-sale").forEach(tag => {
+        if (tag.textContent.includes("售票")) {
+          tag.className = "tag tag-presale";
+          tag.textContent = `待开票（${saleLabel}）`;
+        }
+      });
+    }
+  });
+}
+
+function countFutureBought() {
+  const bought = getBought();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let count = 0;
+  const seenIds = new Set();
+  document.querySelectorAll(".perf-card[data-id]").forEach(card => {
+    if (card.style.display === "none" || card.offsetParent === null) return;
+    const id = card.dataset.id;
+    if (!id || seenIds.has(id)) return;
+    if (!bought.has(card.dataset.fingerprint)) return;
+    const dateStr = card.dataset.date;
+    if (!dateStr) return;
+    const showDate = new Date(dateStr);
+    showDate.setHours(0,0,0,0);
+    const diff = Math.round((showDate - today) / 86400000);
+    if (diff < 0) return;
+    seenIds.add(id);
+    count++;
+  });
+  return count;
+}
+
+window.addEventListener("resize", () => {
+  const w = window.innerWidth;
+  const crossedThreshold = (lastCalWidth <= 640 && w > 640) || (lastCalWidth > 640 && w <= 640);
+  lastCalWidth = w;
+  if (crossedThreshold) buildCalendar();
+});
+
+// ============================================================
+//  MY SHOWS BANNER
+// ============================================================
+function updateMyShowsBanner() {
+  const banner = document.getElementById("my-shows-banner");
+  const list = document.getElementById("my-shows-list");
+  const countEl = document.getElementById("my-shows-count");
+  const bought = getBought();
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const items = [];
+  const seenFp = new Set();
+  document.querySelectorAll(".perf-card[data-fingerprint]").forEach(card => {
+    if (card.style.display === "none" || card.offsetParent === null) return;
+    const fp = card.dataset.fingerprint;
+    if (!fp) return;
+    if (seenFp.has(fp)) return;
+    if (!bought.has(fp)) return;
+    const dateStr = card.dataset.date;
+    if (!dateStr) return;
+    const showDate = new Date(dateStr);
+    showDate.setHours(0,0,0,0);
+    const diff = Math.round((showDate - today) / 86400000);
+    if (diff < -1) return;
+    seenFp.add(fp);
+    const isAF = ALL_FEMALE_IDS.has(card.dataset.id);
+    items.push({ fp, diff, dateStr, title: card.dataset.title, venue: card.dataset.venue, time: card.dataset.time, isAF });
+  });
+  items.sort((a,b) => a.diff - b.diff);
+
+  if (items.length === 0) {
+    banner.classList.add("empty-state");
+    countEl.textContent = "";
+    list.innerHTML = `<div class="empty-hint">
+      💡 点击任意演出卡片右侧的 <code>🎟️ 标记已购</code> 按钮来标记你购买的场次。<br>
+      标记后此区域将显示你的演出倒计时和日程提醒。
+    </div>`;
+    return;
+  }
+
+  banner.classList.remove("empty-state");
+  countEl.textContent = `· 共 ${items.length} 场`;
+
+  list.innerHTML = items.map(item => {
+    let daysLabel, daysClass, countNum, countUnit;
+    if (item.diff < 0) { daysLabel = "已过"; daysClass = "future-show"; countNum = "—"; countUnit = ""; }
+    else if (item.diff === 0) { daysLabel = "今天！"; daysClass = "today-show"; countNum = "今天"; countUnit = "开演"; }
+    else if (item.diff === 1) { daysLabel = "明天"; daysClass = "soon-show"; countNum = "1"; countUnit = "天后"; }
+    else if (item.diff <= 7) { daysLabel = `${item.diff}天后`; daysClass = "soon-show"; countNum = String(item.diff); countUnit = "天后"; }
+    else { daysLabel = `${item.diff}天后`; daysClass = "future-show"; countNum = String(item.diff); countUnit = "天后"; }
+
+    const d = new Date(item.dateStr);
+    const dateLabel = `${d.getMonth()+1}月${d.getDate()}日${item.time ? ' ' + item.time : ''}`;
+    const afMark = item.isAF ? '💜 ' : '';
+
+    return `<div class="my-show-item">
+      <div class="my-show-countdown ${daysClass}">
+        <span class="count-num">${countNum}</span>
+        <span class="count-unit">${countUnit}</span>
+      </div>
+      <div class="my-show-detail">
+        <div class="my-show-title">${afMark}${item.title}</div>
+        <div class="my-show-meta">${dateLabel} · ${item.venue}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+//  CALENDAR
+// ============================================================
+let calYear = 2026, calMonth = 6;
+let calFilterDate = null;
+
+const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+function dateKey(y, m, d) { return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
+
+function getShortTitle(title) {
+  const m = title.match(/《(.+?)》/);
+  if (m) {
+    let book = m[1];
+    if (book.length > 7) book = book.slice(0, 6) + '…';
+    return book;
+  }
+  let s = title.replace(/^(音乐剧|原创音乐剧|中文音乐剧|法语原版音乐剧|英文原版音乐剧|话剧)\s*/,'');
+  if (s.length > 8) s = s.slice(0, 7) + '…';
+  return s;
+}
+
+function buildCalendar() {
+  const boughtFps = getBought();
+  const idFpMap = {};
+  document.querySelectorAll(".perf-card[data-id][data-fingerprint]").forEach(c => { idFpMap[c.dataset.id] = c.dataset.fingerprint; });
+  const grid = document.getElementById("cal-grid");
+  grid.innerHTML = "";
+  document.getElementById("cal-month-label").textContent = `${calYear}年${MONTH_NAMES[calMonth]}`;
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const today = new Date();
+
+  for (let i = 0; i < firstDay; i++) {
+    const cell = document.createElement("div");
+    cell.className = "cal-day empty";
+    grid.appendChild(cell);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const key = dateKey(calYear, calMonth, d);
+    const cell = document.createElement("div");
+    cell.className = "cal-day";
+
+    const num = document.createElement("span");
+    num.className = "cal-day-num";
+    num.textContent = d;
+    cell.appendChild(num);
+
+    const isToday = (today.getFullYear()===calYear && today.getMonth()===calMonth && today.getDate()===d);
+    if (isToday) cell.classList.add("today-cal");
+
+    // Respect all-female filter: hide non-AF shows from calendar when filter active
+    const visibleIds = (PERF_DATES[key] || []).filter(sid => {
+      const card = document.querySelector(`.perf-card[data-id="${sid}"]`);
+      return card && card.style.display !== "none";
+    });
+    if (visibleIds.length > 0) {
+      cell.classList.add("has-show");
+      const hasAF = visibleIds.some(id => ALL_FEMALE_IDS.has(id));
+      const hasBought = visibleIds.some(sid => boughtFps.has(idFpMap[sid]));
+      if (hasBought) cell.classList.add("has-bought-show");
+      else if (hasAF) cell.classList.add("has-star-show");
+
+      if (hasAF) {
+        const afBdg = document.createElement("span");
+        afBdg.className = "cal-star-badge";
+        afBdg.textContent = "💜";
+        afBdg.title = "全女卡司演出";
+        cell.appendChild(afBdg);
+      }
+      if (hasBought) {
+        const boughtBdg = document.createElement("span");
+        boughtBdg.className = "cal-bought-badge";
+        boughtBdg.textContent = "已购";
+        cell.appendChild(boughtBdg);
+      }
+      if (calFilterDate === key) cell.classList.add("selected");
+
+      const isMobile = window.innerWidth <= 640;
+      const maxCellNames = isMobile ? 1 : 2;
+      const namesDiv = document.createElement("div");
+      namesDiv.className = "cal-day-names";
+      visibleIds.forEach((sid, i) => {
+        if (i >= maxCellNames) {
+          const more = document.createElement("span");
+          more.className = "cal-day-name cal-more";
+          const remaining = visibleIds.length - maxCellNames;
+          more.textContent = `+${remaining}`;
+          more.title = `另有${remaining}场演出`;
+          namesDiv.appendChild(more);
+          return;
+        }
+        const si = SHOW_INDEX[sid];
+        if (!si) return;
+        const nm = document.createElement("span");
+        nm.className = "cal-day-name";
+        if (ALL_FEMALE_IDS.has(sid)) nm.classList.add("all-female-name");
+        if (boughtFps.has(idFpMap[sid])) nm.classList.add("bought-name");
+        nm.innerHTML = `<span class="title-text">${getShortTitle(si.title)}</span>`;
+        namesDiv.appendChild(nm);
+      });
+      cell.appendChild(namesDiv);
+
+      cell.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (IS_TOUCH && tooltipActiveDate !== key) {
+          showTooltip(e, key, visibleIds);
+        } else {
+          if (calFilterDate === key) { calFilterDate = null; clearCalFilter(); }
+          else { calFilterDate = key; applyCalFilter(key, d); }
+          buildCalendar();
+        }
+      });
+      if (!IS_TOUCH) {
+        cell.addEventListener("mouseenter", (e) => showTooltip(e, key, visibleIds));
+        cell.addEventListener("mouseleave", hideTooltip);
+        cell.addEventListener("mousemove", moveTooltip);
+      }
+    }
+    grid.appendChild(cell);
+  }
+}
+
+// ============================================================
+//  TOOLTIP
+// ============================================================
+const tooltip = document.getElementById("cal-tooltip");
+let tooltipTimer = null;
+let tooltipActiveDate = null;
+const IS_TOUCH = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+function showTooltip(e, key, ids) {
+  if (tooltipActiveDate === key) return;
+  hideTooltip();
+  tooltipActiveDate = key;
+  clearTimeout(tooltipTimer);
+
+  const boughtFps = getBought();
+  const idFpMap = {};
+  document.querySelectorAll(".perf-card[data-id][data-fingerprint]").forEach(c => { idFpMap[c.dataset.id] = c.dataset.fingerprint; });
+  const d = new Date(key);
+  const dateLabel = `${d.getMonth()+1}月${d.getDate()}日`;
+
+  let html = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;border-bottom:1px solid var(--border);padding-bottom:6px;">
+    <span class="tt-header" style="margin:0;padding:0;border:none;">📅 ${dateLabel} · ${ids.length}场演出</span>
+    <span class="tt-close" onclick="hideTooltip()">✕</span>
+  </div>`;
+
+  ids.forEach(sid => {
+    const si = SHOW_INDEX[sid];
+    if (!si) return;
+    const isAF = ALL_FEMALE_IDS.has(sid);
+    const isBought = boughtFps.has(idFpMap[sid]);
+    const afIcon = isAF ? '<span class="tt-af">💜</span> ' : '';
+    const boughtTag = isBought ? '<span class="tt-bought">✓ 已购</span>' : '';
+    html += `<div class="tt-item">
+      <div class="tt-title">${afIcon}${si.title}${boughtTag}</div>
+      <div class="tt-meta">🕐 ${si.time || '待定'} · 📍 ${si.venue}</div>`;
+    if (si.cast) {
+      const shortCast = si.cast.length > 60 ? si.cast.slice(0,60)+'…' : si.cast;
+      html += `<div class="tt-cast">${shortCast}</div>`;
+    }
+    if (si.price) html += `<div class="tt-price">${si.price}</div>`;
+    html += `</div>`;
+  });
+
+  tooltip.innerHTML = html;
+  tooltip.style.display = "block";
+  positionTooltip(e);
+  if (IS_TOUCH) setTimeout(() => document.addEventListener('click', closeTooltipOutside), 50);
+}
+
+function closeTooltipOutside(e) { if (tooltip.contains(e.target)) return; hideTooltip(); }
+function moveTooltip(e) { if (!tooltipActiveDate) return; positionTooltip(e); }
+function positionTooltip(e) {
+  const isSmall = window.innerWidth <= 640;
+  const pad = 12;
+  let x, y;
+  if (isSmall) {
+    let tw = tooltip.offsetWidth || 240;
+    x = e.clientX + pad;
+    if (x + tw > window.innerWidth - 8) x = Math.max(8, e.clientX - tw - pad);
+    if (x < 8) x = 8;
+    y = e.clientY + pad;
+    if (y + tooltip.offsetHeight > window.innerHeight - 8) y = Math.max(8, e.clientY - tooltip.offsetHeight - pad);
+    if (y < 8) y = 8;
+  } else {
+    x = e.clientX + pad; y = e.clientY + pad;
+    const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+    if (x + tw > window.innerWidth - 10) x = e.clientX - tw - pad;
+    if (y + th > window.innerHeight - 10) y = e.clientY - th - pad;
+    if (x < 5) x = 5; if (y < 5) y = 5;
+  }
+  tooltip.style.left = x + "px";
+  tooltip.style.top = y + "px";
+}
+function hideTooltip() { tooltipActiveDate = null; tooltip.style.display = "none"; document.removeEventListener('click', closeTooltipOutside); }
+tooltip.addEventListener("mouseenter", () => clearTimeout(tooltipTimer));
+tooltip.addEventListener("mouseleave", hideTooltip);
+tooltip.addEventListener('click', (e) => { e.stopPropagation(); });
+
+// ============================================================
+//  FILTER
+// ============================================================
+function applyCalFilter(key, d) {
+  const note = document.getElementById("cal-filter-note");
+  note.classList.add("active");
+  document.getElementById("cal-filter-text").textContent = `已筛选：${calYear}年${MONTH_NAMES[calMonth]}${d}日的演出`;
+  const ids = new Set(PERF_DATES[key] || []);
+  document.querySelectorAll(".perf-card[data-id]").forEach(card => {
+    if (ids.has(card.dataset.id)) card.classList.remove("hidden-by-filter");
+    else card.classList.add("hidden-by-filter");
+  });
+  document.querySelectorAll(".date-divider").forEach(div => {
+    const nextSibling = div.nextElementSibling;
+    if (!nextSibling) return;
+    const cards = nextSibling.querySelectorAll(".perf-card");
+    const hasVisible = [...cards].some(c => !c.classList.contains("hidden-by-filter"));
+    div.style.display = hasVisible ? "" : "none";
+  });
+}
+function clearCalFilter() {
+  calFilterDate = null;
+  const note = document.getElementById("cal-filter-note");
+  note.classList.remove("active");
+  document.querySelectorAll(".perf-card[data-id]").forEach(c => c.classList.remove("hidden-by-filter"));
+  document.querySelectorAll(".date-divider").forEach(div => div.style.display = "");
+  buildCalendar();
+}
+function updateCalendar() { buildCalendar(); }
+
+// All-female filter
+let afFilterActive = false;
+function toggleAllFemaleFilter() {
+  afFilterActive = !afFilterActive;
+  const btn = document.getElementById("af-filter-btn");
+  btn.classList.toggle("active", afFilterActive);
+  document.querySelectorAll(".perf-card[data-id]").forEach(card => {
+    if (afFilterActive) {
+      if (card.classList.contains("all-female")) card.classList.remove("hidden-by-filter");
+      else card.classList.add("hidden-by-filter");
+    } else {
+      card.classList.remove("hidden-by-filter");
+    }
+  });
+  // also adjust date dividers visibility
+  document.querySelectorAll(".date-divider").forEach(div => {
+    const nextSibling = div.nextElementSibling;
+    if (!nextSibling) return;
+    const cards = nextSibling.querySelectorAll(".perf-card");
+    const hasVisible = [...cards].some(c => !c.classList.contains("hidden-by-filter"));
+    div.style.display = hasVisible ? "" : "none";
+  });
+  buildCalendar();
+}
+
+document.getElementById("cal-prev").addEventListener("click", () => { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } calFilterDate = null; clearCalFilter(); });
+document.getElementById("cal-next").addEventListener("click", () => { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } calFilterDate = null; clearCalFilter(); });
+document.getElementById("cal-clear-btn").addEventListener("click", clearCalFilter);
+document.addEventListener("click", (e) => {
+  if (calFilterDate && !e.target.closest("#calendar-section") && !e.target.closest(".perf-card")) clearCalFilter();
+});
+
+// ============================================================
+//  INIT
+// ============================================================
+(function init() {
+  stampFingerprints();
+  buildShowIndex();
+  restoreBoughtState();
+  updateBoughtStat();
+  refreshTodayTomorrowClasses();
+  buildCalendar();
+  updateMyShowsBanner();
+})();
+</script>
+</body>
+</html>
