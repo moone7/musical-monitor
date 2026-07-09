@@ -272,7 +272,7 @@ def format_af_list(perfs):
     return " → ".join(parts)
 
 def generate_overview_cities(perfs):
-    """按城市汇总：城市 · N 场 · 《剧名》列表（剧名去重，全女剧标 💜）。"""
+    """紧凑胶囊行：城市 · N场（全女剧标 💜）。默认只占一行，省页面空间。"""
     by_city = {}
     by_city_af = {}
     count_by_city = {}
@@ -285,19 +285,37 @@ def generate_overview_cities(perfs):
         count_by_city[city] = count_by_city.get(city, 0) + 1
     parts = []
     for city in sorted(by_city, key=lambda c: (-count_by_city[c], c)):
+        af = ' af' if by_city_af.get(city) else ''
+        heart = '<span class="heart">💜</span>' if by_city_af.get(city) else ''
+        parts.append(
+            f'<span class="ov-cap{af}">{heart}{html_escape(city)} '
+            f'<span class="cnt">{count_by_city[city]}</span>场</span>'
+        )
+    return "\n".join(parts)
+
+def generate_overview_detail(perfs):
+    """完整城市明细（默认隐藏，点击展开）：城市 N场 — 💜《剧名》…"""
+    by_city = {}
+    by_city_af = {}
+    count_by_city = {}
+    for p in perfs:
+        city = p.get('city') or '其他'
+        title = clean_title(p['show_title'])
+        by_city.setdefault(city, set()).add(title)
+        if p.get('is_all_female'):
+            by_city_af.setdefault(city, set()).add(title)
+        count_by_city[city] = count_by_city.get(city, 0) + 1
+    rows = []
+    for city in sorted(by_city, key=lambda c: (-count_by_city[c], c)):
         titles = []
         for t in sorted(by_city[city]):
             mark = '💜 ' if t in by_city_af.get(city, set()) else ''
             titles.append(f'<span class="af-mark">{mark}</span>《{html_escape(t)}》')
-        shows_html = '、'.join(titles)
-        parts.append(
-            f'<div class="ov-city">'
-            f'<div class="ov-city-head"><b>{html_escape(city)}</b>'
-            f'<span class="ov-cnt">{count_by_city[city]} 场</span></div>'
-            f'<div class="ov-shows">{shows_html}</div>'
-            f'</div>'
+        rows.append(
+            f'<div class="ov-detail-row"><b>{html_escape(city)}</b>{count_by_city[city]}场：'
+            f'{"、".join(titles)}</div>'
         )
-    return "\n".join(parts)
+    return "\n".join(rows)
 
 def generate_overview_flags(perfs, today):
     """仅在有发生时显示的紧凑徽章：今日开演 / 新开票 / 7天内开演。"""
@@ -342,6 +360,7 @@ def main():
     af_ids_json = generate_all_female_ids(perfs)
 
     overview_cities = generate_overview_cities(perfs)
+    overview_detail = generate_overview_detail(perfs)
     overview_flags = generate_overview_flags(perfs, today)
 
     template = Path("template.html").read_text(encoding="utf-8")
@@ -357,6 +376,7 @@ def main():
         "{{PERF_DATES_JSON}}": perf_dates_json,
         "{{ALL_FEMALE_IDS_JSON}}": af_ids_json,
         "{{OVERVIEW_CITIES}}": overview_cities,
+        "{{OVERVIEW_DETAIL}}": overview_detail,
         "{{OVERVIEW_FLAGS}}": overview_flags,
     }
     html = template

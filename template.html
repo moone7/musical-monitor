@@ -490,19 +490,27 @@
   .flag-today { background: rgba(184,30,90,0.14); border-color: rgba(255,77,157,0.4); color: #ff9ec7; }
   .flag-onsale { background: rgba(46,230,230,0.1); border-color: rgba(46,230,230,0.35); color: #7ef0f0; }
   .flag-week { background: rgba(155,93,229,0.12); border-color: rgba(155,93,229,0.3); color: #c9b4f0; }
-  .ov-cities { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
-  .ov-city {
-    background: rgba(26,22,38,0.4);
-    border: 1px solid rgba(255,77,157,0.1); border-radius: 14px;
-    padding: 14px 16px; backdrop-filter: blur(14px) saturate(130%);
-    -webkit-backdrop-filter: blur(14px) saturate(130%);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  .ov-cities { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 4px 4px; }
+  .ov-cap {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    padding: 4px 12px; border-radius: 999px; font-size: 13px;
+    background: rgba(26,22,38,0.5); border: 1px solid rgba(255,77,157,0.14);
+    color: var(--text); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   }
-  .ov-city-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 7px; }
-  .ov-city-head b { font-size: 16px; color: var(--text); }
-  .ov-cnt { font-size: 12px; color: var(--pink-light); font-weight: 600; }
-  .ov-shows { font-size: 12.5px; color: var(--text-dim); line-height: 1.7; }
-  .ov-shows .af-mark { color: var(--pink); }
+  .ov-cap.af { border-color: rgba(255,77,157,0.4); }
+  .ov-cap .heart { color: var(--pink); }
+  .ov-cap .cnt { color: var(--pink-light); font-weight: 700; font-size: 13px; }
+  .ov-toggle {
+    margin-left: auto; cursor: pointer; font-size: 12.5px; color: var(--pink-light);
+    background: rgba(255,77,157,0.1); border: 1px solid rgba(255,77,157,0.25);
+    border-radius: 999px; padding: 4px 13px; font-family: inherit;
+  }
+  .ov-toggle:hover { background: rgba(255,77,157,0.18); }
+  .ov-detail { margin: 12px 4px 0; display: flex; flex-direction: column; gap: 7px; }
+  .ov-detail.is-hidden { display: none; }
+  .ov-detail-row { font-size: 13px; color: var(--text-dim); line-height: 1.85; }
+  .ov-detail-row b { color: var(--text); margin-right: 4px; }
+  .ov-detail-row .af-mark { color: var(--pink); }
 
   /* ===== Section ===== */
   .section-title {
@@ -944,14 +952,16 @@
   <div class="stat-label">涉及城市</div>
 </div>
 </div>
-<!-- ===== 演出概览（按城市汇总 + 新开票/今日开演标记） ===== -->
+<!-- ===== 演出概览（紧凑胶囊 + 可展开城市明细） ===== -->
 <div class="overview">
   <div class="ov-head">
     <span class="ov-title">📍 演出概览</span>
     <span class="ov-sub">未结束演出 · 已演满一周自动隐藏</span>
+    <button class="ov-toggle" id="ovToggle" type="button">展开明细 ▾</button>
   </div>
   <div class="ov-flags" id="ov-flags">{{OVERVIEW_FLAGS}}</div>
   <div class="ov-cities" id="ov-cities">{{OVERVIEW_CITIES}}</div>
+  <div class="ov-detail is-hidden" id="ovDetail">{{OVERVIEW_DETAIL}}</div>
 </div>
 <!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
 <h2 class="section-title"><span class="section-icon">📋</span> 演出一览
@@ -1622,6 +1632,18 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.warn('[PWA] Service Worker 注册失败:', err));
   });
 }
+// ============================================================
+//  演出概览 — 城市明细展开/收起
+// ============================================================
+(function () {
+  const btn = document.getElementById('ovToggle');
+  const detail = document.getElementById('ovDetail');
+  if (!btn || !detail) return;
+  btn.addEventListener('click', () => {
+    const hidden = detail.classList.toggle('is-hidden');
+    btn.textContent = hidden ? '展开明细 ▾' : '收起明细 ▴';
+  });
+})();
 </script>
 </body>
 </html>
