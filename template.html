@@ -541,7 +541,6 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,77,157,0.07);
   }
-  .perf-card.hidden-by-filter { display: none; }
   .perf-card.all-female::before { background: linear-gradient(180deg, transparent, rgba(255,77,157,0.6), transparent); }
   .perf-card.all-female:hover::before { background: linear-gradient(180deg, transparent, rgba(255,134,192,0.9), transparent); }
 
@@ -645,6 +644,63 @@
     color: #ff86c0;
     border: 1px solid rgba(255,77,157,0.3);
   }
+
+  /* ===== Tabs (per show) ===== */
+  .tab-bar {
+    display: flex; gap: 8px; margin: 22px 0 6px;
+    overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-bar::-webkit-scrollbar { height: 6px; }
+  .tab-bar::-webkit-scrollbar-thumb { background: rgba(255,77,157,0.25); border-radius: 3px; }
+  .tab-bar::-webkit-scrollbar-track { background: transparent; }
+  .tab-btn {
+    flex: 0 0 auto;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 8px 16px; border-radius: 20px; cursor: pointer;
+    border: 1px solid rgba(255,77,157,0.25);
+    background: rgba(26,22,38,0.5); color: var(--text-muted);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .tab-btn:hover { border-color: var(--pink); color: var(--pink-light); background: rgba(255,77,157,0.08); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--pink) 0%, var(--violet) 100%);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 2px 12px rgba(255,77,157,0.35);
+  }
+
+  /* ===== Show Panels ===== */
+  .show-panel { margin-top: 6px; }
+  .show-panel.hidden-by-tab { display: none; }
+  .show-panel-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 18px; margin: 18px 0 12px;
+    background: rgba(26,22,38,0.5);
+    border: 1px solid rgba(255,77,157,0.15);
+    border-left: 3px solid var(--border);
+    border-radius: 12px;
+    background-image: linear-gradient(90deg, rgba(255,77,157,0.06), transparent 45%);
+  }
+  .show-panel.all-female .show-panel-header { border-left-color: var(--pink); }
+  .sph-left { min-width: 0; }
+  .sph-title {
+    font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .sph-title em { font-style: normal; color: var(--pink-light); font-size: 12px; margin-left: 6px; }
+  .sph-meta { font-size: 12px; color: var(--text-muted); margin-top: 5px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .sph-af { color: #ff86c0; }
+
+  /* ===== Cast chips ===== */
+  .cast-chips { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; vertical-align: middle; }
+  .cast-chip {
+    display: inline-block; padding: 1px 9px; border-radius: 10px;
+    font-size: 12px; line-height: 1.7;
+    background: rgba(155,93,229,0.14);
+    border: 1px solid rgba(155,93,229,0.28); color: #c9b4f0;
+  }
+  .cast-chip.cast-none { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: var(--text-dim); }
 
   /* ===== Stats Bar ===== */
   .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }
@@ -860,21 +916,15 @@
       {{ALERT_NEW}}
     </div>
 </div>
-<!-- ===== 📋 近期演出一览 ===== -->
-<h2 class="section-title"><span class="section-icon">📋</span> 近期演出一览
+<!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
+<h2 class="section-title"><span class="section-icon">📋</span> 演出一览
   <button id="af-filter-btn" class="af-filter-btn" onclick="toggleAllFemaleFilter()">💜 仅看全女卡司</button>
 </h2>
-<div class="date-divider">7 月</div>
-<div class="perf-grid">
-{{PERF_CARDS_JULY}}
-<!-- ---- 8月 ---- -->
-<div class="date-divider">8 月</div>
-<div class="perf-grid">
-{{PERF_CARDS_AUG}}
-<!-- ---- 9月 ---- -->
-<div class="date-divider">9 月</div>
-<div class="perf-grid">
-{{PERF_CARDS_SEP}}
+<div class="tab-bar" id="tab-bar">
+{{TABS_HTML}}
+</div>
+<div class="tab-panels" id="tab-panels">
+{{PANELS_HTML}}
 </div>
 <!-- ===== FOOTER ===== -->
 <div class="footer">
@@ -1129,7 +1179,7 @@ function countFutureBought() {
   let count = 0;
   const seenIds = new Set();
   document.querySelectorAll(".perf-card[data-id]").forEach(card => {
-    if (card.style.display === "none" || card.offsetParent === null) return;
+    if (!isCardVisible(card)) return;
     const id = card.dataset.id;
     if (!id || seenIds.has(id)) return;
     if (!bought.has(card.dataset.fingerprint)) return;
@@ -1167,7 +1217,7 @@ function updateMyShowsBanner() {
   const items = [];
   const seenFp = new Set();
   document.querySelectorAll(".perf-card[data-fingerprint]").forEach(card => {
-    if (card.style.display === "none" || card.offsetParent === null) return;
+    if (!isCardVisible(card)) return;
     const fp = card.dataset.fingerprint;
     if (!fp) return;
     if (seenFp.has(fp)) return;
@@ -1275,10 +1325,10 @@ function buildCalendar() {
     const isToday = (today.getFullYear()===calYear && today.getMonth()===calMonth && today.getDate()===d);
     if (isToday) cell.classList.add("today-cal");
 
-    // Respect all-female filter: hide non-AF shows from calendar when filter active
+    // Respect all-female / tab / calendar filters: hide non-visible performances from calendar
     const visibleIds = (PERF_DATES[key] || []).filter(sid => {
       const card = document.querySelector(`.perf-card[data-id="${sid}"]`);
-      return card && card.style.display !== "none";
+      return card && isCardVisible(card);
     });
     if (visibleIds.length > 0) {
       cell.classList.add("has-show");
@@ -1426,7 +1476,39 @@ tooltip.addEventListener("mouseleave", hideTooltip);
 tooltip.addEventListener('click', (e) => { e.stopPropagation(); });
 
 // ============================================================
-//  FILTER
+//  VISIBILITY HELPER
+// ============================================================
+function isCardVisible(card) {
+  return !card.classList.contains('hidden-by-tab') &&
+         !card.classList.contains('hidden-by-af') &&
+         !card.classList.contains('hidden-by-cal');
+}
+
+// ============================================================
+//  TABS (per show)
+// ============================================================
+let activeTab = 'all';
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.show-panel').forEach(p => {
+    if (tab === 'all' || p.dataset.show === tab) p.classList.remove('hidden-by-tab');
+    else p.classList.add('hidden-by-tab');
+  });
+  hideEmptyPanels();
+  buildCalendar();
+}
+function hideEmptyPanels() {
+  document.querySelectorAll('.show-panel').forEach(p => {
+    if (p.classList.contains('hidden-by-tab')) return;
+    const cards = p.querySelectorAll('.perf-card');
+    const anyVisible = [...cards].some(c => isCardVisible(c));
+    p.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+// ============================================================
+//  CALENDAR DATE FILTER
 // ============================================================
 function applyCalFilter(key, d) {
   const note = document.getElementById("cal-filter-note");
@@ -1434,28 +1516,25 @@ function applyCalFilter(key, d) {
   document.getElementById("cal-filter-text").textContent = `已筛选：${calYear}年${MONTH_NAMES[calMonth]}${d}日的演出`;
   const ids = new Set(PERF_DATES[key] || []);
   document.querySelectorAll(".perf-card[data-id]").forEach(card => {
-    if (ids.has(card.dataset.id)) card.classList.remove("hidden-by-filter");
-    else card.classList.add("hidden-by-filter");
+    if (ids.has(card.dataset.id)) card.classList.remove("hidden-by-cal");
+    else card.classList.add("hidden-by-cal");
   });
-  document.querySelectorAll(".date-divider").forEach(div => {
-    const nextSibling = div.nextElementSibling;
-    if (!nextSibling) return;
-    const cards = nextSibling.querySelectorAll(".perf-card");
-    const hasVisible = [...cards].some(c => !c.classList.contains("hidden-by-filter"));
-    div.style.display = hasVisible ? "" : "none";
-  });
+  hideEmptyPanels();
+  buildCalendar();
 }
 function clearCalFilter() {
   calFilterDate = null;
   const note = document.getElementById("cal-filter-note");
   note.classList.remove("active");
-  document.querySelectorAll(".perf-card[data-id]").forEach(c => c.classList.remove("hidden-by-filter"));
-  document.querySelectorAll(".date-divider").forEach(div => div.style.display = "");
+  document.querySelectorAll(".perf-card[data-id]").forEach(c => c.classList.remove("hidden-by-cal"));
+  hideEmptyPanels();
   buildCalendar();
 }
 function updateCalendar() { buildCalendar(); }
 
-// All-female filter
+// ============================================================
+//  ALL-FEMALE FILTER
+// ============================================================
 let afFilterActive = false;
 function toggleAllFemaleFilter() {
   afFilterActive = !afFilterActive;
@@ -1463,22 +1542,18 @@ function toggleAllFemaleFilter() {
   btn.classList.toggle("active", afFilterActive);
   document.querySelectorAll(".perf-card[data-id]").forEach(card => {
     if (afFilterActive) {
-      if (card.classList.contains("all-female")) card.classList.remove("hidden-by-filter");
-      else card.classList.add("hidden-by-filter");
+      if (card.classList.contains("all-female")) card.classList.remove("hidden-by-af");
+      else card.classList.add("hidden-by-af");
     } else {
-      card.classList.remove("hidden-by-filter");
+      card.classList.remove("hidden-by-af");
     }
   });
-  // also adjust date dividers visibility
-  document.querySelectorAll(".date-divider").forEach(div => {
-    const nextSibling = div.nextElementSibling;
-    if (!nextSibling) return;
-    const cards = nextSibling.querySelectorAll(".perf-card");
-    const hasVisible = [...cards].some(c => !c.classList.contains("hidden-by-filter"));
-    div.style.display = hasVisible ? "" : "none";
-  });
+  hideEmptyPanels();
   buildCalendar();
 }
+
+// wire tabs
+document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
 
 document.getElementById("cal-prev").addEventListener("click", () => { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } calFilterDate = null; clearCalFilter(); });
 document.getElementById("cal-next").addEventListener("click", () => { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } calFilterDate = null; clearCalFilter(); });

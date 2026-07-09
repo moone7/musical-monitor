@@ -541,7 +541,6 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,77,157,0.07);
   }
-  .perf-card.hidden-by-filter { display: none; }
   .perf-card.all-female::before { background: linear-gradient(180deg, transparent, rgba(255,77,157,0.6), transparent); }
   .perf-card.all-female:hover::before { background: linear-gradient(180deg, transparent, rgba(255,134,192,0.9), transparent); }
 
@@ -645,6 +644,63 @@
     color: #ff86c0;
     border: 1px solid rgba(255,77,157,0.3);
   }
+
+  /* ===== Tabs (per show) ===== */
+  .tab-bar {
+    display: flex; gap: 8px; margin: 22px 0 6px;
+    overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-bar::-webkit-scrollbar { height: 6px; }
+  .tab-bar::-webkit-scrollbar-thumb { background: rgba(255,77,157,0.25); border-radius: 3px; }
+  .tab-bar::-webkit-scrollbar-track { background: transparent; }
+  .tab-btn {
+    flex: 0 0 auto;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 8px 16px; border-radius: 20px; cursor: pointer;
+    border: 1px solid rgba(255,77,157,0.25);
+    background: rgba(26,22,38,0.5); color: var(--text-muted);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .tab-btn:hover { border-color: var(--pink); color: var(--pink-light); background: rgba(255,77,157,0.08); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--pink) 0%, var(--violet) 100%);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 2px 12px rgba(255,77,157,0.35);
+  }
+
+  /* ===== Show Panels ===== */
+  .show-panel { margin-top: 6px; }
+  .show-panel.hidden-by-tab { display: none; }
+  .show-panel-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 18px; margin: 18px 0 12px;
+    background: rgba(26,22,38,0.5);
+    border: 1px solid rgba(255,77,157,0.15);
+    border-left: 3px solid var(--border);
+    border-radius: 12px;
+    background-image: linear-gradient(90deg, rgba(255,77,157,0.06), transparent 45%);
+  }
+  .show-panel.all-female .show-panel-header { border-left-color: var(--pink); }
+  .sph-left { min-width: 0; }
+  .sph-title {
+    font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .sph-title em { font-style: normal; color: var(--pink-light); font-size: 12px; margin-left: 6px; }
+  .sph-meta { font-size: 12px; color: var(--text-muted); margin-top: 5px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .sph-af { color: #ff86c0; }
+
+  /* ===== Cast chips ===== */
+  .cast-chips { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; vertical-align: middle; }
+  .cast-chip {
+    display: inline-block; padding: 1px 9px; border-radius: 10px;
+    font-size: 12px; line-height: 1.7;
+    background: rgba(155,93,229,0.14);
+    border: 1px solid rgba(155,93,229,0.28); color: #c9b4f0;
+  }
+  .cast-chip.cast-none { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: var(--text-dim); }
 
   /* ===== Stats Bar ===== */
   .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }
@@ -825,12 +881,12 @@
 <div class="cal-tooltip" id="cal-tooltip"></div>
 <!-- ===== STATS ===== -->
 <div class="stats-bar">
-<div class="stat" data-num="15">
-<div class="stat-num">15</div>
+<div class="stat" data-num="17">
+<div class="stat-num">17</div>
 <div class="stat-label">近期演出场次</div>
 </div>
-<div class="stat" data-num="12">
-<div class="stat-num">12</div>
+<div class="stat" data-num="14">
+<div class="stat-num">14</div>
 <div class="stat-label">💜 全女卡司场次</div>
 </div>
 <div class="stat" data-num="0" id="stat-card">
@@ -848,8 +904,8 @@
 <span class="alert-icon">🔥</span> 近期高优提醒
     </div>
 <div class="alert-body">
-      · <strong>明日开演：</strong>7月10日 上海文化广场《SIX》中文版》。<br/>
-      · <strong>💜 全女卡司近期：</strong>7月10日文化广场《SIX》中文版》 → 7月18日茉莉花剧场《女巫》 → 7月25日上剧场《造星计划》 → 8月1日虹桥艺术中心《玩偶》 → 8月8日YOUNG剧场《破墙》 → 8月15日兰心大戏院《德米安》 → 8月22日文化广场《连璧》 → 8月29日茉莉花剧场《丽兹》 → 9月5日上剧场《嗜血博士》 → 9月12日虹桥艺术中心《三妇志异》 → 9月19日北京·世纪剧院《SIX》中文版》 → 9月26日广州《SIX》中文版》。<br/>
+      · <strong>明日开演：</strong>7月10日 上海文化广场《SIX》中文版》、7月10日 上海文化广场《SIX》中文版》。<br/>
+      · <strong>💜 全女卡司近期：</strong>7月10日文化广场《SIX》中文版》 → 7月10日文化广场《SIX》中文版》 → 7月18日茉莉花剧场《女巫》 → 7月19日茉莉花剧场《女巫》 → 7月25日上剧场《造星计划》 → 8月1日虹桥艺术中心《玩偶》 → 8月8日YOUNG剧场《破墙》 → 8月15日兰心大戏院《德米安》 → 8月22日文化广场《连璧》 → 8月29日茉莉花剧场《丽兹》 → 9月5日上剧场《嗜血博士》 → 9月12日虹桥艺术中心《三妇志异》 → 9月19日北京·世纪剧院《SIX》中文版》 → 9月26日广州《SIX》中文版》。<br/>
       · <strong>一周内演出：</strong>7月15日 上海大剧院《剧院魅影》。<br/>
     </div>
 </div>
@@ -859,17 +915,60 @@
 <span class="alert-icon">🆕</span> 今日新动态
     </div>
 <div class="alert-body">
-      · <strong>💜 全女卡司行程：</strong>共 12 场 — 7月10日文化广场《SIX》中文版》 → 7月18日茉莉花剧场《女巫》 → 7月25日上剧场《造星计划》 → 8月1日虹桥艺术中心《玩偶》 → 8月8日YOUNG剧场《破墙》 → 8月15日兰心大戏院《德米安》 → 8月22日文化广场《连璧》 → 8月29日茉莉花剧场《丽兹》 → 9月5日上剧场《嗜血博士》 → 9月12日虹桥艺术中心《三妇志异》 → 9月19日北京·世纪剧院《SIX》中文版》 → 9月26日广州《SIX》中文版》。<br/>
-      · <strong>上海近期：</strong>7月10日 上海文化广场《SIX》中文版》、7月15日 上海大剧院《剧院魅影》、7月18日 茉莉花剧场《女巫》等。<br/>
+      · <strong>💜 全女卡司行程：</strong>共 14 场 — 7月10日文化广场《SIX》中文版》 → 7月10日文化广场《SIX》中文版》 → 7月18日茉莉花剧场《女巫》 → 7月19日茉莉花剧场《女巫》 → 7月25日上剧场《造星计划》 → 8月1日虹桥艺术中心《玩偶》 → 8月8日YOUNG剧场《破墙》 → 8月15日兰心大戏院《德米安》 → 8月22日文化广场《连璧》 → 8月29日茉莉花剧场《丽兹》 → 9月5日上剧场《嗜血博士》 → 9月12日虹桥艺术中心《三妇志异》 → 9月19日北京·世纪剧院《SIX》中文版》 → 9月26日广州《SIX》中文版》。<br/>
+      · <strong>上海近期：</strong>7月10日 上海文化广场《SIX》中文版》、7月10日 上海文化广场《SIX》中文版》、7月15日 上海大剧院《剧院魅影》等。<br/>
     </div>
 </div>
-<!-- ===== 📋 近期演出一览 ===== -->
-<h2 class="section-title"><span class="section-icon">📋</span> 近期演出一览
+<!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
+<h2 class="section-title"><span class="section-icon">📋</span> 演出一览
   <button id="af-filter-btn" class="af-filter-btn" onclick="toggleAllFemaleFilter()">💜 仅看全女卡司</button>
 </h2>
-<div class="date-divider">7 月</div>
+<div class="tab-bar" id="tab-bar">
+<button class="tab-btn active" data-tab="all">📋 全部场次</button>
+<button class="tab-btn" data-tab="six">SIX》中文版</button>
+<button class="tab-btn" data-tab="nv">女巫</button>
+<button class="tab-btn" data-tab="zx">造星计划</button>
+<button class="tab-btn" data-tab="wanou">玩偶</button>
+<button class="tab-btn" data-tab="poqiang">破墙</button>
+<button class="tab-btn" data-tab="demian">德米安</button>
+<button class="tab-btn" data-tab="lianbi">连璧</button>
+<button class="tab-btn" data-tab="lizi">丽兹</button>
+<button class="tab-btn" data-tab="xuexing">嗜血博士</button>
+<button class="tab-btn" data-tab="sanfu">三妇志异</button>
+<button class="tab-btn" data-tab="r1">剧院魅影</button>
+<button class="tab-btn" data-tab="r2">妈妈咪呀！</button>
+<button class="tab-btn" data-tab="r3">摇滚红与黑</button>
+</div>
+<div class="tab-panels" id="tab-panels">
+<div class="show-panel all-female" data-show="six">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+    <div class="sph-meta">🏛️ 英方授权 · 中文制作 · 4 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
 <div class="perf-grid">
-<div class="perf-card all-female tomorrow" data-all-female="1" data-date="2026-07-10" data-id="m01" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="上海文化广场">
+<div class="perf-card all-female tomorrow" data-all-female="1" data-id="six-2026-07-10-m" data-show="six" data-date="2026-07-10" data-time="14:00" data-title="音乐剧《SIX》中文版" data-venue="上海文化广场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月10日（周五）14:00</span>
+<span><span class="meta-icon">📍</span>上海文化广场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后 · B组卡司（全女班）</span><span class="cast-chip">轮换卡司</span></span><br/>
+<strong>制作：</strong>英方授权 · 中文制作
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-urgent">🔥 明日开演</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 1080</div></div>
+</div>
+<div class="perf-card all-female tomorrow" data-all-female="1" data-id="six-2026-07-10" data-show="six" data-date="2026-07-10" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="上海文化广场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
 <div class="perf-meta">
@@ -878,9 +977,9 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>六位皇后卡司（全女班）<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后 · A组卡司（全女班）</span><span class="cast-chip">轮换卡司</span></span><br/>
 <strong>制作：</strong>英方授权 · 中文制作
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
@@ -888,28 +987,56 @@
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥180 — 1080</div></div>
-
 </div>
-<div class="perf-card" data-date="2026-07-15" data-id="r01" data-time="19:30" data-title="音乐剧《剧院魅影》" data-venue="上海大剧院">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-09-19" data-show="six" data-date="2026-09-19" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="北京·世纪剧院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《剧院魅影》 <em>经典复排</em></div>
+<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月15日（周三）19:30</span>
-<span><span class="meta-icon">📍</span>上海大剧院</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
+<span><span class="meta-icon">📅</span>9月19日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>北京·世纪剧院</span>
+<span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>轮换卡司<br/>
-<strong>制作：</strong>上海大剧院呈现
-        </div>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后卡司（全女班）</span></span><br/>
+<strong>制作：</strong>英方授权 · 中文制作
+</div>
 </div>
 <div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 1280</div></div>
-
+<div class="perf-price">¥180 — 1080</div></div>
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-07-18" data-id="m02" data-time="19:30" data-title="音乐剧《女巫》" data-venue="茉莉花剧场">
+<div class="perf-card all-female" data-all-female="1" data-id="six-2026-09-26" data-show="six" data-date="2026-09-26" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="广州大剧院">
+<div class="perf-info">
+<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全女卡司</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>9月26日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>广州大剧院</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">六位皇后卡司（全女班）</span></span><br/>
+<strong>制作：</strong>英方授权 · 中文制作
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 1080</div></div>
+</div>
+</div>
+</div>
+<div class="show-panel all-female" data-show="nv">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《女巫》 <em>全女卡司悬疑音乐剧</em></div>
+    <div class="sph-meta">🏛️ 独立制作 · 2 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="nv-2026-07-18" data-show="nv" data-date="2026-07-18" data-time="19:30" data-title="音乐剧《女巫》" data-venue="茉莉花剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《女巫》 <em>全女卡司悬疑音乐剧</em></div>
 <div class="perf-meta">
@@ -918,18 +1045,46 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span><span class="cast-chip">特邀女中音</span></span><br/>
 <strong>制作：</strong>独立制作
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥280 — 680</div></div>
-
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-07-25" data-id="m03" data-time="14:00" data-title="音乐剧《造星计划》" data-venue="上剧场">
+<div class="perf-card all-female" data-all-female="1" data-id="nv-2026-07-19" data-show="nv" data-date="2026-07-19" data-time="14:00" data-title="音乐剧《女巫》" data-venue="茉莉花剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《女巫》 <em>全女卡司悬疑音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>7月19日（周日）14:00</span>
+<span><span class="meta-icon">📍</span>茉莉花剧场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span><span class="cast-chip">青年卡司</span></span><br/>
+<strong>制作：</strong>独立制作
+</div>
+</div>
+<div class="perf-side">
+<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥280 — 680</div></div>
+</div>
+</div>
+</div>
+<div class="show-panel all-female" data-show="zx">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《造星计划》 <em>全女卡司 · 青春成长</em></div>
+    <div class="sph-meta">🏛️ 上剧场出品 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="zx-2026-07-25" data-show="zx" data-date="2026-07-25" data-time="14:00" data-title="音乐剧《造星计划》" data-venue="上剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《造星计划》 <em>全女卡司 · 青春成长</em></div>
 <div class="perf-meta">
@@ -938,21 +1093,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>上剧场出品
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥199 — 599</div></div>
-
 </div>
-<!-- ---- 8月 ---- -->
-<div class="date-divider">8 月</div>
+</div>
+</div>
+<div class="show-panel all-female" data-show="wanou">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《玩偶》 <em>全女卡司 · 环境式</em></div>
+    <div class="sph-meta">🏛️ 环境式音乐剧 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
 <div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-date="2026-08-01" data-id="m04" data-time="19:30" data-title="音乐剧《玩偶》" data-venue="虹桥艺术中心">
+<div class="perf-card all-female" data-all-female="1" data-id="wanou-2026-08-01" data-show="wanou" data-date="2026-08-01" data-time="19:30" data-title="音乐剧《玩偶》" data-venue="虹桥艺术中心">
 <div class="perf-info">
 <div class="perf-title">音乐剧《玩偶》 <em>全女卡司 · 环境式</em></div>
 <div class="perf-meta">
@@ -961,18 +1122,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>环境式音乐剧
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥380 — 880</div></div>
-
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-08-08" data-id="m05" data-time="19:30" data-title="音乐剧《破墙》" data-venue="YOUNG剧场">
+</div>
+</div>
+<div class="show-panel all-female" data-show="poqiang">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《破墙》 <em>全女卡司 · 先锋</em></div>
+    <div class="sph-meta">🏛️ YOUNG剧场委约 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="poqiang-2026-08-08" data-show="poqiang" data-date="2026-08-08" data-time="19:30" data-title="音乐剧《破墙》" data-venue="YOUNG剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《破墙》 <em>全女卡司 · 先锋</em></div>
 <div class="perf-meta">
@@ -981,37 +1151,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>YOUNG剧场委约
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥180 — 580</div></div>
-
 </div>
-<div class="perf-card" data-date="2026-08-12" data-id="r02" data-time="19:30" data-title="音乐剧《妈妈咪呀！》" data-venue="上海文化广场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《妈妈咪呀！》 <em>经典 IP 巡演</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月12日（周三）19:30</span>
-<span><span class="meta-icon">📍</span>上海文化广场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
 </div>
-<div class="perf-cast">
-<strong>卡司：</strong>轮换卡司<br/>
-<strong>制作：</strong>中文制作
-        </div>
 </div>
-<div class="perf-side">
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
-
+<div class="show-panel all-female" data-show="demian">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《德米安》 <em>全女卡司 · 心理</em></div>
+    <div class="sph-meta">🏛️ 中文改编 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-08-15" data-id="m06" data-time="19:30" data-title="音乐剧《德米安》" data-venue="兰心大戏院">
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="demian-2026-08-15" data-show="demian" data-date="2026-08-15" data-time="19:30" data-title="音乐剧《德米安》" data-venue="兰心大戏院">
 <div class="perf-info">
 <div class="perf-title">音乐剧《德米安》 <em>全女卡司 · 心理</em></div>
 <div class="perf-meta">
@@ -1020,18 +1180,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>中文改编
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥280 — 680</div></div>
-
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-08-22" data-id="m07" data-time="19:30" data-title="音乐剧《连璧》" data-venue="上海文化广场">
+</div>
+</div>
+<div class="show-panel all-female" data-show="lianbi">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《连璧》 <em>全女卡司 · 双女主</em></div>
+    <div class="sph-meta">🏛️ 音乐剧制作 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="lianbi-2026-08-22" data-show="lianbi" data-date="2026-08-22" data-time="19:30" data-title="音乐剧《连璧》" data-venue="上海文化广场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《连璧》 <em>全女卡司 · 双女主</em></div>
 <div class="perf-meta">
@@ -1040,18 +1209,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>双女主 · 全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">双女主 · 全女卡司</span></span><br/>
 <strong>制作：</strong>音乐剧制作
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥180 — 880</div></div>
-
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-08-29" data-id="m08" data-time="19:30" data-title="音乐剧《丽兹》" data-venue="茉莉花剧场">
+</div>
+</div>
+<div class="show-panel all-female" data-show="lizi">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《丽兹》 <em>全女卡司 · 黑色幽默</em></div>
+    <div class="sph-meta">🏛️ 独立制作 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="lizi-2026-08-29" data-show="lizi" data-date="2026-08-29" data-time="19:30" data-title="音乐剧《丽兹》" data-venue="茉莉花剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《丽兹》 <em>全女卡司 · 黑色幽默</em></div>
 <div class="perf-meta">
@@ -1060,21 +1238,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>独立制作
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥280 — 680</div></div>
-
 </div>
-<!-- ---- 9月 ---- -->
-<div class="date-divider">9 月</div>
+</div>
+</div>
+<div class="show-panel all-female" data-show="xuexing">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《嗜血博士》 <em>全女卡司 · 哥特</em></div>
+    <div class="sph-meta">🏛️ 上剧场出品 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
+</div>
 <div class="perf-grid">
-<div class="perf-card all-female" data-all-female="1" data-date="2026-09-05" data-id="m09" data-time="19:30" data-title="音乐剧《嗜血博士》" data-venue="上剧场">
+<div class="perf-card all-female" data-all-female="1" data-id="xuexing-2026-09-05" data-show="xuexing" data-date="2026-09-05" data-time="19:30" data-title="音乐剧《嗜血博士》" data-venue="上剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《嗜血博士》 <em>全女卡司 · 哥特</em></div>
 <div class="perf-meta">
@@ -1083,37 +1267,27 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>上剧场出品
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥199 — 599</div></div>
-
 </div>
-<div class="perf-card" data-date="2026-09-09" data-id="r03" data-time="19:30" data-title="音乐剧《摇滚红与黑》" data-venue="兰心大戏院">
-<div class="perf-info">
-<div class="perf-title">音乐剧《摇滚红与黑》 <em>法语原版巡演</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月9日（周三）19:30</span>
-<span><span class="meta-icon">📍</span>兰心大戏院</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
 </div>
-<div class="perf-cast">
-<strong>卡司：</strong>法方卡司<br/>
-<strong>制作：</strong>法语原版授权
-        </div>
 </div>
-<div class="perf-side">
-<span class="tag tag-on-sale">售票中</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥280 — 880</div></div>
-
+<div class="show-panel all-female" data-show="sanfu">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《三妇志异》 <em>全女卡司 · 三部曲</em></div>
+    <div class="sph-meta">🏛️ 音乐剧制作 · 1 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+  </div>
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-09-12" data-id="m10" data-time="19:30" data-title="音乐剧《三妇志异》" data-venue="虹桥艺术中心">
+<div class="perf-grid">
+<div class="perf-card all-female" data-all-female="1" data-id="sanfu-2026-09-12" data-show="sanfu" data-date="2026-09-12" data-time="19:30" data-title="音乐剧《三妇志异》" data-venue="虹桥艺术中心">
 <div class="perf-info">
 <div class="perf-title">音乐剧《三妇志异》 <em>全女卡司 · 三部曲</em></div>
 <div class="perf-meta">
@@ -1122,56 +1296,101 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>全女卡司<br/>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">全女卡司主演</span></span><br/>
 <strong>制作：</strong>音乐剧制作
-        </div>
+</div>
 </div>
 <div class="perf-side">
 <span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥380 — 880</div></div>
-
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-09-19" data-id="m11" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="北京·世纪剧院">
+</div>
+</div>
+<div class="show-panel" data-show="r1">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《剧院魅影》 <em>经典复排</em></div>
+    <div class="sph-meta">🏛️ 上海大剧院呈现 · 1 场 · 上海 </div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="r1-2026-07-15" data-show="r1" data-date="2026-07-15" data-time="19:30" data-title="音乐剧《剧院魅影》" data-venue="上海大剧院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全国巡演·北京</em></div>
+<div class="perf-title">音乐剧《剧院魅影》 <em>经典复排</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月19日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>北京·世纪剧院</span>
-<span><span class="meta-icon">🏙️</span>北京</span>
+<span><span class="meta-icon">📅</span>7月15日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>上海大剧院</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>六位皇后卡司（全女班）<br/>
-<strong>制作：</strong>英方授权 · 中文制作
-        </div>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">轮换卡司</span></span><br/>
+<strong>制作：</strong>上海大剧院呈现
+</div>
 </div>
 <div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
+<span class="tag tag-on-sale">售票中</span>
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥280 — 1280</div></div>
+</div>
+</div>
+</div>
+<div class="show-panel" data-show="r2">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《妈妈咪呀！》 <em>经典 IP 巡演</em></div>
+    <div class="sph-meta">🏛️ 中文制作 · 1 场 · 上海 </div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="r2-2026-08-12" data-show="r2" data-date="2026-08-12" data-time="19:30" data-title="音乐剧《妈妈咪呀！》" data-venue="上海文化广场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《妈妈咪呀！》 <em>经典 IP 巡演</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月12日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>上海文化广场</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
+</div>
+<div class="perf-cast">
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">轮换卡司</span></span><br/>
+<strong>制作：</strong>中文制作
+</div>
+</div>
+<div class="perf-side">
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥180 — 1080</div></div>
-
 </div>
-<div class="perf-card all-female" data-all-female="1" data-date="2026-09-26" data-id="m12" data-time="19:30" data-title="音乐剧《SIX》中文版" data-venue="广州大剧院">
+</div>
+</div>
+<div class="show-panel" data-show="r3">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《摇滚红与黑》 <em>法语原版巡演</em></div>
+    <div class="sph-meta">🏛️ 法语原版授权 · 1 场 · 上海 </div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="r3-2026-09-09" data-show="r3" data-date="2026-09-09" data-time="19:30" data-title="音乐剧《摇滚红与黑》" data-venue="兰心大戏院">
 <div class="perf-info">
-<div class="perf-title">音乐剧《SIX》中文版 <em>六位皇后 · 全国巡演·广州</em></div>
+<div class="perf-title">音乐剧《摇滚红与黑》 <em>法语原版巡演</em></div>
 <div class="perf-meta">
-<span><span class="meta-icon">📅</span>9月26日（周六）19:30</span>
-<span><span class="meta-icon">📍</span>广州大剧院</span>
-<span><span class="meta-icon">🏙️</span>广州</span>
+<span><span class="meta-icon">📅</span>9月9日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>兰心大戏院</span>
+<span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>卡司：</strong>六位皇后卡司（全女班）<br/>
-<strong>制作：</strong>英方授权 · 中文制作
-        </div>
+<strong>卡司：</strong><span class="cast-chips"><span class="cast-chip">法方卡司</span></span><br/>
+<strong>制作：</strong>法语原版授权
+</div>
 </div>
 <div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
 <span class="tag tag-on-sale">售票中</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 1080</div></div>
-
+<div class="perf-price">¥280 — 880</div></div>
+</div>
+</div>
 </div>
 </div>
 <!-- ===== FOOTER ===== -->
@@ -1187,7 +1406,7 @@
 <span>🎪 虹桥艺术中心</span>
 </div>
 <p>报告由 WorkBuddy 自动化生成 · 监控范围：全女卡司音乐剧 + 全网音乐剧演出（大麦网 + 各剧院官方 + 全网检索）</p>
-<p style="margin-top:6px;">数据截至 2026-07-09 10:06 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
+<p style="margin-top:6px;">数据截至 2026-07-09 10:45 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
 <p style="margin-top:10px;"><a href="https://moone7.github.io/yueju-monitor/" target="_blank" rel="noopener">🎭 姊妹站点：越剧演出售票监控</a></p>
 </div>
 </div>
@@ -1196,24 +1415,25 @@
 //  DATA
 // ============================================================
 const PERF_DATES = {
-  "2026-07-10": ["m01"],
-  "2026-07-15": ["r01"],
-  "2026-07-18": ["m02"],
-  "2026-07-25": ["m03"],
-  "2026-08-01": ["m04"],
-  "2026-08-08": ["m05"],
-  "2026-08-12": ["r02"],
-  "2026-08-15": ["m06"],
-  "2026-08-22": ["m07"],
-  "2026-08-29": ["m08"],
-  "2026-09-05": ["m09"],
-  "2026-09-09": ["r03"],
-  "2026-09-12": ["m10"],
-  "2026-09-19": ["m11"],
-  "2026-09-26": ["m12"],
+  "2026-07-10": ["six-2026-07-10-m", "six-2026-07-10"],
+  "2026-07-15": ["r1-2026-07-15"],
+  "2026-07-18": ["nv-2026-07-18"],
+  "2026-07-19": ["nv-2026-07-19"],
+  "2026-07-25": ["zx-2026-07-25"],
+  "2026-08-01": ["wanou-2026-08-01"],
+  "2026-08-08": ["poqiang-2026-08-08"],
+  "2026-08-12": ["r2-2026-08-12"],
+  "2026-08-15": ["demian-2026-08-15"],
+  "2026-08-22": ["lianbi-2026-08-22"],
+  "2026-08-29": ["lizi-2026-08-29"],
+  "2026-09-05": ["xuexing-2026-09-05"],
+  "2026-09-09": ["r3-2026-09-09"],
+  "2026-09-12": ["sanfu-2026-09-12"],
+  "2026-09-19": ["six-2026-09-19"],
+  "2026-09-26": ["six-2026-09-26"],
 };
 
-const ALL_FEMALE_IDS = new Set(["m01", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10", "m11", "m12"]);
+const ALL_FEMALE_IDS = new Set(["six-2026-07-10-m", "six-2026-07-10", "nv-2026-07-18", "nv-2026-07-19", "zx-2026-07-25", "wanou-2026-08-01", "poqiang-2026-08-08", "demian-2026-08-15", "lianbi-2026-08-22", "lizi-2026-08-29", "xuexing-2026-09-05", "sanfu-2026-09-12", "six-2026-09-19", "six-2026-09-26"]);
 
 // ============================================================
 //  SHOW DATA INDEX (built from DOM for tooltips)
@@ -1443,7 +1663,7 @@ function countFutureBought() {
   let count = 0;
   const seenIds = new Set();
   document.querySelectorAll(".perf-card[data-id]").forEach(card => {
-    if (card.style.display === "none" || card.offsetParent === null) return;
+    if (!isCardVisible(card)) return;
     const id = card.dataset.id;
     if (!id || seenIds.has(id)) return;
     if (!bought.has(card.dataset.fingerprint)) return;
@@ -1481,7 +1701,7 @@ function updateMyShowsBanner() {
   const items = [];
   const seenFp = new Set();
   document.querySelectorAll(".perf-card[data-fingerprint]").forEach(card => {
-    if (card.style.display === "none" || card.offsetParent === null) return;
+    if (!isCardVisible(card)) return;
     const fp = card.dataset.fingerprint;
     if (!fp) return;
     if (seenFp.has(fp)) return;
@@ -1589,10 +1809,10 @@ function buildCalendar() {
     const isToday = (today.getFullYear()===calYear && today.getMonth()===calMonth && today.getDate()===d);
     if (isToday) cell.classList.add("today-cal");
 
-    // Respect all-female filter: hide non-AF shows from calendar when filter active
+    // Respect all-female / tab / calendar filters: hide non-visible performances from calendar
     const visibleIds = (PERF_DATES[key] || []).filter(sid => {
       const card = document.querySelector(`.perf-card[data-id="${sid}"]`);
-      return card && card.style.display !== "none";
+      return card && isCardVisible(card);
     });
     if (visibleIds.length > 0) {
       cell.classList.add("has-show");
@@ -1740,7 +1960,39 @@ tooltip.addEventListener("mouseleave", hideTooltip);
 tooltip.addEventListener('click', (e) => { e.stopPropagation(); });
 
 // ============================================================
-//  FILTER
+//  VISIBILITY HELPER
+// ============================================================
+function isCardVisible(card) {
+  return !card.classList.contains('hidden-by-tab') &&
+         !card.classList.contains('hidden-by-af') &&
+         !card.classList.contains('hidden-by-cal');
+}
+
+// ============================================================
+//  TABS (per show)
+// ============================================================
+let activeTab = 'all';
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.show-panel').forEach(p => {
+    if (tab === 'all' || p.dataset.show === tab) p.classList.remove('hidden-by-tab');
+    else p.classList.add('hidden-by-tab');
+  });
+  hideEmptyPanels();
+  buildCalendar();
+}
+function hideEmptyPanels() {
+  document.querySelectorAll('.show-panel').forEach(p => {
+    if (p.classList.contains('hidden-by-tab')) return;
+    const cards = p.querySelectorAll('.perf-card');
+    const anyVisible = [...cards].some(c => isCardVisible(c));
+    p.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+// ============================================================
+//  CALENDAR DATE FILTER
 // ============================================================
 function applyCalFilter(key, d) {
   const note = document.getElementById("cal-filter-note");
@@ -1748,28 +2000,25 @@ function applyCalFilter(key, d) {
   document.getElementById("cal-filter-text").textContent = `已筛选：${calYear}年${MONTH_NAMES[calMonth]}${d}日的演出`;
   const ids = new Set(PERF_DATES[key] || []);
   document.querySelectorAll(".perf-card[data-id]").forEach(card => {
-    if (ids.has(card.dataset.id)) card.classList.remove("hidden-by-filter");
-    else card.classList.add("hidden-by-filter");
+    if (ids.has(card.dataset.id)) card.classList.remove("hidden-by-cal");
+    else card.classList.add("hidden-by-cal");
   });
-  document.querySelectorAll(".date-divider").forEach(div => {
-    const nextSibling = div.nextElementSibling;
-    if (!nextSibling) return;
-    const cards = nextSibling.querySelectorAll(".perf-card");
-    const hasVisible = [...cards].some(c => !c.classList.contains("hidden-by-filter"));
-    div.style.display = hasVisible ? "" : "none";
-  });
+  hideEmptyPanels();
+  buildCalendar();
 }
 function clearCalFilter() {
   calFilterDate = null;
   const note = document.getElementById("cal-filter-note");
   note.classList.remove("active");
-  document.querySelectorAll(".perf-card[data-id]").forEach(c => c.classList.remove("hidden-by-filter"));
-  document.querySelectorAll(".date-divider").forEach(div => div.style.display = "");
+  document.querySelectorAll(".perf-card[data-id]").forEach(c => c.classList.remove("hidden-by-cal"));
+  hideEmptyPanels();
   buildCalendar();
 }
 function updateCalendar() { buildCalendar(); }
 
-// All-female filter
+// ============================================================
+//  ALL-FEMALE FILTER
+// ============================================================
 let afFilterActive = false;
 function toggleAllFemaleFilter() {
   afFilterActive = !afFilterActive;
@@ -1777,22 +2026,18 @@ function toggleAllFemaleFilter() {
   btn.classList.toggle("active", afFilterActive);
   document.querySelectorAll(".perf-card[data-id]").forEach(card => {
     if (afFilterActive) {
-      if (card.classList.contains("all-female")) card.classList.remove("hidden-by-filter");
-      else card.classList.add("hidden-by-filter");
+      if (card.classList.contains("all-female")) card.classList.remove("hidden-by-af");
+      else card.classList.add("hidden-by-af");
     } else {
-      card.classList.remove("hidden-by-filter");
+      card.classList.remove("hidden-by-af");
     }
   });
-  // also adjust date dividers visibility
-  document.querySelectorAll(".date-divider").forEach(div => {
-    const nextSibling = div.nextElementSibling;
-    if (!nextSibling) return;
-    const cards = nextSibling.querySelectorAll(".perf-card");
-    const hasVisible = [...cards].some(c => !c.classList.contains("hidden-by-filter"));
-    div.style.display = hasVisible ? "" : "none";
-  });
+  hideEmptyPanels();
   buildCalendar();
 }
+
+// wire tabs
+document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
 
 document.getElementById("cal-prev").addEventListener("click", () => { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } calFilterDate = null; clearCalFilter(); });
 document.getElementById("cal-next").addEventListener("click", () => { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } calFilterDate = null; clearCalFilter(); });
