@@ -35,12 +35,18 @@ try:
 except Exception:
     HAS_NET = False
 
+try:
+    import urllib3
+    urllib3.disable_warnings()
+except Exception:
+    pass
+
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
 }
-TIMEOUT = 15
+TIMEOUT = 30
 RETRIES = 1
 SLEEP_BETWEEN = 1.5
 
@@ -252,12 +258,12 @@ KNOWN_SHOWS = [
 # ============================================================
 # HTTP 工具
 # ============================================================
-def fetch_url(url, encoding='utf-8'):
+def fetch_url(url, encoding='utf-8', verify=False):
     if not HAS_NET:
         return None
     for attempt in range(RETRIES + 1):
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+            resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT, verify=verify)
             if encoding:
                 resp.encoding = encoding
             resp.raise_for_status()
@@ -272,50 +278,83 @@ def fetch_url(url, encoding='utf-8'):
 
 
 # ============================================================
-# 数据源 1: 东方演出网 · 音乐剧专版
+# 数据源 1: 东方演出网 · 上海音乐剧时间表（服务器渲染，正则解析）
+# 字段：剧名 / 演出时间(支持区间) / 地点 / 门票价格
+# 说明：该站提供真实日期、场馆、票价；无卡司、无全女班标记，
+#       故抓取层只负责补全已知剧场次 + 自动发现新剧，
+#       卡司/全女判定由 KNOWN_SHOWS 校准层提供。
 # ============================================================
+CITY_HINTS = ["北京", "上海", "广州", "深圳", "杭州", "成都", "武汉", "南京", "重庆", "天津", "苏州",
+              "西安", "长沙", "青岛", "郑州", "哈尔滨", "沈阳", "宁波", "无锡", "常州", "东莞", "佛山",
+              "珠海", "厦门", "福州", "合肥", "昆明", "大连", "济南", "南昌", "南宁", "贵阳", "石家庄",
+              "太原", "兰州", "海口", "三亚", "衢州", "台州", "舟山", "金华", "温州", "嘉兴", "绍兴", "南通"]
+
+def guess_city(venue):
+    for c in CITY_HINTS:
+        if c in (venue or ""):
+            return c
+    return "上海"  # 该站为上海音乐剧时间表
+
+def parse_df_dates(raw):
+    """返回 (dates: list[date], times: list[str])。区间仅保留首末两天，避免过度展开。"""
+    raw = raw.replace('—', '-').replace('~', '-')
+    dates = []
+    for y, mo, d in re.findall(r'(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})', raw):
+        try:
+            dates.append(datetime(int(y), int(mo), int(d)).date())
+        except Exception:
+            pass
+    for mo, d in re.findall(r'(\d{1,2})月(\d{1,2})日', raw):
+        try:
+            dates.append(datetime(2026, int(mo), int(d)).date())
+        except Exception:
+            pass
+    dates = sorted(set(dates))
+    if len(dates) > 2:
+        dates = [dates[0], dates[-1]]   # 区间仅取首末
+    times = re.findall(r'(\d{1,2}:\d{2})', raw)
+    return dates, times
+
 def scrape_df962388():
-    print("🎶 抓取东方演出网(音乐剧)...")
+    print("🎶 抓取东方演出网·上海音乐剧时间表...")
     shows = []
     try:
         html = fetch_url("https://shanghaiyinleju.df962388.com/")
         if not html:
             return shows
-        soup = BeautifulSoup(html, 'html.parser')
-        items = soup.select('a[href*="/yanchu/"]')
-        for item in items:
-            try:
-                title_text = item.get_text(strip=True)
-                href = item.get('href', '')
-                if not title_text or '/yanchu/' not in href:
-                    continue
-                parent = item.find_parent()
-                if not parent:
-                    continue
-                parent_text = parent.get_text()
-                date_match = re.search(r'(2026\.\d{2}\.\d{2})', parent_text)
-                if not date_match:
-                    continue
-                date_raw = date_match.group(1).replace('.', '-')
-                if date_raw < datetime.now().strftime("%Y-%m-%d"):
-                    continue
-                venue = ""
-                vm = re.search(r'地点[：:]\s*([^\n]+)', parent_text)
-                if vm:
-                    venue = vm.group(1).strip()
-                price = ""
-                pm = re.search(r'门票价格[：:]\s*([^\n]+)', parent_text)
-                if pm:
-                    price = pm.group(1).strip()
-                shows.append({
-                    "title": title_text, "date": date_raw, "venue": venue, "price": price,
-                    "is_all_female": False, "source": "df962388",
-                })
-            except Exception:
+        links = list(re.finditer(r'<a[^>]+href="[^"]*yanchu/\d+\.html"[^>]*>(.*?)</a>', html, re.S))
+        today = datetime.now().date()
+        for i, lm in enumerate(links):
+            title = re.sub(r'<[^>]+>', '', lm.group(1)).strip()
+            if '音乐剧' not in title:
                 continue
-        print(f"  ✓ 东方演出网(音乐剧): {len(shows)} 条")
+            start = lm.end()
+            end = links[i + 1].start() if i + 1 < len(links) else len(html)
+            block = html[start:end]
+            tm = re.search(r'演出时间[：:]\s*([^<]+)', block)
+            if not tm:
+                continue
+            dates, times = parse_df_dates(tm.group(1).strip())
+            if not dates:
+                continue
+            vm = re.search(r'地点[：:]\s*([^<]+)', block)
+            venue = vm.group(1).strip() if vm else ""
+            pm = re.search(r'门票价格[：:]\s*([^<]+)', block)
+            price_raw = pm.group(1).strip() if pm else ""
+            price = ("¥" + price_raw.replace('-', ' — ')) if price_raw else "票价以官方公布为准"
+            city = guess_city(venue)
+            time_str = times[0] if times else ""
+            for d in dates:
+                if d < today - timedelta(days=7):
+                    continue
+                shows.append({
+                    "title": title, "date": d.strftime("%Y-%m-%d"), "time": time_str,
+                    "venue": venue, "city": city, "price": price,
+                    "cast": "以官方公布为准", "is_all_female": False, "source": "df962388",
+                })
+        print(f"  ✓ 东方演出网: {len(shows)} 条场次")
     except Exception as e:
-        print(f"  ⚠️ 东方演出网(音乐剧)抓取失败: {e}")
+        print(f"  ⚠️ 东方演出网抓取失败: {e}")
     return shows
 
 
@@ -407,19 +446,20 @@ def merge_shows(scraped_shows, known_shows):
             if key not in s['_keys']:
                 s['_keys'].add(key)
                 s['performances'].append({
-                    'id': f"{s['id']}-{date}" + (f"-{len(s['performances'])+1}" if len([p for p in s['performances'] if p.get('date')==date]) else ""),
+                    'id': f"{s['id']}-{date}-{sc.get('time','').replace(':','') or len(s['performances'])}",
                     'date': date, 'time': sc.get('time', ''), 'venue': venue,
                     'city': sc.get('city', ''),
                     'cast': [sc['cast']] if sc.get('cast') else [],
                     'price': sc.get('price', '以场馆公布为准'),
                     'is_all_female': sc.get('is_all_female', s.get('is_all_female', False)),
+                    'source': sc.get('source', 'scraped'),
                 })
                 if not s.get('troupe') and sc.get('troupe'):
                     s['troupe'] = sc['troupe']
         elif date and title and len(title) > 2:
             new_count += 1
             sid = f"new-{new_count:03d}"
-            merged.append({
+            ns = {
                 'id': sid, 'title': title, 'subtitle': '', 'troupe': sc.get('troupe', ''),
                 'is_all_female': sc.get('is_all_female', False),
                 'performances': [{
@@ -428,9 +468,12 @@ def merge_shows(scraped_shows, known_shows):
                     'cast': [sc['cast']] if sc.get('cast') else [],
                     'price': sc.get('price', '以场馆公布为准'),
                     'is_all_female': sc.get('is_all_female', False),
+                    'source': sc.get('source', 'scraped'),
                 }],
-            })
-            index[nt] = merged[-1]
+            }
+            ns['_keys'] = set([key])
+            merged.append(ns)
+            index[nt] = ns
 
     for s in merged:
         s.pop('_keys', None)
@@ -446,27 +489,33 @@ def main():
     print(f"📅 运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
 
-    # 默认使用已核实的真实档期种子（KNOWN_SHOWS）。
-    # 海外 runner 抓取中国票务站既不稳定又易污染已核实数据；
-    # 如需启用实时抓取，请在运行环境设置 ENABLE_SCRAPE=1。
-    enable_scrape = os.environ.get("ENABLE_SCRAPE") == "1"
+    # 默认开启实时抓取；KNOWN_SHOWS 作为已核实剧目的高质量校准层
+    # （保留逐场卡司与全女卡司判定；抓取层负责补全已知剧场次 + 自动发现新剧）。
+    # 设 ENABLE_SCRAPE=0 可关闭抓取，仅用种子数据。
+    enable_scrape = os.environ.get("ENABLE_SCRAPE", "1") == "1"
     shows = copy.deepcopy(KNOWN_SHOWS)
-    if enable_scrape and HAS_NET:
-        try:
-            all_scraped = []
-            all_scraped += scrape_df962388()
-            time.sleep(SLEEP_BETWEEN)
-            all_scraped += scrape_saoju()
-            time.sleep(SLEEP_BETWEEN)
-            all_scraped += scrape_damai()
-            if all_scraped:
-                shows = merge_shows(all_scraped, KNOWN_SHOWS)
-                print(f"📊 已合并 {len(all_scraped)} 条抓取数据")
-        except Exception as e:
-            print(f"⚠️ 抓取/合并异常，回退到种子数据: {e}")
-            shows = copy.deepcopy(KNOWN_SHOWS)
+    if enable_scrape:
+        if not HAS_NET:
+            print("⚠️ 未安装 requests/bs4，回退到 KNOWN_SHOWS 种子")
+        else:
+            try:
+                all_scraped = []
+                all_scraped += scrape_df962388()
+                time.sleep(SLEEP_BETWEEN)
+                all_scraped += scrape_saoju()
+                time.sleep(SLEEP_BETWEEN)
+                all_scraped += scrape_damai()
+                if all_scraped:
+                    shows = merge_shows(all_scraped, KNOWN_SHOWS)
+                    print(f"📊 已合并 {len(all_scraped)} 条抓取数据（KNOWN_SHOWS 校准层保留卡司/全女标记）")
+                else:
+                    print("ℹ️ 抓取无有效数据，使用 KNOWN_SHOWS 种子")
+                    shows = copy.deepcopy(KNOWN_SHOWS)
+            except Exception as e:
+                print(f"⚠️ 抓取/合并异常，回退到 KNOWN_SHOWS 种子: {e}")
+                shows = copy.deepcopy(KNOWN_SHOWS)
     else:
-        print("ℹ️ 使用已核实的 KNOWN_SHOWS 种子数据（每日自动重生成，自动隐藏过期场次）")
+        print("ℹ️ 仅使用 KNOWN_SHOWS 种子（ENABLE_SCRAPE=0）")
 
     total_perfs = sum(len(s.get('performances', [])) for s in shows)
     af_perfs = sum(1 for s in shows for p in s.get('performances', []) if p.get('is_all_female'))
@@ -479,7 +528,7 @@ def main():
             "all_female_shows": len([s for s in shows if s.get('is_all_female')]),
             "all_female_performances": af_perfs,
             "cities": len(cities), "scraped_at": datetime.now().isoformat(),
-            "sources": ["known_seed"],
+            "sources": ["known_seed", "df962388", "saoju"],
         },
         "shows": shows,
     }
