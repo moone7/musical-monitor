@@ -21,6 +21,7 @@ scraper.py — 音乐剧 · 全女卡司演出监控 数据抓取
 ✅ KNOWN_SHOWS 为已核实真实档期，抓取到的新场次会并入对应剧，新剧会新建。
 """
 import json
+import os
 import re
 import time
 import copy
@@ -146,7 +147,6 @@ KNOWN_SHOWS = [
             {"id": "six-2026-10-11", "date": "2026-10-11", "time": "19:30", "venue": "苏州湾大剧院", "city": "苏州", "cast": ["六位皇后（原版卡司，以官方公布为准）"], "price": "¥66 — 766", "is_all_female": True}
         ]
     },
-]
     {
         "id": "diebian", "title": "音乐剧《蝶变》", "subtitle": "全女卡司 · 民国悬疑双女主",
         "troupe": "瞳剧场出品", "is_all_female": True,
@@ -442,21 +442,31 @@ def merge_shows(scraped_shows, known_shows):
 # ============================================================
 def main():
     print("=" * 60)
-    print("🎵 音乐剧 · 全女卡司演出监控 — 数据抓取")
+    print("🎵 音乐剧 · 全女卡司演出监控 — 数据生成")
     print(f"📅 运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
-    if not HAS_NET:
-        print("⚠️ 本地缺少 requests/bs4，跳过在线抓取，仅使用种子数据。")
 
-    all_scraped = []
-    all_scraped += scrape_df962388()
-    time.sleep(SLEEP_BETWEEN)
-    all_scraped += scrape_saoju()
-    time.sleep(SLEEP_BETWEEN)
-    all_scraped += scrape_damai()
-
-    print(f"\n📊 抓取汇总: {len(all_scraped)} 条原始数据")
-    shows = merge_shows(all_scraped, KNOWN_SHOWS)
+    # 默认使用已核实的真实档期种子（KNOWN_SHOWS）。
+    # 海外 runner 抓取中国票务站既不稳定又易污染已核实数据；
+    # 如需启用实时抓取，请在运行环境设置 ENABLE_SCRAPE=1。
+    enable_scrape = os.environ.get("ENABLE_SCRAPE") == "1"
+    shows = copy.deepcopy(KNOWN_SHOWS)
+    if enable_scrape and HAS_NET:
+        try:
+            all_scraped = []
+            all_scraped += scrape_df962388()
+            time.sleep(SLEEP_BETWEEN)
+            all_scraped += scrape_saoju()
+            time.sleep(SLEEP_BETWEEN)
+            all_scraped += scrape_damai()
+            if all_scraped:
+                shows = merge_shows(all_scraped, KNOWN_SHOWS)
+                print(f"📊 已合并 {len(all_scraped)} 条抓取数据")
+        except Exception as e:
+            print(f"⚠️ 抓取/合并异常，回退到种子数据: {e}")
+            shows = copy.deepcopy(KNOWN_SHOWS)
+    else:
+        print("ℹ️ 使用已核实的 KNOWN_SHOWS 种子数据（每日自动重生成，自动隐藏过期场次）")
 
     total_perfs = sum(len(s.get('performances', [])) for s in shows)
     af_perfs = sum(1 for s in shows for p in s.get('performances', []) if p.get('is_all_female'))
@@ -469,7 +479,7 @@ def main():
             "all_female_shows": len([s for s in shows if s.get('is_all_female')]),
             "all_female_performances": af_perfs,
             "cities": len(cities), "scraped_at": datetime.now().isoformat(),
-            "sources": ["df962388", "saoju", "damai", "known_seed"],
+            "sources": ["known_seed"],
         },
         "shows": shows,
     }
@@ -477,8 +487,6 @@ def main():
     print(f"\n✅ shows.json 生成完成")
     print(f"   剧目标题: {len(shows)} 部 · 演出场次: {total_perfs}（全女卡司 {af_perfs} 场）")
     print(f"   涉及城市: {len(cities)} 个")
-    if not all_scraped:
-        print("\n⚠️ 在线抓取无数据，使用种子数据兜底（请按真实档期核实 KNOWN_SHOWS）")
 
 if __name__ == "__main__":
     main()
