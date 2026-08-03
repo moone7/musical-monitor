@@ -295,6 +295,23 @@ def guess_city(venue):
             return c
     return "上海"  # 该站为上海音乐剧时间表
 
+# ============================================================
+# 儿童 / 亲子类演出排除（用户只要音乐剧，不要亲子/儿童剧）
+# 既用于抓取过滤，也用于 merge 新建剧拦截。
+# ============================================================
+CHILDREN_KW = [
+    "亲子", "儿童", "少儿", "童话", "卡通", "动漫", "绘本", "启蒙", "早教",
+    "幼儿", "宝贝", "小观众", "木偶", "皮影", "立体书", "故事会", "小橙堡",
+    "海底小纵队", "小猪佩奇", "白雪公主", "丑小鸭", "三只小猪", "大头儿子",
+    "熊出没", "葫芦兄弟", "汪汪队", "超级飞侠", "巴啦啦", "喜羊羊", "猪猪侠",
+    "魔法学校", "奇妙的",
+]
+
+def is_children_show(title):
+    t = title or ""
+    return any(k in t for k in CHILDREN_KW)
+
+
 def parse_df_dates(raw):
     """返回 (dates: list[date], times: list[str])。区间仅保留首末两天，避免过度展开。"""
     raw = raw.replace('—', '-').replace('~', '-')
@@ -327,6 +344,8 @@ def scrape_df962388():
         for i, lm in enumerate(links):
             title = re.sub(r'<[^>]+>', '', lm.group(1)).strip()
             if '音乐剧' not in title:
+                continue
+            if is_children_show(title):
                 continue
             start = lm.end()
             end = links[i + 1].start() if i + 1 < len(links) else len(html)
@@ -456,7 +475,7 @@ def merge_shows(scraped_shows, known_shows):
                 })
                 if not s.get('troupe') and sc.get('troupe'):
                     s['troupe'] = sc['troupe']
-        elif date and title and len(title) > 2:
+        elif date and title and len(title) > 2 and not is_children_show(title):
             new_count += 1
             sid = f"new-{new_count:03d}"
             ns = {

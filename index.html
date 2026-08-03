@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>音乐剧 · 全女卡司演出日报 — 2026年8月2日</title>
+<title>音乐剧 · 全女卡司演出日报 — 2026年8月3日</title>
 <link rel="manifest" href="./manifest.json"/>
 <meta name="theme-color" content="#ff4d9d"/>
 <link rel="apple-touch-icon" href="./icon-180.png"/>
@@ -755,6 +755,33 @@
     color: var(--pink); font-weight: 700; margin-right: 3px;
     background: rgba(255,77,157,0.12); border-radius: 7px 0 0 7px; padding: 0 4px;
   }
+  /* ===== 演员可收藏星标 ===== */
+  .cast-chip.fav-able { cursor: pointer; }
+  .cast-chip.fav-able:hover { background: rgba(155,93,229,0.28); border-color: rgba(255,77,157,0.45); }
+  .cast-chip .fav-star { margin-left: 5px; font-size: 11px; opacity: .45; transition: all .2s; color: var(--text-dim); }
+  .cast-chip.fav-able:hover .fav-star { opacity: 1; color: var(--pink-light); }
+  .cast-chip.fav {
+    background: rgba(255,77,157,0.18);
+    border-color: rgba(255,77,157,0.55);
+    color: #ffd0e8;
+  }
+  .cast-chip.fav .fav-star { opacity: 1; color: var(--pink); }
+  .fav-filter-btn {
+    margin-left: 8px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 5px 14px; border-radius: 20px; cursor: pointer;
+    border: 1px solid rgba(255,200,90,0.4);
+    background: rgba(255,200,90,0.08); color: #ffd76a;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .fav-filter-btn:hover { background: rgba(255,200,90,0.18); border-color: #ffd76a; }
+  .fav-filter-btn.active {
+    background: linear-gradient(135deg, #ffd76a 0%, var(--pink) 100%);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 2px 12px rgba(255,200,90,0.35);
+  }
+  .fav-filter-btn .fav-count { font-size: 11px; opacity: .85; }
 
   /* ===== Stats Bar ===== */
   .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }
@@ -893,7 +920,7 @@
 <span class="header-flourish right">女</span>
 <h1>音乐剧 · 全女卡司演出日报</h1>
 <p class="subtitle">每日监控 · 大麦网 + 各剧院官方 + 全网检索</p>
-<span class="date-badge">📅 2026年8月2日 星期日</span>
+<span class="date-badge">📅 2026年8月3日 星期一</span>
 </header>
 <div class="container">
 <!-- ===== 🎟️ 我的演出提醒 ===== -->
@@ -935,12 +962,12 @@
 <div class="cal-tooltip" id="cal-tooltip"></div>
 <!-- ===== STATS ===== -->
 <div class="stats-bar">
-<div class="stat" data-num="109">
-<div class="stat-num">109</div>
+<div class="stat" data-num="99">
+<div class="stat-num">99</div>
 <div class="stat-label">未结束演出场次</div>
 </div>
-<div class="stat" data-num="49">
-<div class="stat-num">49</div>
+<div class="stat" data-num="48">
+<div class="stat-num">48</div>
 <div class="stat-label">💜 全女卡司场次</div>
 </div>
 <div class="stat" data-num="0" id="stat-card">
@@ -959,9 +986,8 @@
     <span class="ov-sub">未结束演出 · 已演满一周自动隐藏</span>
     <button class="ov-toggle" id="ovToggle" type="button">展开明细 ▾</button>
   </div>
-  <div class="ov-flags" id="ov-flags"><span class="flag-chip flag-today">🔥 今日开演 2 场</span>
-<span class="flag-chip flag-week">📅 7 天内开演 10 场</span></div>
-  <div class="ov-cities" id="ov-cities"><span class="ov-cap af"><span class="heart">💜</span>上海 <span class="cnt">58</span>场</span>
+  <div class="ov-flags" id="ov-flags"><span class="flag-chip flag-week">📅 7 天内开演 10 场</span></div>
+  <div class="ov-cities" id="ov-cities"><span class="ov-cap af"><span class="heart">💜</span>上海 <span class="cnt">48</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>苏州 <span class="cnt">11</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>北京 <span class="cnt">6</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>南京 <span class="cnt">4</span>场</span>
@@ -976,7 +1002,7 @@
 <span class="ov-cap af"><span class="heart">💜</span>舟山 <span class="cnt">2</span>场</span>
 <span class="ov-cap">衢州 <span class="cnt">2</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>郑州 <span class="cnt">2</span>场</span></div>
-  <div class="ov-detail is-hidden" id="ovDetail"><div class="ov-detail-row"><b>上海</b>58场：<span class="af-mark"></span>《MSK十一周年音乐剧音乐会 演出答谢季》、<span class="af-mark"></span>《Stars Gala音乐剧明星音乐会—Broadway Queens》、<span class="af-mark"></span>《上海 多媒体魔幻亲子音乐剧《阿拉丁与神灯之沉睡精灵》、<span class="af-mark"></span>《上海MSK十一周年音乐剧音乐会 演出答谢季》、<span class="af-mark"></span>《上海Stars Gala音乐剧明星音乐会》、<span class="af-mark"></span>《上海《花木兰》造梦盒子欢乐互动家庭音乐剧》、<span class="af-mark"></span>《上海儿童音乐剧《桃夭》、<span class="af-mark"></span>《上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0》、<span class="af-mark"></span>《上海音乐剧《快乐即逝》、<span class="af-mark"></span>《上海音乐剧《快把我哥带走》读本音乐会》、<span class="af-mark"></span>《多媒体亲子音乐剧场《88键漫游宇宙》、<span class="af-mark"></span>《女巫》、<span class="af-mark"></span>《小顽家·英国原版音乐剧《剧场里的小怪兽》、<span class="af-mark"></span>《德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert)》、<span class="af-mark"></span>《德米安》、<span class="af-mark"></span>《父子亲情—多媒体奇幻亲子音乐剧《匹诺曹奇遇记》、<span class="af-mark"></span>《粉丝来信》、<span class="af-mark">💜 </span>《连璧》</div>
+  <div class="ov-detail is-hidden" id="ovDetail"><div class="ov-detail-row"><b>上海</b>48场：<span class="af-mark"></span>《MSK十一周年音乐剧音乐会 演出答谢季》、<span class="af-mark"></span>《Stars Gala音乐剧明星音乐会—Broadway Queens》、<span class="af-mark"></span>《上海MSK十一周年音乐剧音乐会 演出答谢季》、<span class="af-mark"></span>《上海Stars Gala音乐剧明星音乐会》、<span class="af-mark"></span>《上海《花木兰》造梦盒子欢乐互动家庭音乐剧》、<span class="af-mark"></span>《上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0》、<span class="af-mark"></span>《上海音乐剧《快乐即逝》、<span class="af-mark"></span>《上海音乐剧《快把我哥带走》读本音乐会》、<span class="af-mark"></span>《女巫》、<span class="af-mark"></span>《小顽家·英国原版音乐剧《剧场里的小怪兽》、<span class="af-mark"></span>《德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert)》、<span class="af-mark"></span>《德米安》、<span class="af-mark"></span>《粉丝来信》、<span class="af-mark">💜 </span>《连璧》</div>
 <div class="ov-detail-row"><b>苏州</b>11场：<span class="af-mark">💜 </span>《SIX》</div>
 <div class="ov-detail-row"><b>北京</b>6场：<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark">💜 </span>《蝶变》</div>
 <div class="ov-detail-row"><b>南京</b>4场：<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark"></span>《粉丝来信》</div>
@@ -994,6 +1020,7 @@
 </div>
 <!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
 <h2 class="section-title"><span class="section-icon">📋</span> 演出一览
+  <button id="fav-filter-btn" class="fav-filter-btn" onclick="toggleFavFilter()" title="先在卡片上点击演员名后的 ★ 标记喜欢的演员，再用此按钮只看 TA 们的场次">⭐ 关注演员<span class="fav-count"></span></button>
   <button id="af-filter-btn" class="af-filter-btn" onclick="toggleAllFemaleFilter()">💜 仅看全女卡司</button>
 </h2>
 <div class="tab-bar" id="tab-bar">
@@ -1005,20 +1032,16 @@
 <button class="tab-btn" data-tab="lianbi">连璧</button>
 <button class="tab-btn" data-tab="demian">德米安</button>
 <button class="tab-btn" data-tab="fslsx">粉丝来信</button>
-<button class="tab-btn" data-tab="new-001">上海 多媒体魔幻亲子音乐剧《阿拉丁与神灯之沉睡精灵</button>
-<button class="tab-btn" data-tab="new-002">上海儿童音乐剧《桃夭</button>
-<button class="tab-btn" data-tab="new-003">上海音乐剧《快把我哥带走》读本音乐会</button>
-<button class="tab-btn" data-tab="new-004">上海MSK十一周年音乐剧音乐会 演出答谢季</button>
-<button class="tab-btn" data-tab="new-005">上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0</button>
-<button class="tab-btn" data-tab="new-006">MSK十一周年音乐剧音乐会 演出答谢季</button>
-<button class="tab-btn" data-tab="new-007">父子亲情—多媒体奇幻亲子音乐剧《匹诺曹奇遇记</button>
-<button class="tab-btn" data-tab="new-008">多媒体亲子音乐剧场《88键漫游宇宙</button>
-<button class="tab-btn" data-tab="new-009">上海《花木兰》造梦盒子欢乐互动家庭音乐剧</button>
-<button class="tab-btn" data-tab="new-010">德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert)</button>
-<button class="tab-btn" data-tab="new-011">Stars Gala音乐剧明星音乐会—Broadway Queens</button>
-<button class="tab-btn" data-tab="new-012">小顽家·英国原版音乐剧《剧场里的小怪兽</button>
-<button class="tab-btn" data-tab="new-013">上海音乐剧《快乐即逝</button>
-<button class="tab-btn" data-tab="new-014">上海Stars Gala音乐剧明星音乐会</button>
+<button class="tab-btn" data-tab="new-001">上海音乐剧《快把我哥带走》读本音乐会</button>
+<button class="tab-btn" data-tab="new-002">上海MSK十一周年音乐剧音乐会 演出答谢季</button>
+<button class="tab-btn" data-tab="new-003">上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0</button>
+<button class="tab-btn" data-tab="new-004">MSK十一周年音乐剧音乐会 演出答谢季</button>
+<button class="tab-btn" data-tab="new-005">上海《花木兰》造梦盒子欢乐互动家庭音乐剧</button>
+<button class="tab-btn" data-tab="new-006">德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert)</button>
+<button class="tab-btn" data-tab="new-007">Stars Gala音乐剧明星音乐会—Broadway Queens</button>
+<button class="tab-btn" data-tab="new-008">小顽家·英国原版音乐剧《剧场里的小怪兽</button>
+<button class="tab-btn" data-tab="new-009">上海音乐剧《快乐即逝</button>
+<button class="tab-btn" data-tab="new-010">上海Stars Gala音乐剧明星音乐会</button>
 </div>
 <div class="tab-panels" id="tab-panels">
 <div class="show-panel all-female" data-show="tafan">
@@ -1039,7 +1062,7 @@
 <span><span class="meta-icon">🏙️</span>青岛</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王珏语涵</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="王洁璐" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>王洁璐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐郑凯伊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>徐郑凯伊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王竞琦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>王竞琦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王珏语涵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王珏语涵<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1057,7 +1080,7 @@
 <span><span class="meta-icon">🏙️</span>青岛</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王珏语涵</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杜钇樵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>杜钇樵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="田梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>田梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王竞琦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>王竞琦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王珏语涵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王珏语涵<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1075,7 +1098,7 @@
 <span><span class="meta-icon">🏙️</span>郑州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="田梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>田梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="夏云梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>夏云梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="蒋依敏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>蒋依敏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1093,7 +1116,7 @@
 <span><span class="meta-icon">🏙️</span>郑州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="田梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>田梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="夏云梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>夏云梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="蒋依敏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>蒋依敏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1111,7 +1134,7 @@
 <span><span class="meta-icon">🏙️</span>哈尔滨</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杜钇樵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>杜钇樵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张烜尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>张烜尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐郑凯伊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>徐郑凯伊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王竞琦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>王竞琦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1129,7 +1152,7 @@
 <span><span class="meta-icon">🏙️</span>哈尔滨</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>左一平</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张烜尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>张烜尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="左一平" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>左一平<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王竞琦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>王竞琦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1147,7 +1170,7 @@
 <span><span class="meta-icon">🏙️</span>沈阳</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>郑涵一</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>王珏语涵</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杜钇樵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>杜钇樵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郑涵一" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>郑涵一<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐郑凯伊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>徐郑凯伊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="夏云梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>夏云梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王珏语涵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王珏语涵<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1165,7 +1188,7 @@
 <span><span class="meta-icon">🏙️</span>沈阳</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>杨依泠</span><span class="cast-chip"><b class="cast-role">多琳</b>左一平</span><span class="cast-chip"><b class="cast-role">罗纳德</b>夏云梦</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="杨依泠" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>杨依泠<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="左一平" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>左一平<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="夏云梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>夏云梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1219,7 +1242,7 @@
 <span><span class="meta-icon">🏙️</span>南京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张烜尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>张烜尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="恩妤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>恩妤<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="蒋依敏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>蒋依敏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1237,7 +1260,7 @@
 <span><span class="meta-icon">🏙️</span>南京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="王洁璐" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>王洁璐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="恩妤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>恩妤<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1255,7 +1278,7 @@
 <span><span class="meta-icon">🏙️</span>杭州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">辛西娅</b>张烜尔</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张烜尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>张烜尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="恩妤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>恩妤<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="蒋依敏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>蒋依敏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1273,7 +1296,7 @@
 <span><span class="meta-icon">🏙️</span>杭州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>党韫葳</span><span class="cast-chip"><b class="cast-role">多琳</b>胥子含</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="王洁璐" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>王洁璐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="恩妤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>恩妤<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1291,7 +1314,7 @@
 <span><span class="meta-icon">🏙️</span>台州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>杜钇樵</span><span class="cast-chip"><b class="cast-role">辛西娅</b>马小乔</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杜钇樵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>杜钇樵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="马小乔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>马小乔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐郑凯伊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>徐郑凯伊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王竞琦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>王竞琦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="蒋依敏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>蒋依敏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1309,7 +1332,7 @@
 <span><span class="meta-icon">🏙️</span>台州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">辛西娅</b>马小乔</span><span class="cast-chip"><b class="cast-role">多琳</b>徐郑凯伊</span><span class="cast-chip"><b class="cast-role">罗纳德</b>王竞琦</span><span class="cast-chip"><b class="cast-role">德国王</b>蒋依敏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="王洁璐" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>王洁璐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="马小乔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>马小乔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐郑凯伊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>徐郑凯伊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王竞琦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>王竞琦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="蒋依敏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>蒋依敏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1327,7 +1350,7 @@
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>郑涵一</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郑涵一" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>郑涵一<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="田梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>田梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="恩妤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>恩妤<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1345,7 +1368,7 @@
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">莉莉丝</b>丁辰西</span><span class="cast-chip"><b class="cast-role">辛西娅</b>郑涵一</span><span class="cast-chip"><b class="cast-role">多琳</b>田梦</span><span class="cast-chip"><b class="cast-role">罗纳德</b>恩妤</span><span class="cast-chip"><b class="cast-role">德国王</b>王明怡</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">莉莉丝</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郑涵一" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛西娅</b>郑涵一<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="田梦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">多琳</b>田梦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="恩妤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">罗纳德</b>恩妤<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王明怡" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德国王</b>王明怡<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>缪时客 / 染空间 出品
 </div>
 </div>
@@ -1360,47 +1383,11 @@
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
-    <div class="sph-meta">🏛️ 上海话剧艺术中心 呈现 · 9 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    <div class="sph-meta">🏛️ 上海话剧艺术中心 呈现 · 7 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
     <div class="sph-note">卡司以女演员为主，但「女巫猎人」角色由男演员饰演，故不计入全女卡司。上海驻演共12场。</div>
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card past" data-id="witch-2026-07-26-a" data-show="witch" data-date="2026-07-26" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月26日（周日）14:30</span>
-<span><span class="meta-icon">📍</span>上剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈恬</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>党韫葳</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
-<strong>制作：</strong>上海话剧艺术中心 呈现
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-done">✅ 已演</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 986</div></div>
-</div>
-<div class="perf-card past" data-id="witch-2026-07-26-b" data-show="witch" data-date="2026-07-26" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月26日（周日）19:30</span>
-<span><span class="meta-icon">📍</span>上剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>胥子含</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>张沁丹</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
-<strong>制作：</strong>上海话剧艺术中心 呈现
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-done">✅ 已演</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥180 — 986</div></div>
-</div>
 <div class="perf-card past" data-id="witch-2026-07-28" data-show="witch" data-date="2026-07-28" data-time="19:30" data-title="音乐剧《女巫》" data-venue="上剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
@@ -1410,7 +1397,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>余思冉</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁臻滢</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="余思冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>余思冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="丁臻滢" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>丁臻滢<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="覃威尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>覃威尔<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
@@ -1428,7 +1415,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>胥子含</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>张沁丹</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张沁丹" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>张沁丹<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="曹洪远" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>曹洪远<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
@@ -1446,7 +1433,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈玉婷</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁辰西</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="陈玉婷" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>陈玉婷<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="付世刚" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>付世刚<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
@@ -1464,7 +1451,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈玉婷</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>党韫葳</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>曹洪远</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="陈玉婷" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>陈玉婷<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="曹洪远" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>曹洪远<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
@@ -1482,7 +1469,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>叶嘉雯</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁辰西</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="叶嘉雯" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>叶嘉雯<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="覃威尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>覃威尔<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
@@ -1500,7 +1487,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>陈玉婷</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>丁辰西</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>党韫葳</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>付世刚</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="陈玉婷" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>陈玉婷<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="付世刚" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>付世刚<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
@@ -1509,7 +1496,7 @@
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥180 — 986</div></div>
 </div>
-<div class="perf-card today" data-id="witch-2026-08-02" data-show="witch" data-date="2026-08-02" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
+<div class="perf-card past" data-id="witch-2026-08-02" data-show="witch" data-date="2026-08-02" data-time="14:30" data-title="音乐剧《女巫》" data-venue="上剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《女巫》 <em>悬疑 · 含男演员饰「女巫猎人」</em></div>
 <div class="perf-meta">
@@ -1518,12 +1505,12 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">艾比</b>叶嘉雯</span><span class="cast-chip"><b class="cast-role">玛格丽特</b>党韫葳</span><span class="cast-chip"><b class="cast-role">艾尔西丝</b>王洁璐</span><span class="cast-chip"><b class="cast-role">女巫猎人</b>覃威尔</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="叶嘉雯" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾比</b>叶嘉雯<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="党韫葳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">玛格丽特</b>党韫葳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="王洁璐" title="点击 ★ 标记喜欢的演员"><b class="cast-role">艾尔西丝</b>王洁璐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="覃威尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">女巫猎人</b>覃威尔<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海话剧艺术中心 呈现
 </div>
 </div>
 <div class="perf-side">
-<span class="tag tag-urgent">🔥 今日开演</span>
+<span class="tag tag-done">✅ 已演</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥180 — 986</div></div>
 </div>
@@ -1792,7 +1779,7 @@
 <span><span class="meta-icon">🏙️</span>青岛</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">曼曼</b>胥子含</span><span class="cast-chip"><b class="cast-role">沈文君</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">齐志平</b>付世刚</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">曼曼</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">沈文君</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="付世刚" title="点击 ★ 标记喜欢的演员"><b class="cast-role">齐志平</b>付世刚<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>瞳剧场出品
 </div>
 </div>
@@ -1810,7 +1797,7 @@
 <span><span class="meta-icon">🏙️</span>青岛</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">曼曼</b>胥子含</span><span class="cast-chip"><b class="cast-role">沈文君</b>赵雨卉</span><span class="cast-chip"><b class="cast-role">齐志平</b>付世刚</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">曼曼</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">沈文君</b>赵雨卉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="付世刚" title="点击 ★ 标记喜欢的演员"><b class="cast-role">齐志平</b>付世刚<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>瞳剧场出品
 </div>
 </div>
@@ -1828,7 +1815,7 @@
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">曼曼</b>钱安琪</span><span class="cast-chip"><b class="cast-role">沈文君</b>邓贤凌</span><span class="cast-chip"><b class="cast-role">齐志平</b>刘泽星</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="钱安琪" title="点击 ★ 标记喜欢的演员"><b class="cast-role">曼曼</b>钱安琪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="邓贤凌" title="点击 ★ 标记喜欢的演员"><b class="cast-role">沈文君</b>邓贤凌<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘泽星" title="点击 ★ 标记喜欢的演员"><b class="cast-role">齐志平</b>刘泽星<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>瞳剧场出品
 </div>
 </div>
@@ -1846,7 +1833,7 @@
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">曼曼</b>胥子含</span><span class="cast-chip"><b class="cast-role">沈文君</b>邓贤凌</span><span class="cast-chip"><b class="cast-role">齐志平</b>刘泽星</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">曼曼</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="邓贤凌" title="点击 ★ 标记喜欢的演员"><b class="cast-role">沈文君</b>邓贤凌<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘泽星" title="点击 ★ 标记喜欢的演员"><b class="cast-role">齐志平</b>刘泽星<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>瞳剧场出品
 </div>
 </div>
@@ -1864,7 +1851,7 @@
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">曼曼</b>叶嘉雯</span><span class="cast-chip"><b class="cast-role">沈文君</b>丁辰西</span><span class="cast-chip"><b class="cast-role">齐志平</b>付世刚</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="叶嘉雯" title="点击 ★ 标记喜欢的演员"><b class="cast-role">曼曼</b>叶嘉雯<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="丁辰西" title="点击 ★ 标记喜欢的演员"><b class="cast-role">沈文君</b>丁辰西<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="付世刚" title="点击 ★ 标记喜欢的演员"><b class="cast-role">齐志平</b>付世刚<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>瞳剧场出品
 </div>
 </div>
@@ -1882,7 +1869,7 @@
 <span><span class="meta-icon">🏙️</span>北京</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">曼曼</b>叶嘉雯</span><span class="cast-chip"><b class="cast-role">沈文君</b>赵嘉艳</span><span class="cast-chip"><b class="cast-role">齐志平</b>付世刚</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="叶嘉雯" title="点击 ★ 标记喜欢的演员"><b class="cast-role">曼曼</b>叶嘉雯<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵嘉艳" title="点击 ★ 标记喜欢的演员"><b class="cast-role">沈文君</b>赵嘉艳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="付世刚" title="点击 ★ 标记喜欢的演员"><b class="cast-role">齐志平</b>付世刚<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>瞳剧场出品
 </div>
 </div>
@@ -1897,30 +1884,11 @@
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">音乐剧《连璧》 <em>全女卡司 · 原创双女主驻演</em></div>
-    <div class="sph-meta">🏛️ 河鳄文化 HerMusical 出品 · 12 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
+    <div class="sph-meta">🏛️ 河鳄文化 HerMusical 出品 · 11 场 · 上海 <span class="sph-af">💜 全女卡司</span></div>
     <div class="sph-note">原创双女主音乐剧，上海她剧场（星空间407号）驻演，全女卡司。</div>
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card all-female past" data-all-female="1" data-id="lianbi-2026-07-26" data-show="lianbi" data-date="2026-07-26" data-time="14:30" data-title="音乐剧《连璧》" data-venue="星空间407号·她剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《连璧》 <em>全女卡司 · 原创双女主驻演</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月26日（周日）14:30</span>
-<span><span class="meta-icon">📍</span>星空间407号·她剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>林润欣</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>邓茹月</span></span><br/>
-<strong>制作：</strong>河鳄文化 HerMusical 出品
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-all-female">💜 全女卡司</span>
-<span class="tag tag-done">✅ 已演</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">票价以官方公布为准</div></div>
-</div>
 <div class="perf-card all-female past" data-all-female="1" data-id="lianbi-2026-08-01-a" data-show="lianbi" data-date="2026-08-01" data-time="14:30" data-title="音乐剧《连璧》" data-venue="星空间407号·她剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《连璧》 <em>全女卡司 · 原创双女主驻演</em></div>
@@ -1930,7 +1898,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>郭美冉</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>胥子含</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="郭美冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>郭美冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>胥子含<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -1949,7 +1917,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>孙乐仟</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>杜钇樵</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="孙乐仟" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>孙乐仟<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="杜钇樵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>杜钇樵<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -1968,7 +1936,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>庞雪倩</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>许诗翊</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="庞雪倩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>庞雪倩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="许诗翊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>许诗翊<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -1986,7 +1954,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>杨悦</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>易群</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杨悦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>杨悦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="易群" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>易群<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2004,7 +1972,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>郭美冉</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>邓茹月</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="郭美冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>郭美冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="邓茹月" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>邓茹月<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2022,7 +1990,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>杨悦</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>赵雨卉</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杨悦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>杨悦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>赵雨卉<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2040,7 +2008,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>庞雪倩</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>左一平</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="庞雪倩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>庞雪倩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="左一平" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>左一平<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2058,7 +2026,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>张沁丹</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>胥子含</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张沁丹" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>张沁丹<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>胥子含<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2076,7 +2044,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>吴杭律</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>左一平</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="吴杭律" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>吴杭律<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="左一平" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>左一平<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2094,7 +2062,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>张沁丹</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>赵雨卉</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张沁丹" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>张沁丹<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵雨卉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>赵雨卉<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2112,7 +2080,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">李玉屏</b>杨悦</span><span class="cast-chip"><b class="cast-role">谢宛宁</b>杜钇樵</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="杨悦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李玉屏</b>杨悦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="杜钇樵" title="点击 ★ 标记喜欢的演员"><b class="cast-role">谢宛宁</b>杜钇樵<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>河鳄文化 HerMusical 出品
 </div>
 </div>
@@ -2127,47 +2095,11 @@
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">音乐剧《德米安》 <em>双男主 · 限时驻演</em></div>
-    <div class="sph-meta">🏛️ 上海十二楼音乐剧之城 · 18 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    <div class="sph-meta">🏛️ 上海十二楼音乐剧之城 · 16 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
     <div class="sph-note">双男主音乐剧（辛克莱/德米安），非全女卡司；列入以便完整呈现真实档期。</div>
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card past" data-id="demian-2026-07-26-a" data-show="demian" data-date="2026-07-26" data-time="14:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《德米安》 <em>双男主 · 限时驻演</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月26日（周日）14:30</span>
-<span><span class="meta-icon">📍</span>十二楼音乐剧之城·圆形剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>赵嘉艳</span><span class="cast-chip"><b class="cast-role">德米安</b>叶嘉雯</span></span><br/>
-<strong>制作：</strong>上海十二楼音乐剧之城
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-done">✅ 已演</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">票价以官方公布为准</div></div>
-</div>
-<div class="perf-card past" data-id="demian-2026-07-26-b" data-show="demian" data-date="2026-07-26" data-time="19:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
-<div class="perf-info">
-<div class="perf-title">音乐剧《德米安》 <em>双男主 · 限时驻演</em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>7月26日（周日）19:30</span>
-<span><span class="meta-icon">📍</span>十二楼音乐剧之城·圆形剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>相征</span><span class="cast-chip"><b class="cast-role">德米安</b>汤佳明</span></span><br/>
-<strong>制作：</strong>上海十二楼音乐剧之城
-</div>
-</div>
-<div class="perf-side">
-<span class="tag tag-done">✅ 已演</span>
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">票价以官方公布为准</div></div>
-</div>
 <div class="perf-card past" data-id="demian-2026-07-31" data-show="demian" data-date="2026-07-31" data-time="19:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《德米安》 <em>双男主 · 限时驻演</em></div>
@@ -2177,7 +2109,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>陈诗</span><span class="cast-chip"><b class="cast-role">德米安</b>孙一城</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="陈诗" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>陈诗<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙一城" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>孙一城<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2195,7 +2127,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>蓝浩</span><span class="cast-chip"><b class="cast-role">德米安</b>钱蒙楠</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="蓝浩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>蓝浩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="钱蒙楠" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>钱蒙楠<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2213,7 +2145,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>钱安琪</span><span class="cast-chip"><b class="cast-role">德米安</b>陈檀雅</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="钱安琪" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>钱安琪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈檀雅" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>陈檀雅<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2222,7 +2154,7 @@
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">票价以官方公布为准</div></div>
 </div>
-<div class="perf-card today" data-id="demian-2026-08-02" data-show="demian" data-date="2026-08-02" data-time="19:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
+<div class="perf-card past" data-id="demian-2026-08-02" data-show="demian" data-date="2026-08-02" data-time="19:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《德米安》 <em>双男主 · 限时驻演</em></div>
 <div class="perf-meta">
@@ -2231,16 +2163,16 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>徐晨曦</span><span class="cast-chip"><b class="cast-role">德米安</b>陈檀雅</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="徐晨曦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>徐晨曦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈檀雅" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>陈檀雅<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
 <div class="perf-side">
-<span class="tag tag-urgent">🔥 今日开演</span>
+<span class="tag tag-done">✅ 已演</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">票价以官方公布为准</div></div>
 </div>
-<div class="perf-card" data-id="demian-2026-08-04" data-show="demian" data-date="2026-08-04" data-time="19:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
+<div class="perf-card tomorrow" data-id="demian-2026-08-04" data-show="demian" data-date="2026-08-04" data-time="19:30" data-title="音乐剧《德米安》" data-venue="十二楼音乐剧之城·圆形剧场">
 <div class="perf-info">
 <div class="perf-title">音乐剧《德米安》 <em>双男主 · 限时驻演</em></div>
 <div class="perf-meta">
@@ -2249,12 +2181,12 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>钱安琪</span><span class="cast-chip"><b class="cast-role">德米安</b>张沁丹</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="钱安琪" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>钱安琪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张沁丹" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>张沁丹<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
 <div class="perf-side">
-
+<span class="tag tag-urgent">🔥 明日开演</span>
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">票价以官方公布为准</div></div>
 </div>
@@ -2267,7 +2199,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>蓝浩</span><span class="cast-chip"><b class="cast-role">德米安</b>尤宣程</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="蓝浩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>蓝浩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="尤宣程" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>尤宣程<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2285,7 +2217,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>胥子含</span><span class="cast-chip"><b class="cast-role">德米安</b>叶嘉雯</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="胥子含" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>胥子含<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶嘉雯" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>叶嘉雯<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2303,7 +2235,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>徐晨曦</span><span class="cast-chip"><b class="cast-role">德米安</b>陈檀雅</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="徐晨曦" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>徐晨曦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈檀雅" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>陈檀雅<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2321,7 +2253,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>许昌泰</span><span class="cast-chip"><b class="cast-role">德米安</b>汤佳明</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="许昌泰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>许昌泰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="汤佳明" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>汤佳明<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2339,7 +2271,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>许昌泰</span><span class="cast-chip"><b class="cast-role">德米安</b>汤佳明</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="许昌泰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>许昌泰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="汤佳明" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>汤佳明<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2357,7 +2289,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>相征</span><span class="cast-chip"><b class="cast-role">德米安</b>钱蒙楠</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="相征" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>相征<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="钱蒙楠" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>钱蒙楠<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2375,7 +2307,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>陈诗</span><span class="cast-chip"><b class="cast-role">德米安</b>汤佳明</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="陈诗" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>陈诗<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="汤佳明" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>汤佳明<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2393,7 +2325,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>相征</span><span class="cast-chip"><b class="cast-role">德米安</b>孙一城</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="相征" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>相征<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙一城" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>孙一城<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2411,7 +2343,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>李苏霖</span><span class="cast-chip"><b class="cast-role">德米安</b>汤佳明</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="李苏霖" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>李苏霖<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="汤佳明" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>汤佳明<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2429,7 +2361,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>强东玥</span><span class="cast-chip"><b class="cast-role">德米安</b>陈檀雅</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="强东玥" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>强东玥<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈檀雅" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>陈檀雅<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2447,7 +2379,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">辛克莱</b>陈诗</span><span class="cast-chip"><b class="cast-role">德米安</b>孙一城</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="陈诗" title="点击 ★ 标记喜欢的演员"><b class="cast-role">辛克莱</b>陈诗<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙一城" title="点击 ★ 标记喜欢的演员"><b class="cast-role">德米安</b>孙一城<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>上海十二楼音乐剧之城
 </div>
 </div>
@@ -2476,7 +2408,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>于晓璘</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>刘浩冉</span><span class="cast-chip"><b class="cast-role">李灵</b>傅祥安</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>李存贤</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="于晓璘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>于晓璘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘浩冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>刘浩冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="傅祥安" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>傅祥安<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="李存贤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>李存贤<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2494,7 +2426,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>马海生</span><span class="cast-chip"><b class="cast-role">夏光</b>郭耀嵘</span><span class="cast-chip"><b class="cast-role">李灵</b>赵伟钢</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>姜崃</span><span class="cast-chip"><b class="cast-role">马克梵</b>李存贤</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="马海生" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>马海生<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郭耀嵘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>郭耀嵘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵伟钢" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>赵伟钢<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="姜崃" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>姜崃<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="李存贤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>李存贤<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2512,7 +2444,7 @@
 <span><span class="meta-icon">🏙️</span>上海</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>于晓璘</span><span class="cast-chip"><b class="cast-role">金海鸣</b>施哲明</span><span class="cast-chip"><b class="cast-role">夏光</b>崔恩尔</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>姜崃</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="于晓璘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>于晓璘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="施哲明" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>施哲明<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="崔恩尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>崔恩尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="姜崃" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>姜崃<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2530,7 +2462,7 @@
 <span><span class="meta-icon">🏙️</span>常州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>马海生</span><span class="cast-chip"><b class="cast-role">夏光</b>郭耀嵘</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>姜崃</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="马海生" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>马海生<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郭耀嵘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>郭耀嵘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="姜崃" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>姜崃<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2548,7 +2480,7 @@
 <span><span class="meta-icon">🏙️</span>常州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>马海生</span><span class="cast-chip"><b class="cast-role">夏光</b>刘浩冉</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>姜崃</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="马海生" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>马海生<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘浩冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>刘浩冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="姜崃" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>姜崃<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2566,7 +2498,7 @@
 <span><span class="meta-icon">🏙️</span>东莞</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>郭耀嵘</span><span class="cast-chip"><b class="cast-role">李灵</b>傅祥安</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郭耀嵘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>郭耀嵘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="傅祥安" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>傅祥安<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2584,7 +2516,7 @@
 <span><span class="meta-icon">🏙️</span>东莞</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>郭耀嵘</span><span class="cast-chip"><b class="cast-role">李灵</b>傅祥安</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="郭耀嵘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>郭耀嵘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="傅祥安" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>傅祥安<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2602,7 +2534,7 @@
 <span><span class="meta-icon">🏙️</span>衢州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>于晓璘</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>崔恩尔</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>李存贤</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="于晓璘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>于晓璘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="崔恩尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>崔恩尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="李存贤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>李存贤<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2620,7 +2552,7 @@
 <span><span class="meta-icon">🏙️</span>衢州</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>于晓璘</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>崔恩尔</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>李存贤</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="于晓璘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>于晓璘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="崔恩尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>崔恩尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="李存贤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>李存贤<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2638,7 +2570,7 @@
 <span><span class="meta-icon">🏙️</span>哈尔滨</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>刘浩冉</span><span class="cast-chip"><b class="cast-role">李灵</b>傅祥安</span><span class="cast-chip"><b class="cast-role">丁宁</b>胡芳洲</span><span class="cast-chip"><b class="cast-role">蛰生</b>姜崃</span><span class="cast-chip"><b class="cast-role">马克梵</b>李存贤</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘浩冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>刘浩冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="傅祥安" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>傅祥安<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胡芳洲" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>胡芳洲<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="姜崃" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>姜崃<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="李存贤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>李存贤<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2656,7 +2588,7 @@
 <span><span class="meta-icon">🏙️</span>哈尔滨</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>张博俊</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>刘浩冉</span><span class="cast-chip"><b class="cast-role">李灵</b>傅祥安</span><span class="cast-chip"><b class="cast-role">丁宁</b>胡芳洲</span><span class="cast-chip"><b class="cast-role">蛰生</b>姜崃</span><span class="cast-chip"><b class="cast-role">马克梵</b>李存贤</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张博俊" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>张博俊<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘浩冉" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>刘浩冉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="傅祥安" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>傅祥安<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="胡芳洲" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>胡芳洲<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="姜崃" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>姜崃<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="李存贤" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>李存贤<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2674,7 +2606,7 @@
 <span><span class="meta-icon">🏙️</span>沈阳</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>于晓璘</span><span class="cast-chip"><b class="cast-role">金海鸣</b>刘岩</span><span class="cast-chip"><b class="cast-role">夏光</b>崔恩尔</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="于晓璘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>于晓璘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘岩" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>刘岩<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="崔恩尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>崔恩尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2692,7 +2624,7 @@
 <span><span class="meta-icon">🏙️</span>沈阳</span>
 </div>
 <div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip"><b class="cast-role">郑微岚</b>于晓璘</span><span class="cast-chip"><b class="cast-role">金海鸣</b>施哲明</span><span class="cast-chip"><b class="cast-role">夏光</b>崔恩尔</span><span class="cast-chip"><b class="cast-role">李灵</b>孙礼杰</span><span class="cast-chip"><b class="cast-role">丁宁</b>张琛</span><span class="cast-chip"><b class="cast-role">蛰生</b>舒荣波</span><span class="cast-chip"><b class="cast-role">马克梵</b>朱家鹏</span></span><br/>
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="于晓璘" title="点击 ★ 标记喜欢的演员"><b class="cast-role">郑微岚</b>于晓璘<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="施哲明" title="点击 ★ 标记喜欢的演员"><b class="cast-role">金海鸣</b>施哲明<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="崔恩尔" title="点击 ★ 标记喜欢的演员"><b class="cast-role">夏光</b>崔恩尔<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="孙礼杰" title="点击 ★ 标记喜欢的演员"><b class="cast-role">李灵</b>孙礼杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张琛" title="点击 ★ 标记喜欢的演员"><b class="cast-role">丁宁</b>张琛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="舒荣波" title="点击 ★ 标记喜欢的演员"><b class="cast-role">蛰生</b>舒荣波<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱家鹏" title="点击 ★ 标记喜欢的演员"><b class="cast-role">马克梵</b>朱家鹏<span class="fav-star">★</span></span></span><br/>
 <strong>制作：</strong>华语音乐剧口碑作品
 </div>
 </div>
@@ -2778,89 +2710,13 @@
 <div class="show-panel" data-show="new-001">
 <div class="show-panel-header">
   <div class="sph-left">
-    <div class="sph-title">上海 多媒体魔幻亲子音乐剧《阿拉丁与神灯之沉睡精灵》 <em></em></div>
-    <div class="sph-meta">🏛️  · 1 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
-    
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="new-001-2026-08-16" data-show="new-001" data-date="2026-08-16" data-time="14:30" data-title="上海 多媒体魔幻亲子音乐剧《阿拉丁与神灯之沉睡精灵》" data-venue="上海保利云间剧院">
-<div class="perf-info">
-<div class="perf-title">上海 多媒体魔幻亲子音乐剧《阿拉丁与神灯之沉睡精灵》 <em></em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月16日（周日）14:30</span>
-<span><span class="meta-icon">📍</span>上海保利云间剧院</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
-<strong>制作：</strong>
-</div>
-</div>
-<div class="perf-side">
-
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">票价以官方公布为准</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel" data-show="new-002">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">上海儿童音乐剧《桃夭》 <em></em></div>
-    <div class="sph-meta">🏛️  · 2 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
-    
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="new-002-2026-08-20" data-show="new-002" data-date="2026-08-20" data-time="" data-title="上海儿童音乐剧《桃夭》" data-venue="黄浦剧场·中剧场">
-<div class="perf-info">
-<div class="perf-title">上海儿童音乐剧《桃夭》 <em></em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月20日（周四）</span>
-<span><span class="meta-icon">📍</span>黄浦剧场·中剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
-<strong>制作：</strong>
-</div>
-</div>
-<div class="perf-side">
-
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥80 — 432</div></div>
-</div>
-<div class="perf-card" data-id="new-002-2026-08-20-1" data-show="new-002" data-date="2026-08-20" data-time="" data-title="上海儿童音乐剧《桃夭》" data-venue="黄浦剧场--中剧场">
-<div class="perf-info">
-<div class="perf-title">上海儿童音乐剧《桃夭》 <em></em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月20日（周四）</span>
-<span><span class="meta-icon">📍</span>黄浦剧场--中剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
-<strong>制作：</strong>
-</div>
-</div>
-<div class="perf-side">
-
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥80 — 432</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel" data-show="new-003">
-<div class="show-panel-header">
-  <div class="sph-left">
     <div class="sph-title">上海音乐剧《快把我哥带走》读本音乐会 <em></em></div>
     <div class="sph-meta">🏛️  · 1 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
     
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-003-2026-08-23" data-show="new-003" data-date="2026-08-23" data-time="19:30" data-title="上海音乐剧《快把我哥带走》读本音乐会" data-venue="YOUNG剧场">
+<div class="perf-card" data-id="new-001-2026-08-23" data-show="new-001" data-date="2026-08-23" data-time="19:30" data-title="上海音乐剧《快把我哥带走》读本音乐会" data-venue="YOUNG剧场">
 <div class="perf-info">
 <div class="perf-title">上海音乐剧《快把我哥带走》读本音乐会 <em></em></div>
 <div class="perf-meta">
@@ -2880,7 +2736,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-004">
+<div class="show-panel" data-show="new-002">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">上海MSK十一周年音乐剧音乐会 演出答谢季 <em></em></div>
@@ -2889,7 +2745,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-004-2026-08-19" data-show="new-004" data-date="2026-08-19" data-time="" data-title="上海MSK十一周年音乐剧音乐会 演出答谢季" data-venue="黄浦文化中心·大上海剧场">
+<div class="perf-card" data-id="new-002-2026-08-19" data-show="new-002" data-date="2026-08-19" data-time="" data-title="上海MSK十一周年音乐剧音乐会 演出答谢季" data-venue="黄浦文化中心·大上海剧场">
 <div class="perf-info">
 <div class="perf-title">上海MSK十一周年音乐剧音乐会 演出答谢季 <em></em></div>
 <div class="perf-meta">
@@ -2909,7 +2765,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-005">
+<div class="show-panel" data-show="new-003">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0 <em></em></div>
@@ -2918,7 +2774,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-005-2026-09-24" data-show="new-005" data-date="2026-09-24" data-time="19:30" data-title="上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0" data-venue="YOUNG剧场">
+<div class="perf-card" data-id="new-003-2026-09-24" data-show="new-003" data-date="2026-09-24" data-time="19:30" data-title="上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0" data-venue="YOUNG剧场">
 <div class="perf-info">
 <div class="perf-title">上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0 <em></em></div>
 <div class="perf-meta">
@@ -2938,7 +2794,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-006">
+<div class="show-panel" data-show="new-004">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">MSK十一周年音乐剧音乐会 演出答谢季 <em></em></div>
@@ -2947,7 +2803,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-006-2026-08-19" data-show="new-006" data-date="2026-08-19" data-time="" data-title="MSK十一周年音乐剧音乐会 演出答谢季" data-venue="大上海剧场">
+<div class="perf-card" data-id="new-004-2026-08-19" data-show="new-004" data-date="2026-08-19" data-time="" data-title="MSK十一周年音乐剧音乐会 演出答谢季" data-venue="大上海剧场">
 <div class="perf-info">
 <div class="perf-title">MSK十一周年音乐剧音乐会 演出答谢季 <em></em></div>
 <div class="perf-meta">
@@ -2967,65 +2823,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-007">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">父子亲情—多媒体奇幻亲子音乐剧《匹诺曹奇遇记》 <em></em></div>
-    <div class="sph-meta">🏛️  · 1 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
-    
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="new-007-2026-08-23" data-show="new-007" data-date="2026-08-23" data-time="14:30" data-title="父子亲情—多媒体奇幻亲子音乐剧《匹诺曹奇遇记》" data-venue="云间剧院">
-<div class="perf-info">
-<div class="perf-title">父子亲情—多媒体奇幻亲子音乐剧《匹诺曹奇遇记》 <em></em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月23日（周日）14:30</span>
-<span><span class="meta-icon">📍</span>云间剧院</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
-<strong>制作：</strong>
-</div>
-</div>
-<div class="perf-side">
-
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥80 — 380</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel" data-show="new-008">
-<div class="show-panel-header">
-  <div class="sph-left">
-    <div class="sph-title">多媒体亲子音乐剧场《88键漫游宇宙》 <em></em></div>
-    <div class="sph-meta">🏛️  · 1 场 · 上海 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
-    
-  </div>
-</div>
-<div class="perf-grid">
-<div class="perf-card" data-id="new-008-2026-08-21" data-show="new-008" data-date="2026-08-21" data-time="" data-title="多媒体亲子音乐剧场《88键漫游宇宙》" data-venue="U12剧场">
-<div class="perf-info">
-<div class="perf-title">多媒体亲子音乐剧场《88键漫游宇宙》 <em></em></div>
-<div class="perf-meta">
-<span><span class="meta-icon">📅</span>8月21日（周五）</span>
-<span><span class="meta-icon">📍</span>U12剧场</span>
-<span><span class="meta-icon">🏙️</span>上海</span>
-</div>
-<div class="perf-cast">
-<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
-<strong>制作：</strong>
-</div>
-</div>
-<div class="perf-side">
-
-<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
-<div class="perf-price">¥50 — 588</div></div>
-</div>
-</div>
-</div>
-<div class="show-panel" data-show="new-009">
+<div class="show-panel" data-show="new-005">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">上海《花木兰》造梦盒子欢乐互动家庭音乐剧 <em></em></div>
@@ -3034,7 +2832,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card past" data-id="new-009-2026-08-01" data-show="new-009" data-date="2026-08-01" data-time="" data-title="上海《花木兰》造梦盒子欢乐互动家庭音乐剧" data-venue="造梦盒子专业家庭音乐剧院">
+<div class="perf-card past" data-id="new-005-2026-08-01" data-show="new-005" data-date="2026-08-01" data-time="" data-title="上海《花木兰》造梦盒子欢乐互动家庭音乐剧" data-venue="造梦盒子专业家庭音乐剧院">
 <div class="perf-info">
 <div class="perf-title">上海《花木兰》造梦盒子欢乐互动家庭音乐剧 <em></em></div>
 <div class="perf-meta">
@@ -3052,7 +2850,7 @@
 <button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
 <div class="perf-price">¥118 — 538</div></div>
 </div>
-<div class="perf-card" data-id="new-009-2026-08-09-1" data-show="new-009" data-date="2026-08-09" data-time="" data-title="上海《花木兰》造梦盒子欢乐互动家庭音乐剧" data-venue="造梦盒子专业家庭音乐剧院">
+<div class="perf-card" data-id="new-005-2026-08-09-1" data-show="new-005" data-date="2026-08-09" data-time="" data-title="上海《花木兰》造梦盒子欢乐互动家庭音乐剧" data-venue="造梦盒子专业家庭音乐剧院">
 <div class="perf-info">
 <div class="perf-title">上海《花木兰》造梦盒子欢乐互动家庭音乐剧 <em></em></div>
 <div class="perf-meta">
@@ -3072,7 +2870,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-010">
+<div class="show-panel" data-show="new-006">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert) <em></em></div>
@@ -3081,7 +2879,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-010-2026-09-05" data-show="new-010" data-date="2026-09-05" data-time="19:30" data-title="德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert)" data-venue="上海文化广场">
+<div class="perf-card" data-id="new-006-2026-09-05" data-show="new-006" data-date="2026-09-05" data-time="19:30" data-title="德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert)" data-venue="上海文化广场">
 <div class="perf-info">
 <div class="perf-title">德奥音乐剧女王琵雅·道维斯个人音乐会(Pia douwes’sconcert) <em></em></div>
 <div class="perf-meta">
@@ -3101,7 +2899,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-011">
+<div class="show-panel" data-show="new-007">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">Stars Gala音乐剧明星音乐会—Broadway Queens <em></em></div>
@@ -3110,7 +2908,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-011-2026-09-11" data-show="new-011" data-date="2026-09-11" data-time="" data-title="Stars Gala音乐剧明星音乐会—Broadway Queens" data-venue="交通银行前滩31演艺中心 · 大剧场">
+<div class="perf-card" data-id="new-007-2026-09-11" data-show="new-007" data-date="2026-09-11" data-time="" data-title="Stars Gala音乐剧明星音乐会—Broadway Queens" data-venue="交通银行前滩31演艺中心 · 大剧场">
 <div class="perf-info">
 <div class="perf-title">Stars Gala音乐剧明星音乐会—Broadway Queens <em></em></div>
 <div class="perf-meta">
@@ -3130,7 +2928,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-012">
+<div class="show-panel" data-show="new-008">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">小顽家·英国原版音乐剧《剧场里的小怪兽》 <em></em></div>
@@ -3139,7 +2937,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-012-2026-08-27" data-show="new-012" data-date="2026-08-27" data-time="" data-title="小顽家·英国原版音乐剧《剧场里的小怪兽》" data-venue="黄浦剧场--中剧场">
+<div class="perf-card" data-id="new-008-2026-08-27" data-show="new-008" data-date="2026-08-27" data-time="" data-title="小顽家·英国原版音乐剧《剧场里的小怪兽》" data-venue="黄浦剧场--中剧场">
 <div class="perf-info">
 <div class="perf-title">小顽家·英国原版音乐剧《剧场里的小怪兽》 <em></em></div>
 <div class="perf-meta">
@@ -3159,7 +2957,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-013">
+<div class="show-panel" data-show="new-009">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">上海音乐剧《快乐即逝》 <em></em></div>
@@ -3168,7 +2966,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card" data-id="new-013-2026-09-18" data-show="new-013" data-date="2026-09-18" data-time="19:30" data-title="上海音乐剧《快乐即逝》" data-venue="上海文化广场xa0 主剧场">
+<div class="perf-card" data-id="new-009-2026-09-18" data-show="new-009" data-date="2026-09-18" data-time="19:30" data-title="上海音乐剧《快乐即逝》" data-venue="上海文化广场xa0 主剧场">
 <div class="perf-info">
 <div class="perf-title">上海音乐剧《快乐即逝》 <em></em></div>
 <div class="perf-meta">
@@ -3188,7 +2986,7 @@
 </div>
 </div>
 </div>
-<div class="show-panel" data-show="new-014">
+<div class="show-panel" data-show="new-010">
 <div class="show-panel-header">
   <div class="sph-left">
     <div class="sph-title">上海Stars Gala音乐剧明星音乐会 <em></em></div>
@@ -3197,7 +2995,7 @@
   </div>
 </div>
 <div class="perf-grid">
-<div class="perf-card past" data-id="new-014-2026-07-31" data-show="new-014" data-date="2026-07-31" data-time="" data-title="上海Stars Gala音乐剧明星音乐会" data-venue="上海东方艺术中心">
+<div class="perf-card past" data-id="new-010-2026-07-31" data-show="new-010" data-date="2026-07-31" data-time="" data-title="上海Stars Gala音乐剧明星音乐会" data-venue="上海东方艺术中心">
 <div class="perf-info">
 <div class="perf-title">上海Stars Gala音乐剧明星音乐会 <em></em></div>
 <div class="perf-meta">
@@ -3231,7 +3029,7 @@
 <span>🎪 虹桥艺术中心</span>
 </div>
 <p>报告由 WorkBuddy 自动化生成 · 监控范围：全女卡司音乐剧 + 全网音乐剧演出（大麦网 + 各剧院官方 + 全网检索）</p>
-<p style="margin-top:6px;">数据截至 2026-08-02 23:52 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
+<p style="margin-top:6px;">数据截至 2026-08-03 16:26 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
 <p style="margin-top:10px;"><a href="https://moone7.github.io/yueju-monitor/" target="_blank" rel="noopener">🎭 姊妹站点：越剧演出售票监控</a></p>
 </div>
 </div>
@@ -3240,40 +3038,38 @@
 //  DATA
 // ============================================================
 const PERF_DATES = {
-  "2026-07-26": ["witch-2026-07-26-a", "lianbi-2026-07-26", "demian-2026-07-26-a", "witch-2026-07-26-b", "demian-2026-07-26-b"],
   "2026-07-28": ["witch-2026-07-28"],
   "2026-07-29": ["witch-2026-07-29"],
   "2026-07-30": ["witch-2026-07-30", "fslsx-2026-07-30"],
-  "2026-07-31": ["new-014-2026-07-31", "witch-2026-07-31", "demian-2026-07-31", "fslsx-2026-07-31"],
-  "2026-08-01": ["new-009-2026-08-01", "witch-2026-08-01-a", "lianbi-2026-08-01-a", "demian-2026-08-01-a", "witch-2026-08-01-b", "lianbi-2026-08-01-b", "demian-2026-08-01-b", "fslsx-2026-08-01"],
+  "2026-07-31": ["new-010-2026-07-31", "witch-2026-07-31", "demian-2026-07-31", "fslsx-2026-07-31"],
+  "2026-08-01": ["new-005-2026-08-01", "witch-2026-08-01-a", "lianbi-2026-08-01-a", "demian-2026-08-01-a", "witch-2026-08-01-b", "lianbi-2026-08-01-b", "demian-2026-08-01-b", "fslsx-2026-08-01"],
   "2026-08-02": ["witch-2026-08-02", "demian-2026-08-02"],
   "2026-08-04": ["demian-2026-08-04"],
   "2026-08-06": ["demian-2026-08-06"],
   "2026-08-07": ["fslsx-2026-08-07", "lianbi-2026-08-07"],
   "2026-08-08": ["fslsx-2026-08-08", "lianbi-2026-08-08", "demian-2026-08-08"],
-  "2026-08-09": ["new-009-2026-08-09-1", "demian-2026-08-09-a", "demian-2026-08-09-b"],
+  "2026-08-09": ["new-005-2026-08-09-1", "demian-2026-08-09-a", "demian-2026-08-09-b"],
   "2026-08-11": ["demian-2026-08-11"],
   "2026-08-12": ["demian-2026-08-12"],
   "2026-08-13": ["demian-2026-08-13"],
   "2026-08-14": ["lianbi-2026-08-14", "demian-2026-08-14"],
   "2026-08-15": ["lianbi-2026-08-15", "demian-2026-08-15"],
-  "2026-08-16": ["lianbi-2026-08-16", "demian-2026-08-16-a", "new-001-2026-08-16", "demian-2026-08-16-b"],
-  "2026-08-19": ["new-004-2026-08-19", "new-006-2026-08-19", "lianbi-2026-08-19"],
-  "2026-08-20": ["new-002-2026-08-20", "new-002-2026-08-20-1"],
-  "2026-08-21": ["new-008-2026-08-21", "diebian-2026-08-21", "lianbi-2026-08-21"],
+  "2026-08-16": ["lianbi-2026-08-16", "demian-2026-08-16-a", "demian-2026-08-16-b"],
+  "2026-08-19": ["new-002-2026-08-19", "new-004-2026-08-19", "lianbi-2026-08-19"],
+  "2026-08-21": ["diebian-2026-08-21", "lianbi-2026-08-21"],
   "2026-08-22": ["diebian-2026-08-22"],
-  "2026-08-23": ["new-007-2026-08-23", "lianbi-2026-08-23", "new-003-2026-08-23"],
-  "2026-08-27": ["new-012-2026-08-27"],
+  "2026-08-23": ["lianbi-2026-08-23", "new-001-2026-08-23"],
+  "2026-08-27": ["new-008-2026-08-27"],
   "2026-08-28": ["diebian-2026-08-28", "fslsx-2026-08-28"],
   "2026-08-29": ["diebian-2026-08-29", "lianbi-2026-08-29", "fslsx-2026-08-29"],
   "2026-09-04": ["tafan-2026-09-04"],
-  "2026-09-05": ["tafan-2026-09-05", "diebian-2026-09-05-a", "fslsx-2026-09-05", "diebian-2026-09-05-b", "new-010-2026-09-05"],
+  "2026-09-05": ["tafan-2026-09-05", "diebian-2026-09-05-a", "fslsx-2026-09-05", "diebian-2026-09-05-b", "new-006-2026-09-05"],
   "2026-09-06": ["diebian-2026-09-06-a", "fslsx-2026-09-06", "diebian-2026-09-06-b"],
-  "2026-09-11": ["new-011-2026-09-11", "tafan-2026-09-11"],
+  "2026-09-11": ["new-007-2026-09-11", "tafan-2026-09-11"],
   "2026-09-12": ["tafan-2026-09-12"],
-  "2026-09-18": ["new-013-2026-09-18"],
+  "2026-09-18": ["new-009-2026-09-18"],
   "2026-09-19": ["tafan-2026-09-19-a", "tafan-2026-09-19-b"],
-  "2026-09-24": ["new-005-2026-09-24"],
+  "2026-09-24": ["new-003-2026-09-24"],
   "2026-09-25": ["fslsx-2026-09-25"],
   "2026-09-26": ["tafan-2026-09-26-a", "fslsx-2026-09-26", "tafan-2026-09-26-b"],
   "2026-10-01": ["fslsx-2026-10-01", "six-2026-10-01"],
@@ -3299,7 +3095,7 @@ const PERF_DATES = {
   "2026-11-14": ["fslsx-2026-11-14"],
 };
 
-const ALL_FEMALE_IDS = new Set(["lianbi-2026-07-26", "lianbi-2026-08-01-a", "lianbi-2026-08-01-b", "lianbi-2026-08-07", "lianbi-2026-08-08", "lianbi-2026-08-14", "lianbi-2026-08-15", "lianbi-2026-08-16", "lianbi-2026-08-19", "diebian-2026-08-21", "lianbi-2026-08-21", "diebian-2026-08-22", "lianbi-2026-08-23", "diebian-2026-08-28", "diebian-2026-08-29", "lianbi-2026-08-29", "tafan-2026-09-04", "tafan-2026-09-05", "diebian-2026-09-05-a", "diebian-2026-09-05-b", "diebian-2026-09-06-a", "diebian-2026-09-06-b", "tafan-2026-09-11", "tafan-2026-09-12", "tafan-2026-09-19-a", "tafan-2026-09-19-b", "tafan-2026-09-26-a", "tafan-2026-09-26-b", "six-2026-10-01", "six-2026-10-02", "six-2026-10-03", "six-2026-10-04", "six-2026-10-05", "tafan-2026-10-06", "six-2026-10-06", "tafan-2026-10-07", "six-2026-10-07", "six-2026-10-08", "six-2026-10-09", "six-2026-10-10", "six-2026-10-11", "tafan-2026-10-16", "tafan-2026-10-17", "tafan-2026-10-23", "tafan-2026-10-24", "tafan-2026-10-31", "tafan-2026-11-01", "tafan-2026-11-06", "tafan-2026-11-07"]);
+const ALL_FEMALE_IDS = new Set(["lianbi-2026-08-01-a", "lianbi-2026-08-01-b", "lianbi-2026-08-07", "lianbi-2026-08-08", "lianbi-2026-08-14", "lianbi-2026-08-15", "lianbi-2026-08-16", "lianbi-2026-08-19", "diebian-2026-08-21", "lianbi-2026-08-21", "diebian-2026-08-22", "lianbi-2026-08-23", "diebian-2026-08-28", "diebian-2026-08-29", "lianbi-2026-08-29", "tafan-2026-09-04", "tafan-2026-09-05", "diebian-2026-09-05-a", "diebian-2026-09-05-b", "diebian-2026-09-06-a", "diebian-2026-09-06-b", "tafan-2026-09-11", "tafan-2026-09-12", "tafan-2026-09-19-a", "tafan-2026-09-19-b", "tafan-2026-09-26-a", "tafan-2026-09-26-b", "six-2026-10-01", "six-2026-10-02", "six-2026-10-03", "six-2026-10-04", "six-2026-10-05", "tafan-2026-10-06", "six-2026-10-06", "tafan-2026-10-07", "six-2026-10-07", "six-2026-10-08", "six-2026-10-09", "six-2026-10-10", "six-2026-10-11", "tafan-2026-10-16", "tafan-2026-10-17", "tafan-2026-10-23", "tafan-2026-10-24", "tafan-2026-10-31", "tafan-2026-11-01", "tafan-2026-11-06", "tafan-2026-11-07"]);
 
 // ============================================================
 //  SHOW DATA INDEX (built from DOM for tooltips)
@@ -3357,6 +3153,74 @@ function getBought() {
 function saveBought(set) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
 }
+
+// ============================================================
+//  FAVORITE ACTORS（关注演员 · 本地存储，数据不出本机）
+// ============================================================
+const FAV_KEY = "musical_fav_actors_v1";
+
+function getFavActors() {
+  try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }
+  catch(e) { return new Set(); }
+}
+function saveFavActors(set) {
+  localStorage.setItem(FAV_KEY, JSON.stringify([...set]));
+}
+
+function renderFavChips() {
+  const fav = getFavActors();
+  document.querySelectorAll(".cast-chip.fav-able").forEach(chip => {
+    chip.classList.toggle("fav", fav.has(chip.dataset.actor));
+  });
+  updateFavFilterBtn();
+}
+function toggleActorFav(chip) {
+  const name = chip.dataset.actor;
+  if (!name) return;
+  const fav = getFavActors();
+  if (fav.has(name)) fav.delete(name);
+  else fav.add(name);
+  saveFavActors(fav);
+  renderFavChips();
+  if (favFilterActive) applyFavFilter();
+}
+function updateFavFilterBtn() {
+  const btn = document.getElementById("fav-filter-btn");
+  if (!btn) return;
+  const n = getFavActors().size;
+  const c = btn.querySelector(".fav-count");
+  if (c) c.textContent = n ? ` (${n})` : "";
+}
+let favFilterActive = false;
+function toggleFavFilter() {
+  const fav = getFavActors();
+  if (fav.size === 0) {
+    alert("先点击演出卡片上演员名后的 ★，标记你喜欢的演员～\n标记后即可用此按钮只看 TA 们的场次。");
+    return;
+  }
+  favFilterActive = !favFilterActive;
+  document.getElementById("fav-filter-btn").classList.toggle("active", favFilterActive);
+  applyFavFilter();
+}
+function applyFavFilter() {
+  const fav = getFavActors();
+  document.querySelectorAll(".perf-card[data-id]").forEach(card => {
+    if (favFilterActive) {
+      const has = [...card.querySelectorAll(".cast-chip.fav-able")].some(ch => fav.has(ch.dataset.actor));
+      if (has) card.classList.remove("hidden-by-fav");
+      else card.classList.add("hidden-by-fav");
+    } else {
+      card.classList.remove("hidden-by-fav");
+    }
+  });
+  hideEmptyPanels();
+  buildCalendar();
+}
+// 委托点击：点演员 chip 即切换收藏
+document.addEventListener("click", (e) => {
+  const chip = e.target.closest(".cast-chip.fav-able");
+  if (chip) toggleActorFav(chip);
+});
 
 // ============================================================
 //  TOGGLE BOUGHT
@@ -3831,7 +3695,8 @@ tooltip.addEventListener('click', (e) => { e.stopPropagation(); });
 function isCardVisible(card) {
   return !card.classList.contains('hidden-by-tab') &&
          !card.classList.contains('hidden-by-af') &&
-         !card.classList.contains('hidden-by-cal');
+         !card.classList.contains('hidden-by-cal') &&
+         !card.classList.contains('hidden-by-fav');
 }
 
 // ============================================================
@@ -3921,6 +3786,7 @@ document.addEventListener("click", (e) => {
   restoreBoughtState();
   updateBoughtStat();
   refreshTodayTomorrowClasses();
+  renderFavChips();
   buildCalendar();
   updateMyShowsBanner();
 })();

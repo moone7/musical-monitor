@@ -755,6 +755,33 @@
     color: var(--pink); font-weight: 700; margin-right: 3px;
     background: rgba(255,77,157,0.12); border-radius: 7px 0 0 7px; padding: 0 4px;
   }
+  /* ===== 演员可收藏星标 ===== */
+  .cast-chip.fav-able { cursor: pointer; }
+  .cast-chip.fav-able:hover { background: rgba(155,93,229,0.28); border-color: rgba(255,77,157,0.45); }
+  .cast-chip .fav-star { margin-left: 5px; font-size: 11px; opacity: .45; transition: all .2s; color: var(--text-dim); }
+  .cast-chip.fav-able:hover .fav-star { opacity: 1; color: var(--pink-light); }
+  .cast-chip.fav {
+    background: rgba(255,77,157,0.18);
+    border-color: rgba(255,77,157,0.55);
+    color: #ffd0e8;
+  }
+  .cast-chip.fav .fav-star { opacity: 1; color: var(--pink); }
+  .fav-filter-btn {
+    margin-left: 8px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 5px 14px; border-radius: 20px; cursor: pointer;
+    border: 1px solid rgba(255,200,90,0.4);
+    background: rgba(255,200,90,0.08); color: #ffd76a;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .fav-filter-btn:hover { background: rgba(255,200,90,0.18); border-color: #ffd76a; }
+  .fav-filter-btn.active {
+    background: linear-gradient(135deg, #ffd76a 0%, var(--pink) 100%);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 2px 12px rgba(255,200,90,0.35);
+  }
+  .fav-filter-btn .fav-count { font-size: 11px; opacity: .85; }
 
   /* ===== Stats Bar ===== */
   .stats-bar { display: flex; gap: 14px; margin: 24px 0 32px; flex-wrap: wrap; }
@@ -965,6 +992,7 @@
 </div>
 <!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
 <h2 class="section-title"><span class="section-icon">📋</span> 演出一览
+  <button id="fav-filter-btn" class="fav-filter-btn" onclick="toggleFavFilter()" title="先在卡片上点击演员名后的 ★ 标记喜欢的演员，再用此按钮只看 TA 们的场次">⭐ 关注演员<span class="fav-count"></span></button>
   <button id="af-filter-btn" class="af-filter-btn" onclick="toggleAllFemaleFilter()">💜 仅看全女卡司</button>
 </h2>
 <div class="tab-bar" id="tab-bar">
@@ -1054,6 +1082,74 @@ function getBought() {
 function saveBought(set) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
 }
+
+// ============================================================
+//  FAVORITE ACTORS（关注演员 · 本地存储，数据不出本机）
+// ============================================================
+const FAV_KEY = "musical_fav_actors_v1";
+
+function getFavActors() {
+  try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }
+  catch(e) { return new Set(); }
+}
+function saveFavActors(set) {
+  localStorage.setItem(FAV_KEY, JSON.stringify([...set]));
+}
+
+function renderFavChips() {
+  const fav = getFavActors();
+  document.querySelectorAll(".cast-chip.fav-able").forEach(chip => {
+    chip.classList.toggle("fav", fav.has(chip.dataset.actor));
+  });
+  updateFavFilterBtn();
+}
+function toggleActorFav(chip) {
+  const name = chip.dataset.actor;
+  if (!name) return;
+  const fav = getFavActors();
+  if (fav.has(name)) fav.delete(name);
+  else fav.add(name);
+  saveFavActors(fav);
+  renderFavChips();
+  if (favFilterActive) applyFavFilter();
+}
+function updateFavFilterBtn() {
+  const btn = document.getElementById("fav-filter-btn");
+  if (!btn) return;
+  const n = getFavActors().size;
+  const c = btn.querySelector(".fav-count");
+  if (c) c.textContent = n ? ` (${n})` : "";
+}
+let favFilterActive = false;
+function toggleFavFilter() {
+  const fav = getFavActors();
+  if (fav.size === 0) {
+    alert("先点击演出卡片上演员名后的 ★，标记你喜欢的演员～\n标记后即可用此按钮只看 TA 们的场次。");
+    return;
+  }
+  favFilterActive = !favFilterActive;
+  document.getElementById("fav-filter-btn").classList.toggle("active", favFilterActive);
+  applyFavFilter();
+}
+function applyFavFilter() {
+  const fav = getFavActors();
+  document.querySelectorAll(".perf-card[data-id]").forEach(card => {
+    if (favFilterActive) {
+      const has = [...card.querySelectorAll(".cast-chip.fav-able")].some(ch => fav.has(ch.dataset.actor));
+      if (has) card.classList.remove("hidden-by-fav");
+      else card.classList.add("hidden-by-fav");
+    } else {
+      card.classList.remove("hidden-by-fav");
+    }
+  });
+  hideEmptyPanels();
+  buildCalendar();
+}
+// 委托点击：点演员 chip 即切换收藏
+document.addEventListener("click", (e) => {
+  const chip = e.target.closest(".cast-chip.fav-able");
+  if (chip) toggleActorFav(chip);
+});
 
 // ============================================================
 //  TOGGLE BOUGHT
@@ -1528,7 +1624,8 @@ tooltip.addEventListener('click', (e) => { e.stopPropagation(); });
 function isCardVisible(card) {
   return !card.classList.contains('hidden-by-tab') &&
          !card.classList.contains('hidden-by-af') &&
-         !card.classList.contains('hidden-by-cal');
+         !card.classList.contains('hidden-by-cal') &&
+         !card.classList.contains('hidden-by-fav');
 }
 
 // ============================================================
@@ -1618,6 +1715,7 @@ document.addEventListener("click", (e) => {
   restoreBoughtState();
   updateBoughtStat();
   refreshTodayTomorrowClasses();
+  renderFavChips();
   buildCalendar();
   updateMyShowsBanner();
 })();

@@ -81,6 +81,25 @@ def cast_list(cast):
         return [cast.strip()]
     return []
 
+# 占位文本（不是真实演员名，不可被星标收藏）
+PLACEHOLDER_CAST = {
+    "以官方公布为准", "卡司以官方公布为准", "卡司待公布", "阵容以官方公布为准",
+    "以场馆公布为准", "待定", "待公布", "见官方公告", "详见官方", "敬请期待",
+    "六位皇后（原版卡司，以官方公布为准）", "原版卡司，以官方公布为准",
+}
+
+def is_actor_name(name):
+    n = (name or "").strip()
+    if not n:
+        return False
+    if n in PLACEHOLDER_CAST:
+        return False
+    if len(n) > 12:          # 过长不太可能是单个演员名
+        return False
+    if any(k in n for k in ("公布", "官方", "为准", "待定", "详见", "公告", "阵容", "卡司")):
+        return False
+    return True
+
 # ============================================================
 # 卡片状态
 # ============================================================
@@ -145,9 +164,22 @@ def generate_card_html(perf, today):
         for c in casts:
             if '：' in c:
                 role, name = c.split('：', 1)
-                chip_parts.append(f'<span class="cast-chip"><b class="cast-role">{html_escape(role)}</b>{html_escape(name)}</span>')
+                name = name.strip()
+                if is_actor_name(name):
+                    chip_parts.append(
+                        f'<span class="cast-chip fav-able" data-actor="{html_escape(name)}" '
+                        f'title="点击 ★ 标记喜欢的演员"><b class="cast-role">{html_escape(role)}</b>'
+                        f'{html_escape(name)}<span class="fav-star">★</span></span>')
+                else:
+                    chip_parts.append(f'<span class="cast-chip"><b class="cast-role">{html_escape(role)}</b>{html_escape(name)}</span>')
             else:
-                chip_parts.append(f'<span class="cast-chip">{html_escape(c)}</span>')
+                name = c.strip()
+                if is_actor_name(name):
+                    chip_parts.append(
+                        f'<span class="cast-chip fav-able" data-actor="{html_escape(name)}" '
+                        f'title="点击 ★ 标记喜欢的演员">{html_escape(name)}<span class="fav-star">★</span></span>')
+                else:
+                    chip_parts.append(f'<span class="cast-chip">{html_escape(name)}</span>')
         cast_html = f'<span class="cast-chips">{"".join(chip_parts)}</span>'
     else:
         cast_html = '<span class="cast-chips"><span class="cast-chip cast-none">卡司待公布</span></span>'
