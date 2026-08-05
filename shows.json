@@ -2,15 +2,16 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 32,
-    "total_performances": 179,
+    "total_shows": 35,
+    "total_performances": 202,
     "all_female_shows": 5,
     "all_female_performances": 96,
-    "cities": 21,
-    "scraped_at": "2026-08-05T06:10:51.532068",
+    "cities": 22,
+    "scraped_at": "2026-08-05T23:51:54.507351",
     "sources": [
       "known_seed",
       "df962388",
+      "df962388_national",
       "saoju"
     ]
   },
@@ -2215,6 +2216,344 @@
       ]
     },
     {
+      "id": "shiguang",
+      "title": "音乐剧《时光代理人》",
+      "subtitle": "广州驻演 · 漫改音乐剧",
+      "troupe": "广州·珠影壹号新空间A馆",
+      "is_all_female": false,
+      "note": "漫改音乐剧广州驻演（珠影壹号新空间A馆）。以下为近期场次与分场卡司（参考档期，以官方开票页为准）。",
+      "performances": [
+        {
+          "id": "shiguang-2026-08-07",
+          "date": "2026-08-07",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "唐浩瑜",
+            "叶锐",
+            "张芷妍",
+            "陈奕蓉",
+            "刘鑫"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-08-a",
+          "date": "2026-08-08",
+          "time": "14:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "巴文豪",
+            "武冠辰",
+            "张芷妍",
+            "沈恬",
+            "刘鑫"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-08-b",
+          "date": "2026-08-08",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "钟子崴",
+            "武冠辰",
+            "张芷妍",
+            "沈恬",
+            "刘鑫"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-09-a",
+          "date": "2026-08-09",
+          "time": "14:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "唐浩瑜",
+            "叶锐",
+            "张芷妍",
+            "沈恬",
+            "刘鑫"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-09-b",
+          "date": "2026-08-09",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "钟子崴",
+            "叶锐",
+            "张芷妍",
+            "陈奕蓉",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-13",
+          "date": "2026-08-13",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "高尔金宝音",
+            "文亮棋",
+            "朱媛媛",
+            "刘珈茵",
+            "赵星尧"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-14",
+          "date": "2026-08-14",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "高尔金宝音",
+            "武冠辰",
+            "朱媛媛",
+            "刘珈茵",
+            "赵星尧"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-15",
+          "date": "2026-08-15",
+          "time": "14:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "巴文豪",
+            "叶锐",
+            "朱媛媛",
+            "刘珈茵",
+            "赵星尧"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-19",
+          "date": "2026-08-19",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "巴文豪",
+            "文亮棋",
+            "安吉儿",
+            "陈雨朦",
+            "赵星尧"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-21",
+          "date": "2026-08-21",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "唐浩瑜",
+            "文亮棋",
+            "安吉儿",
+            "陈奕蓉",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-22",
+          "date": "2026-08-22",
+          "time": "14:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "巴文豪",
+            "文亮棋",
+            "安吉儿",
+            "陈雨朦",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-28",
+          "date": "2026-08-28",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "栾靖宇",
+            "叶锐",
+            "安吉儿",
+            "徐晓玥",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-29",
+          "date": "2026-08-29",
+          "time": "14:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "栾靖宇",
+            "武冠辰",
+            "安吉儿",
+            "陈雨朦",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-30-a",
+          "date": "2026-08-30",
+          "time": "14:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "巴文豪",
+            "武冠辰",
+            "叶思琳",
+            "徐晓玥",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "shiguang-2026-08-30-b",
+          "date": "2026-08-30",
+          "time": "19:30",
+          "venue": "珠影壹号新空间A馆",
+          "city": "广州",
+          "cast": [
+            "栾靖宇",
+            "叶锐",
+            "叶思琳",
+            "陈雨朦",
+            "黄建豪"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        }
+      ]
+    },
+    {
+      "id": "guaiwu",
+      "title": "音乐剧《怪物》",
+      "subtitle": "武汉驻演 · 双男主",
+      "troupe": "武汉·联创艺空间2号·寻境剧场",
+      "is_all_female": false,
+      "note": "双男主音乐剧武汉驻演（联创艺空间2号·寻境剧场）。以下为近期场次与分场卡司（参考档期，以官方开票页为准）。",
+      "performances": [
+        {
+          "id": "guaiwu-2026-08-07",
+          "date": "2026-08-07",
+          "time": "19:30",
+          "venue": "联创艺空间2号·寻境剧场",
+          "city": "武汉",
+          "cast": [
+            "周靖杰",
+            "张子扬"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "guaiwu-2026-08-08",
+          "date": "2026-08-08",
+          "time": "14:30",
+          "venue": "联创艺空间2号·寻境剧场",
+          "city": "武汉",
+          "cast": [
+            "张力升",
+            "黄子俊"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "guaiwu-2026-08-15",
+          "date": "2026-08-15",
+          "time": "19:30",
+          "venue": "联创艺空间2号·寻境剧场",
+          "city": "武汉",
+          "cast": [
+            "韩佳旭",
+            "谭建业"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "guaiwu-2026-08-16",
+          "date": "2026-08-16",
+          "time": "14:30",
+          "venue": "联创艺空间2号·寻境剧场",
+          "city": "武汉",
+          "cast": [
+            "王克遥",
+            "谭建业"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "guaiwu-2026-08-21",
+          "date": "2026-08-21",
+          "time": "19:30",
+          "venue": "联创艺空间2号·寻境剧场",
+          "city": "武汉",
+          "cast": [
+            "曾鑫",
+            "樊哲"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        },
+        {
+          "id": "guaiwu-2026-08-22",
+          "date": "2026-08-22",
+          "time": "19:30",
+          "venue": "联创艺空间2号·寻境剧场",
+          "city": "武汉",
+          "cast": [
+            "曾鑫",
+            "樊哲"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false
+        }
+      ]
+    },
+    {
       "id": "auto-62c32f1c",
       "title": "上海非常林奕华&amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0",
       "subtitle": "",
@@ -2776,6 +3115,41 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-7c789546",
+      "title": "奇遇·古蜀三星堆——大型原创音乐剧·沉浸式古蜀文明史诗",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-7c789546-2026-08-07",
+          "date": "2026-08-07",
+          "time": "",
+          "venue": "四川省歌舞剧院",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥88 — 288",
+          "is_all_female": false,
+          "source": "df962388"
+        },
+        {
+          "id": "auto-7c789546-2031-12-31-1",
+          "date": "2031-12-31",
+          "time": "",
+          "venue": "四川省歌舞剧院",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥88 — 288",
           "is_all_female": false,
           "source": "df962388"
         }
