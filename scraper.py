@@ -26,6 +26,7 @@ import os
 import re
 import time
 import copy
+import hashlib
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -320,20 +321,24 @@ def guess_city(venue):
     return "上海"  # 该站为上海音乐剧时间表
 
 # ============================================================
-# 儿童 / 亲子类演出排除（用户只要音乐剧，不要亲子/儿童剧）
+# 非目标演出排除（用户只要「中国音乐剧」，不要亲子/儿童/家庭/音乐会）
 # 既用于抓取过滤，也用于 merge 新建剧拦截。
 # ============================================================
-CHILDREN_KW = [
+UNWANTED_KW = [
+    # 亲子 / 儿童 / 家庭 / 低幼
     "亲子", "儿童", "少儿", "童话", "卡通", "动漫", "绘本", "启蒙", "早教",
     "幼儿", "宝贝", "小观众", "木偶", "皮影", "立体书", "故事会", "小橙堡",
     "海底小纵队", "小猪佩奇", "白雪公主", "丑小鸭", "三只小猪", "大头儿子",
     "熊出没", "葫芦兄弟", "汪汪队", "超级飞侠", "巴啦啦", "喜羊羊", "猪猪侠",
-    "魔法学校", "奇妙的",
+    "魔法学校", "奇妙的", "家庭", "互动", "欢乐", "造梦", "小怪兽", "小橙堡",
+    # 音乐会 / 演唱会 / 音乐会答谢（非音乐剧演出）
+    "音乐会", "演唱会", "演奏会", "交响", "Gala", "答谢季", "演唱会",
+    "个人音乐会", "明星音乐会", "音乐节",
 ]
 
-def is_children_show(title):
+def is_unwanted_show(title):
     t = title or ""
-    return any(k in t for k in CHILDREN_KW)
+    return any(k in t for k in UNWANTED_KW)
 
 
 def parse_df_dates(raw):
@@ -371,7 +376,7 @@ def scrape_df962388():
             title = re.sub(r'<[^>]+>', '', lm.group(1)).strip()
             if '音乐剧' not in title:
                 continue
-            if is_children_show(title):
+            if is_unwanted_show(title):
                 continue
             start = lm.end()
             end = links[i + 1].start() if i + 1 < len(links) else len(html)
@@ -514,9 +519,10 @@ def merge_shows(scraped_shows, known_shows):
                 })
                 if not s.get('troupe') and sc.get('troupe'):
                     s['troupe'] = sc['troupe']
-        elif date and title and len(title) > 2 and not is_children_show(title):
+        elif date and title and len(title) > 2 and not is_unwanted_show(title):
             new_count += 1
-            sid = f"new-{new_count:03d}"
+            # 稳定 id：基于 (日期|标题|场馆) 哈希，避免每日重新编号导致已购标记丢失
+            sid = "auto-" + hashlib.md5(f"{date}|{title}|{venue}".encode('utf-8')).hexdigest()[:8]
             ns = {
                 'id': sid, 'title': title, 'subtitle': '', 'troupe': sc.get('troupe', ''),
                 'is_all_female': sc.get('is_all_female', False),
