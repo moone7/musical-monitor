@@ -48,8 +48,20 @@ HEADERS = {
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
 }
 TIMEOUT = 30
-RETRIES = 1
+RETRIES = 2
 SLEEP_BETWEEN = 1.5
+
+# 抓取报告：记录每个数据源在海内外 runner 的实际抓取结果（供验证自动化是否真正生效）
+SCRAPE_REPORT = {}
+
+def _report(name, reached, count, error="", sample=None):
+    SCRAPE_REPORT[name] = {
+        "reached": reached,
+        "count": count,
+        "error": error,
+        "sample": (sample or [])[:8],
+        "ts": datetime.now().isoformat(),
+    }
 
 # ============================================================
 # 已知演出数据库（种子 / 兜底）—— 嵌套结构
@@ -347,9 +359,11 @@ def parse_df_dates(raw):
 def scrape_df962388():
     print("🎶 抓取东方演出网·上海音乐剧时间表...")
     shows = []
+    err = ""
     try:
         html = fetch_url("https://shanghaiyinleju.df962388.com/")
         if not html:
+            _report("df962388", False, 0, "fetch 返回空（不可达/超时/证书）")
             return shows
         links = list(re.finditer(r'<a[^>]+href="[^"]*yanchu/\d+\.html"[^>]*>(.*?)</a>', html, re.S))
         today = datetime.now().date()
@@ -384,8 +398,11 @@ def scrape_df962388():
                     "cast": "以官方公布为准", "is_all_female": False, "source": "df962388",
                 })
         print(f"  ✓ 东方演出网: {len(shows)} 条场次")
+        _report("df962388", True, len(shows), "", [s["title"] for s in shows[:8]])
     except Exception as e:
+        err = str(e)
         print(f"  ⚠️ 东方演出网抓取失败: {e}")
+        _report("df962388", False, 0, err)
     return shows
 
 
@@ -395,9 +412,11 @@ def scrape_df962388():
 def scrape_saoju():
     print("📊 抓取 saoju 音乐剧档期库...")
     shows = []
+    err = ""
     try:
         html = fetch_url("https://y.saoju.net/yyj/year/2026/")
         if not html:
+            _report("saoju", False, 0, "fetch 返回空（不可达/超时）")
             return shows
         soup = BeautifulSoup(html, 'html.parser')
         text = soup.get_text()
@@ -417,8 +436,11 @@ def scrape_saoju():
             except Exception:
                 continue
         print(f"  ✓ saoju: {len(shows)} 条")
+        _report("saoju", True, len(shows), "", [s["title"] for s in shows[:8]])
     except Exception as e:
+        err = str(e)
         print(f"  ⚠️ saoju 抓取失败: {e}")
+        _report("saoju", False, 0, err)
     return shows
 
 
@@ -428,14 +450,19 @@ def scrape_saoju():
 def scrape_damai():
     print("🎟️ 抓取大麦网(音乐剧)...")
     shows = []
+    err = ""
     try:
         html = fetch_url("https://www.damai.cn/search_list.html?keyword=%E5%85%A8%E5%A5%B3%E5%8D%A1%E5%8F%B8%E9%9F%B3%E4%B9%90%E5%89%A7")
         if not html:
+            _report("damai", False, 0, "fetch 返回空（动态页/不可达）")
             return shows
         soup = BeautifulSoup(html, 'html.parser')
         print(f"  ✓ 大麦网: {len(shows)} 条（动态页面，建议以手动维护 KNOWN_SHOWS 为主）")
+        _report("damai", True, len(shows))
     except Exception as e:
+        err = str(e)
         print(f"  ⚠️ 大麦网抓取失败（动态页面，可忽略）: {e}")
+        _report("damai", False, 0, err)
     return shows
 
 
@@ -564,9 +591,31 @@ def main():
         "shows": shows,
     }
     Path("shows.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # 抓取报告：记录每个源在海内外 runner 的实际抓取结果（供验证自动化是否真正生效）
+    new_shows = [s for s in shows if str(s.get('id', '')).startswith('new-')]
+    SCRAPE_REPORT["_summary"] = {
+        "ran_at": datetime.now().isoformat(),
+        "enable_scrape": enable_scrape,
+        "has_net": HAS_NET,
+        "total_shows": len(shows),
+        "total_performances": total_perfs,
+        "auto_discovered_new": len(new_shows),
+        "new_titles": [s.get('title') for s in new_shows][:20],
+    }
+    Path("scrape_report.json").write_text(
+        json.dumps(SCRAPE_REPORT, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
     print(f"\n✅ shows.json 生成完成")
     print(f"   剧目标题: {len(shows)} 部 · 演出场次: {total_perfs}（全女卡司 {af_perfs} 场）")
     print(f"   涉及城市: {len(cities)} 个")
+    print(f"   自动发现新剧: {len(new_shows)} 部")
+    for name, r in SCRAPE_REPORT.items():
+        if name == "_summary":
+            continue
+        flag = "✅" if r.get("reached") else "❌"
+        print(f"   {flag} 源 {name}: reached={r.get('reached')} count={r.get('count')} err={r.get('error','')}")
 
 if __name__ == "__main__":
     main()
