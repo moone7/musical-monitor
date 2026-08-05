@@ -10,8 +10,8 @@ scraper.py — 音乐剧 · 全女卡司演出监控 数据抓取
          └─ is_all_female
 
 数据源（可插拔，单个失败不阻塞）：
-1. 大麦网 (damai.cn) 音乐剧搜索
-2. 东方演出网 · 音乐剧专版 (shanghaiyinleju.df962388.com)
+1. 大麦网 (damai.cn) 音乐剧搜索（动态页，占位）
+2. 东方演出网 · 全国音乐剧时间表（df962388 多城市子域：上海/北京/深圳/杭州/成都/南京/天津/西安/苏州/长沙）
 3. saoju 音乐剧档期库 (y.saoju.net)
 
 说明：音乐剧票务站多为 JS 动态渲染、反爬严格，运行时抓取常用于「补全字段」。
@@ -303,12 +303,26 @@ def fetch_url(url, encoding='utf-8', verify=False):
 
 
 # ============================================================
-# 数据源 1: 东方演出网 · 上海音乐剧时间表（服务器渲染，正则解析）
+# 数据源 1: 东方演出网 · 全国音乐剧时间表（df962388 多城市子域，服务器渲染，正则解析）
 # 字段：剧名 / 演出时间(支持区间) / 地点 / 门票价格
 # 说明：该站提供真实日期、场馆、票价；无卡司、无全女班标记，
 #       故抓取层只负责补全已知剧场次 + 自动发现新剧，
 #       卡司/全女判定由 KNOWN_SHOWS 校准层提供。
+#       仅收录实测可达的子域（海外 Actions runner 可抓）；404 的子域不列入。
 # ============================================================
+DF_CITY_SOURCES = [
+    ("上海", "https://shanghaiyinleju.df962388.com/"),
+    ("北京", "https://beijingyinleju.df962388.com/"),
+    ("深圳", "https://shenzhenyinleju.df962388.com/"),
+    ("杭州", "https://hangzhouyinleju.df962388.com/"),
+    ("成都", "https://chengduyinleju.df962388.com/"),
+    ("南京", "https://nanjingyinleju.df962388.com/"),
+    ("天津", "https://tianjinyinleju.df962388.com/"),
+    ("西安", "https://xianyinleju.df962388.com/"),
+    ("苏州", "https://suzhouyinleju.df962388.com/"),
+    ("长沙", "https://changshayinleju.df962388.com/"),
+]
+
 CITY_HINTS = ["北京", "上海", "广州", "深圳", "杭州", "成都", "武汉", "南京", "重庆", "天津", "苏州",
               "西安", "长沙", "青岛", "郑州", "哈尔滨", "沈阳", "宁波", "无锡", "常州", "东莞", "佛山",
               "珠海", "厦门", "福州", "合肥", "昆明", "大连", "济南", "南昌", "南宁", "贵阳", "石家庄",
@@ -332,8 +346,10 @@ UNWANTED_KW = [
     "熊出没", "葫芦兄弟", "汪汪队", "超级飞侠", "巴啦啦", "喜羊羊", "猪猪侠",
     "魔法学校", "奇妙的", "家庭", "互动", "欢乐", "造梦", "小怪兽", "小橙堡",
     # 音乐会 / 演唱会 / 音乐会答谢（非音乐剧演出）
-    "音乐会", "演唱会", "演奏会", "交响", "Gala", "答谢季", "演唱会",
+    "音乐会", "演唱会", "演奏会", "交响", "Gala", "答谢季",
     "个人音乐会", "明星音乐会", "音乐节",
+    # 非现场：影像 / 放映 / 高清 / 综艺秀（标题含"音乐剧"但非现场演出）
+    "影像", "放映", "高清", "综艺", "朗读", "诗会", "戏曲", "话剧",
 ]
 
 def is_unwanted_show(title):
@@ -361,14 +377,13 @@ def parse_df_dates(raw):
     times = re.findall(r'(\d{1,2}:\d{2})', raw)
     return dates, times
 
-def scrape_df962388():
-    print("🎶 抓取东方演出网·上海音乐剧时间表...")
+def scrape_df_city(city, url):
+    print(f"🎶 抓取东方演出网·{city}音乐剧时间表...")
     shows = []
-    err = ""
     try:
-        html = fetch_url("https://shanghaiyinleju.df962388.com/")
+        html = fetch_url(url)
         if not html:
-            _report("df962388", False, 0, "fetch 返回空（不可达/超时/证书）")
+            _report(f"df962388_{city}", False, 0, "fetch 返回空（不可达/超时/证书）")
             return shows
         links = list(re.finditer(r'<a[^>]+href="[^"]*yanchu/\d+\.html"[^>]*>(.*?)</a>', html, re.S))
         today = datetime.now().date()
@@ -392,7 +407,6 @@ def scrape_df962388():
             pm = re.search(r'门票价格[：:]\s*([^<]+)', block)
             price_raw = pm.group(1).strip() if pm else ""
             price = ("¥" + price_raw.replace('-', ' — ')) if price_raw else "票价以官方公布为准"
-            city = guess_city(venue)
             time_str = times[0] if times else ""
             for d in dates:
                 if d < today - timedelta(days=7):
@@ -402,12 +416,11 @@ def scrape_df962388():
                     "venue": venue, "city": city, "price": price,
                     "cast": "以官方公布为准", "is_all_female": False, "source": "df962388",
                 })
-        print(f"  ✓ 东方演出网: {len(shows)} 条场次")
-        _report("df962388", True, len(shows), "", [s["title"] for s in shows[:8]])
+        print(f"  ✓ 东方演出网·{city}: {len(shows)} 条场次")
+        _report(f"df962388_{city}", True, len(shows), "", [s["title"] for s in shows[:8]])
     except Exception as e:
-        err = str(e)
-        print(f"  ⚠️ 东方演出网抓取失败: {e}")
-        _report("df962388", False, 0, err)
+        print(f"  ⚠️ 东方演出网·{city}抓取失败: {e}")
+        _report(f"df962388_{city}", False, 0, str(e))
     return shows
 
 
@@ -564,8 +577,9 @@ def main():
         else:
             try:
                 all_scraped = []
-                all_scraped += scrape_df962388()
-                time.sleep(SLEEP_BETWEEN)
+                for city, url in DF_CITY_SOURCES:
+                    all_scraped += scrape_df_city(city, url)
+                    time.sleep(SLEEP_BETWEEN)
                 all_scraped += scrape_saoju()
                 time.sleep(SLEEP_BETWEEN)
                 all_scraped += scrape_damai()
