@@ -721,6 +721,10 @@
   /* ===== Show Panels ===== */
   .show-panel { margin-top: 6px; }
   .show-panel.hidden-by-tab { display: none; }
+  /* 卡片级筛选：关注演员 / 仅看全女 / 日历日期 —— 真正隐藏被过滤的卡片 */
+  .perf-card.hidden-by-fav,
+  .perf-card.hidden-by-af,
+  .perf-card.hidden-by-cal { display: none !important; }
   .show-panel-header {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     padding: 14px 18px; margin: 18px 0 12px;

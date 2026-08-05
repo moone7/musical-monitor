@@ -721,6 +721,10 @@
   /* ===== Show Panels ===== */
   .show-panel { margin-top: 6px; }
   .show-panel.hidden-by-tab { display: none; }
+  /* 卡片级筛选：关注演员 / 仅看全女 / 日历日期 —— 真正隐藏被过滤的卡片 */
+  .perf-card.hidden-by-fav,
+  .perf-card.hidden-by-af,
+  .perf-card.hidden-by-cal { display: none !important; }
   .show-panel-header {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     padding: 14px 18px; margin: 18px 0 12px;
@@ -962,8 +966,8 @@
 <div class="cal-tooltip" id="cal-tooltip"></div>
 <!-- ===== STATS ===== -->
 <div class="stats-bar">
-<div class="stat" data-num="126">
-<div class="stat-num">126</div>
+<div class="stat" data-num="149">
+<div class="stat-num">149</div>
 <div class="stat-label">未结束演出场次</div>
 </div>
 <div class="stat" data-num="59">
@@ -974,8 +978,8 @@
 <div class="stat-num" id="stat-bought">0</div>
 <div class="stat-label">🎟️ 已购场次</div>
 </div>
-<div class="stat" data-num="20">
-<div class="stat-num">20</div>
+<div class="stat" data-num="22">
+<div class="stat-num">22</div>
   <div class="stat-label">涉及城市</div>
 </div>
 </div>
@@ -986,19 +990,21 @@
     <span class="ov-sub">未结束演出 · 已演满一周自动隐藏</span>
     <button class="ov-toggle" id="ovToggle" type="button">展开明细 ▾</button>
   </div>
-  <div class="ov-flags" id="ov-flags"><span class="flag-chip flag-week">📅 7 天内开演 11 场</span></div>
+  <div class="ov-flags" id="ov-flags"><span class="flag-chip flag-week">📅 7 天内开演 18 场</span></div>
   <div class="ov-cities" id="ov-cities"><span class="ov-cap af"><span class="heart">💜</span>上海 <span class="cnt">38</span>场</span>
+<span class="ov-cap af"><span class="heart">💜</span>广州 <span class="cnt">28</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>苏州 <span class="cnt">15</span>场</span>
-<span class="ov-cap af"><span class="heart">💜</span>广州 <span class="cnt">13</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>北京 <span class="cnt">7</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>杭州 <span class="cnt">7</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>南京 <span class="cnt">6</span>场</span>
+<span class="ov-cap">武汉 <span class="cnt">6</span>场</span>
 <span class="ov-cap">成都 <span class="cnt">5</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>哈尔滨 <span class="cnt">4</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>沈阳 <span class="cnt">4</span>场</span>
 <span class="ov-cap">深圳 <span class="cnt">4</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>青岛 <span class="cnt">4</span>场</span>
 <span class="ov-cap">天津 <span class="cnt">3</span>场</span>
+<span class="ov-cap">长沙 <span class="cnt">3</span>场</span>
 <span class="ov-cap">东莞 <span class="cnt">2</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>台州 <span class="cnt">2</span>场</span>
 <span class="ov-cap">常州 <span class="cnt">2</span>场</span>
@@ -1006,19 +1012,21 @@
 <span class="ov-cap">衢州 <span class="cnt">2</span>场</span>
 <span class="ov-cap">西安 <span class="cnt">2</span>场</span>
 <span class="ov-cap af"><span class="heart">💜</span>郑州 <span class="cnt">2</span>场</span>
-<span class="ov-cap">长沙 <span class="cnt">2</span>场</span></div>
+<span class="ov-cap">厦门 <span class="cnt">1</span>场</span></div>
   <div class="ov-detail is-hidden" id="ovDetail"><div class="ov-detail-row"><b>上海</b>38场：<span class="af-mark"></span>《上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0》、<span class="af-mark"></span>《上海音乐剧《快乐即逝》、<span class="af-mark"></span>《女巫》、<span class="af-mark"></span>《德米安》、<span class="af-mark"></span>《粉丝来信》、<span class="af-mark">💜 </span>《连璧》</div>
+<div class="ov-detail-row"><b>广州</b>28场：<span class="af-mark">💜 </span>《SIX》、<span class="af-mark"></span>《时光代理人》、<span class="af-mark"></span>《粉丝来信》</div>
 <div class="ov-detail-row"><b>苏州</b>15场：<span class="af-mark">💜 </span>《SIX》、<span class="af-mark"></span>《【苏州】法语原版音乐剧《罗密欧与朱丽叶》、<span class="af-mark"></span>《成都原版音乐剧《剧院魅影》、<span class="af-mark"></span>《苏州音乐剧《鼓浪之声》、<span class="af-mark"></span>《苏州高杨、张会芳主演·外百老汇经典音乐剧《长腿叔叔》 中文版》</div>
-<div class="ov-detail-row"><b>广州</b>13场：<span class="af-mark">💜 </span>《SIX》、<span class="af-mark"></span>《粉丝来信》</div>
 <div class="ov-detail-row"><b>北京</b>7场：<span class="af-mark"></span>《中国煤矿文工团音乐剧场《广陵绝响》、<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark">💜 </span>《蝶变》</div>
 <div class="ov-detail-row"><b>杭州</b>7场：<span class="af-mark"></span>《[杭州]越韵音乐剧《花夜前行·千面》、<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark"></span>《杭州法剧新浪潮首轮中巡·法语原版音乐剧《莫里哀》、<span class="af-mark"></span>《杭州法语音乐剧《福尔摩斯的音乐探险》、<span class="af-mark">💜 </span>《蝶变》</div>
 <div class="ov-detail-row"><b>南京</b>6场：<span class="af-mark"></span>《2025·南京音乐剧节·英文原版音乐剧《tick,tick...BOOM!倒数时刻》、<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark"></span>《粉丝来信》</div>
+<div class="ov-detail-row"><b>武汉</b>6场：<span class="af-mark"></span>《怪物》</div>
 <div class="ov-detail-row"><b>成都</b>5场：<span class="af-mark"></span>《【成都】2026成都国际音乐剧节 音乐剧《狂飙》、<span class="af-mark"></span>《成都·法语原版音乐剧《红舞鞋》、<span class="af-mark"></span>《成都原版音乐剧《剧院魅影》、<span class="af-mark"></span>《成都奇幻科普音乐剧 博物馆奇妙游《汉字在哪里》-简阳站》</div>
 <div class="ov-detail-row"><b>哈尔滨</b>4场：<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark"></span>《粉丝来信》</div>
 <div class="ov-detail-row"><b>沈阳</b>4场：<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark"></span>《粉丝来信》</div>
 <div class="ov-detail-row"><b>深圳</b>4场：<span class="af-mark"></span>《声无际2026乐季 当代音乐系列IV 视听音乐剧场《形影月离 Moonchild》、<span class="af-mark"></span>《深圳文物回归主题音乐剧《博物馆奇遇记》、<span class="af-mark"></span>《深圳音乐剧《她的海》、<span class="af-mark"></span>《音乐剧《哪吒NE ZHA》深圳站》</div>
 <div class="ov-detail-row"><b>青岛</b>4场：<span class="af-mark">💜 </span>《她对此感到厌烦》、<span class="af-mark">💜 </span>《蝶变》</div>
 <div class="ov-detail-row"><b>天津</b>3场：<span class="af-mark"></span>《天津儿艺50周年演出季·合家欢音乐剧《唐妞驾到》、<span class="af-mark"></span>《天津音乐剧《狂炎奏鸣曲》</div>
+<div class="ov-detail-row"><b>长沙</b>3场：<span class="af-mark"></span>《法语音乐剧《茶花女》、<span class="af-mark"></span>《长沙点唱音乐剧《我要你》、<span class="af-mark"></span>《长沙音乐剧《心安东坡》</div>
 <div class="ov-detail-row"><b>东莞</b>2场：<span class="af-mark"></span>《粉丝来信》</div>
 <div class="ov-detail-row"><b>台州</b>2场：<span class="af-mark">💜 </span>《她对此感到厌烦》</div>
 <div class="ov-detail-row"><b>常州</b>2场：<span class="af-mark"></span>《粉丝来信》</div>
@@ -1026,7 +1034,7 @@
 <div class="ov-detail-row"><b>衢州</b>2场：<span class="af-mark"></span>《粉丝来信》</div>
 <div class="ov-detail-row"><b>西安</b>2场：<span class="af-mark"></span>《西安汉密尔顿音乐剧蹦迪派对》、<span class="af-mark"></span>《西安音乐剧《寻找李二狗》</div>
 <div class="ov-detail-row"><b>郑州</b>2场：<span class="af-mark">💜 </span>《她对此感到厌烦》</div>
-<div class="ov-detail-row"><b>长沙</b>2场：<span class="af-mark"></span>《长沙点唱音乐剧《我要你》、<span class="af-mark"></span>《长沙音乐剧《心安东坡》</div></div>
+<div class="ov-detail-row"><b>厦门</b>1场：<span class="af-mark"></span>《厦门音乐剧《红莲》</div></div>
 </div>
 <!-- ===== 📋 演出一览（tab：每剧名一个） ===== -->
 <h2 class="section-title"><span class="section-icon">📋</span> 演出一览
@@ -1042,6 +1050,8 @@
 <button class="tab-btn" data-tab="lianbi">连璧</button>
 <button class="tab-btn" data-tab="demian">德米安</button>
 <button class="tab-btn" data-tab="fslsx">粉丝来信</button>
+<button class="tab-btn" data-tab="shiguang">时光代理人</button>
+<button class="tab-btn" data-tab="guaiwu">怪物</button>
 <button class="tab-btn" data-tab="auto-62c32f1c">上海非常林奕华&amp;amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0</button>
 <button class="tab-btn" data-tab="auto-b115987a">上海音乐剧《快乐即逝</button>
 <button class="tab-btn" data-tab="auto-f7864157">中国煤矿文工团音乐剧场《广陵绝响</button>
@@ -1066,6 +1076,8 @@
 <button class="tab-btn" data-tab="auto-7940d698">【苏州】法语原版音乐剧《罗密欧与朱丽叶</button>
 <button class="tab-btn" data-tab="auto-b09774cb">长沙音乐剧《心安东坡</button>
 <button class="tab-btn" data-tab="auto-e522ca3b">长沙点唱音乐剧《我要你</button>
+<button class="tab-btn" data-tab="auto-09e69f06">厦门音乐剧《红莲</button>
+<button class="tab-btn" data-tab="auto-5ef3be3f">法语音乐剧《茶花女</button>
 </div>
 <div class="tab-panels" id="tab-panels">
 <div class="show-panel all-female" data-show="tafan">
@@ -2929,6 +2941,406 @@
 </div>
 </div>
 </div>
+<div class="show-panel" data-show="shiguang">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+    <div class="sph-meta">🏛️ 广州·珠影壹号新空间A馆 · 15 场 · 广州 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    <div class="sph-note">漫改音乐剧广州驻演（珠影壹号新空间A馆）。以下为近期场次与分场卡司（参考档期，以官方开票页为准）。</div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="shiguang-2026-08-07" data-show="shiguang" data-date="2026-08-07" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月7日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="唐浩瑜" title="点击 ★ 标记喜欢的演员">唐浩瑜<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶锐" title="点击 ★ 标记喜欢的演员">叶锐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张芷妍" title="点击 ★ 标记喜欢的演员">张芷妍<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈奕蓉" title="点击 ★ 标记喜欢的演员">陈奕蓉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘鑫" title="点击 ★ 标记喜欢的演员">刘鑫<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-08-a" data-show="shiguang" data-date="2026-08-08" data-time="14:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月8日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="巴文豪" title="点击 ★ 标记喜欢的演员">巴文豪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="武冠辰" title="点击 ★ 标记喜欢的演员">武冠辰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张芷妍" title="点击 ★ 标记喜欢的演员">张芷妍<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="沈恬" title="点击 ★ 标记喜欢的演员">沈恬<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘鑫" title="点击 ★ 标记喜欢的演员">刘鑫<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-08-b" data-show="shiguang" data-date="2026-08-08" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月8日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="钟子崴" title="点击 ★ 标记喜欢的演员">钟子崴<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="武冠辰" title="点击 ★ 标记喜欢的演员">武冠辰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张芷妍" title="点击 ★ 标记喜欢的演员">张芷妍<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="沈恬" title="点击 ★ 标记喜欢的演员">沈恬<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘鑫" title="点击 ★ 标记喜欢的演员">刘鑫<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-09-a" data-show="shiguang" data-date="2026-08-09" data-time="14:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月9日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="唐浩瑜" title="点击 ★ 标记喜欢的演员">唐浩瑜<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶锐" title="点击 ★ 标记喜欢的演员">叶锐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张芷妍" title="点击 ★ 标记喜欢的演员">张芷妍<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="沈恬" title="点击 ★ 标记喜欢的演员">沈恬<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘鑫" title="点击 ★ 标记喜欢的演员">刘鑫<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-09-b" data-show="shiguang" data-date="2026-08-09" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月9日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="钟子崴" title="点击 ★ 标记喜欢的演员">钟子崴<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶锐" title="点击 ★ 标记喜欢的演员">叶锐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张芷妍" title="点击 ★ 标记喜欢的演员">张芷妍<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈奕蓉" title="点击 ★ 标记喜欢的演员">陈奕蓉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-13" data-show="shiguang" data-date="2026-08-13" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月13日（周四）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="高尔金宝音" title="点击 ★ 标记喜欢的演员">高尔金宝音<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="文亮棋" title="点击 ★ 标记喜欢的演员">文亮棋<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱媛媛" title="点击 ★ 标记喜欢的演员">朱媛媛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘珈茵" title="点击 ★ 标记喜欢的演员">刘珈茵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵星尧" title="点击 ★ 标记喜欢的演员">赵星尧<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-14" data-show="shiguang" data-date="2026-08-14" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月14日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="高尔金宝音" title="点击 ★ 标记喜欢的演员">高尔金宝音<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="武冠辰" title="点击 ★ 标记喜欢的演员">武冠辰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱媛媛" title="点击 ★ 标记喜欢的演员">朱媛媛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘珈茵" title="点击 ★ 标记喜欢的演员">刘珈茵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵星尧" title="点击 ★ 标记喜欢的演员">赵星尧<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-15" data-show="shiguang" data-date="2026-08-15" data-time="14:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月15日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="巴文豪" title="点击 ★ 标记喜欢的演员">巴文豪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶锐" title="点击 ★ 标记喜欢的演员">叶锐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="朱媛媛" title="点击 ★ 标记喜欢的演员">朱媛媛<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="刘珈茵" title="点击 ★ 标记喜欢的演员">刘珈茵<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵星尧" title="点击 ★ 标记喜欢的演员">赵星尧<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-19" data-show="shiguang" data-date="2026-08-19" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月19日（周三）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="巴文豪" title="点击 ★ 标记喜欢的演员">巴文豪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="文亮棋" title="点击 ★ 标记喜欢的演员">文亮棋<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="安吉儿" title="点击 ★ 标记喜欢的演员">安吉儿<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈雨朦" title="点击 ★ 标记喜欢的演员">陈雨朦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="赵星尧" title="点击 ★ 标记喜欢的演员">赵星尧<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-21" data-show="shiguang" data-date="2026-08-21" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月21日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="唐浩瑜" title="点击 ★ 标记喜欢的演员">唐浩瑜<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="文亮棋" title="点击 ★ 标记喜欢的演员">文亮棋<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="安吉儿" title="点击 ★ 标记喜欢的演员">安吉儿<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈奕蓉" title="点击 ★ 标记喜欢的演员">陈奕蓉<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-22" data-show="shiguang" data-date="2026-08-22" data-time="14:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月22日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="巴文豪" title="点击 ★ 标记喜欢的演员">巴文豪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="文亮棋" title="点击 ★ 标记喜欢的演员">文亮棋<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="安吉儿" title="点击 ★ 标记喜欢的演员">安吉儿<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈雨朦" title="点击 ★ 标记喜欢的演员">陈雨朦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-28" data-show="shiguang" data-date="2026-08-28" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月28日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="栾靖宇" title="点击 ★ 标记喜欢的演员">栾靖宇<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶锐" title="点击 ★ 标记喜欢的演员">叶锐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="安吉儿" title="点击 ★ 标记喜欢的演员">安吉儿<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐晓玥" title="点击 ★ 标记喜欢的演员">徐晓玥<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-29" data-show="shiguang" data-date="2026-08-29" data-time="14:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月29日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="栾靖宇" title="点击 ★ 标记喜欢的演员">栾靖宇<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="武冠辰" title="点击 ★ 标记喜欢的演员">武冠辰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="安吉儿" title="点击 ★ 标记喜欢的演员">安吉儿<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈雨朦" title="点击 ★ 标记喜欢的演员">陈雨朦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-30-a" data-show="shiguang" data-date="2026-08-30" data-time="14:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月30日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="巴文豪" title="点击 ★ 标记喜欢的演员">巴文豪<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="武冠辰" title="点击 ★ 标记喜欢的演员">武冠辰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶思琳" title="点击 ★ 标记喜欢的演员">叶思琳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="徐晓玥" title="点击 ★ 标记喜欢的演员">徐晓玥<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="shiguang-2026-08-30-b" data-show="shiguang" data-date="2026-08-30" data-time="19:30" data-title="音乐剧《时光代理人》" data-venue="珠影壹号新空间A馆">
+<div class="perf-info">
+<div class="perf-title">音乐剧《时光代理人》 <em>广州驻演 · 漫改音乐剧</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月30日（周日）19:30</span>
+<span><span class="meta-icon">📍</span>珠影壹号新空间A馆</span>
+<span><span class="meta-icon">🏙️</span>广州</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="栾靖宇" title="点击 ★ 标记喜欢的演员">栾靖宇<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶锐" title="点击 ★ 标记喜欢的演员">叶锐<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="叶思琳" title="点击 ★ 标记喜欢的演员">叶思琳<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="陈雨朦" title="点击 ★ 标记喜欢的演员">陈雨朦<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄建豪" title="点击 ★ 标记喜欢的演员">黄建豪<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>广州·珠影壹号新空间A馆
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+</div>
+</div>
+<div class="show-panel" data-show="guaiwu">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+    <div class="sph-meta">🏛️ 武汉·联创艺空间2号·寻境剧场 · 6 场 · 武汉 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    <div class="sph-note">双男主音乐剧武汉驻演（联创艺空间2号·寻境剧场）。以下为近期场次与分场卡司（参考档期，以官方开票页为准）。</div>
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="guaiwu-2026-08-07" data-show="guaiwu" data-date="2026-08-07" data-time="19:30" data-title="音乐剧《怪物》" data-venue="联创艺空间2号·寻境剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月7日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>联创艺空间2号·寻境剧场</span>
+<span><span class="meta-icon">🏙️</span>武汉</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="周靖杰" title="点击 ★ 标记喜欢的演员">周靖杰<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="张子扬" title="点击 ★ 标记喜欢的演员">张子扬<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>武汉·联创艺空间2号·寻境剧场
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="guaiwu-2026-08-08" data-show="guaiwu" data-date="2026-08-08" data-time="14:30" data-title="音乐剧《怪物》" data-venue="联创艺空间2号·寻境剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月8日（周六）14:30</span>
+<span><span class="meta-icon">📍</span>联创艺空间2号·寻境剧场</span>
+<span><span class="meta-icon">🏙️</span>武汉</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="张力升" title="点击 ★ 标记喜欢的演员">张力升<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="黄子俊" title="点击 ★ 标记喜欢的演员">黄子俊<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>武汉·联创艺空间2号·寻境剧场
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="guaiwu-2026-08-15" data-show="guaiwu" data-date="2026-08-15" data-time="19:30" data-title="音乐剧《怪物》" data-venue="联创艺空间2号·寻境剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月15日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>联创艺空间2号·寻境剧场</span>
+<span><span class="meta-icon">🏙️</span>武汉</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="韩佳旭" title="点击 ★ 标记喜欢的演员">韩佳旭<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="谭建业" title="点击 ★ 标记喜欢的演员">谭建业<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>武汉·联创艺空间2号·寻境剧场
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="guaiwu-2026-08-16" data-show="guaiwu" data-date="2026-08-16" data-time="14:30" data-title="音乐剧《怪物》" data-venue="联创艺空间2号·寻境剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月16日（周日）14:30</span>
+<span><span class="meta-icon">📍</span>联创艺空间2号·寻境剧场</span>
+<span><span class="meta-icon">🏙️</span>武汉</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="王克遥" title="点击 ★ 标记喜欢的演员">王克遥<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="谭建业" title="点击 ★ 标记喜欢的演员">谭建业<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>武汉·联创艺空间2号·寻境剧场
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="guaiwu-2026-08-21" data-show="guaiwu" data-date="2026-08-21" data-time="19:30" data-title="音乐剧《怪物》" data-venue="联创艺空间2号·寻境剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月21日（周五）19:30</span>
+<span><span class="meta-icon">📍</span>联创艺空间2号·寻境剧场</span>
+<span><span class="meta-icon">🏙️</span>武汉</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="曾鑫" title="点击 ★ 标记喜欢的演员">曾鑫<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="樊哲" title="点击 ★ 标记喜欢的演员">樊哲<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>武汉·联创艺空间2号·寻境剧场
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+<div class="perf-card" data-id="guaiwu-2026-08-22" data-show="guaiwu" data-date="2026-08-22" data-time="19:30" data-title="音乐剧《怪物》" data-venue="联创艺空间2号·寻境剧场">
+<div class="perf-info">
+<div class="perf-title">音乐剧《怪物》 <em>武汉驻演 · 双男主</em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>8月22日（周六）19:30</span>
+<span><span class="meta-icon">📍</span>联创艺空间2号·寻境剧场</span>
+<span><span class="meta-icon">🏙️</span>武汉</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip fav-able" data-actor="曾鑫" title="点击 ★ 标记喜欢的演员">曾鑫<span class="fav-star">★</span></span><span class="cast-chip fav-able" data-actor="樊哲" title="点击 ★ 标记喜欢的演员">樊哲<span class="fav-star">★</span></span></span><br/>
+<strong>制作：</strong>武汉·联创艺空间2号·寻境剧场
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">票价以官方公布为准</div></div>
+</div>
+</div>
+</div>
 <div class="show-panel" data-show="auto-62c32f1c">
 <div class="show-panel-header">
   <div class="sph-left">
@@ -3679,6 +4091,64 @@
 </div>
 </div>
 </div>
+<div class="show-panel" data-show="auto-09e69f06">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">厦门音乐剧《红莲》 <em></em></div>
+    <div class="sph-meta">🏛️  · 1 场 · 厦门 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="auto-09e69f06-2026-10-06" data-show="auto-09e69f06" data-date="2026-10-06" data-time="15:00" data-title="厦门音乐剧《红莲》" data-venue="嘉庚剧院">
+<div class="perf-info">
+<div class="perf-title">厦门音乐剧《红莲》 <em></em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>10月6日（周二）15:00</span>
+<span><span class="meta-icon">📍</span>嘉庚剧院</span>
+<span><span class="meta-icon">🏙️</span>厦门</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
+<strong>制作：</strong>
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥180 — 580</div></div>
+</div>
+</div>
+</div>
+<div class="show-panel" data-show="auto-5ef3be3f">
+<div class="show-panel-header">
+  <div class="sph-left">
+    <div class="sph-title">法语音乐剧《茶花女》 <em></em></div>
+    <div class="sph-meta">🏛️  · 1 场 · 长沙 <span class="sph-af sph-mixed">⚧ 含男演员</span></div>
+    
+  </div>
+</div>
+<div class="perf-grid">
+<div class="perf-card" data-id="auto-5ef3be3f-2026-11-06" data-show="auto-5ef3be3f" data-date="2026-11-06" data-time="" data-title="法语音乐剧《茶花女》" data-venue="长沙梅溪湖国际文化艺术中心大剧院">
+<div class="perf-info">
+<div class="perf-title">法语音乐剧《茶花女》 <em></em></div>
+<div class="perf-meta">
+<span><span class="meta-icon">📅</span>11月6日（周五）</span>
+<span><span class="meta-icon">📍</span>长沙梅溪湖国际文化艺术中心大剧院</span>
+<span><span class="meta-icon">🏙️</span>长沙</span>
+</div>
+<div class="perf-cast">
+<strong>演员表：</strong><span class="cast-chips"><span class="cast-chip">以官方公布为准</span></span><br/>
+<strong>制作：</strong>
+</div>
+</div>
+<div class="perf-side">
+
+<button class="buy-btn" onclick="toggleBought(this)"><span class="btn-icon">🎟️</span><span class="btn-text">标记已购</span></button>
+<div class="perf-price">¥280 — 980</div></div>
+</div>
+</div>
+</div>
 </div>
 <!-- ===== FOOTER ===== -->
 <div class="footer">
@@ -3693,7 +4163,7 @@
 <span>🎪 虹桥艺术中心</span>
 </div>
 <p>报告由 WorkBuddy 自动化生成 · 监控范围：全女卡司音乐剧 + 全网音乐剧演出（大麦网 + 各剧院官方 + 全网检索）</p>
-<p style="margin-top:6px;">数据截至 2026-08-05 06:10 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
+<p style="margin-top:6px;">数据截至 2026-08-05 14:42 GMT+8 · 票价/余票以官方购票页面实时显示为准</p>
 <p style="margin-top:6px;color:#9aa3b2;font-size:12px;">⚠️ 档期为参考信息（人工维护，已核对剧目与大致排期），分场卡司/时间可能随官方调整，购票前请以剧院官方开票页为准。发现错误可在仓库提交修正。</p>
 <p style="margin-top:10px;"><a href="https://moone7.github.io/yueju-monitor/" target="_blank" rel="noopener">🎭 姊妹站点：越剧演出售票监控</a></p>
 </div>
@@ -3710,21 +4180,22 @@ const PERF_DATES = {
   "2026-08-02": ["witch-2026-08-02", "demian-2026-08-02"],
   "2026-08-04": ["demian-2026-08-04"],
   "2026-08-06": ["demian-2026-08-06"],
-  "2026-08-07": ["fslsx-2026-08-07", "lianbi-2026-08-07"],
-  "2026-08-08": ["fslsx-2026-08-08", "lianbi-2026-08-08", "demian-2026-08-08"],
-  "2026-08-09": ["demian-2026-08-09-a", "demian-2026-08-09-b", "auto-86b818d0-2026-08-09"],
+  "2026-08-07": ["fslsx-2026-08-07", "lianbi-2026-08-07", "shiguang-2026-08-07", "guaiwu-2026-08-07"],
+  "2026-08-08": ["shiguang-2026-08-08-a", "guaiwu-2026-08-08", "fslsx-2026-08-08", "lianbi-2026-08-08", "demian-2026-08-08", "shiguang-2026-08-08-b"],
+  "2026-08-09": ["demian-2026-08-09-a", "shiguang-2026-08-09-a", "demian-2026-08-09-b", "shiguang-2026-08-09-b", "auto-86b818d0-2026-08-09"],
   "2026-08-11": ["demian-2026-08-11"],
   "2026-08-12": ["demian-2026-08-12"],
-  "2026-08-13": ["demian-2026-08-13"],
-  "2026-08-14": ["auto-a7e934a8-2026-08-14", "lianbi-2026-08-14", "demian-2026-08-14"],
-  "2026-08-15": ["auto-18bc983c-2026-08-15", "auto-e130be59-2026-08-15", "auto-e130be59-2026-08-15-1", "lianbi-2026-08-15", "demian-2026-08-15"],
-  "2026-08-16": ["lianbi-2026-08-16", "demian-2026-08-16-a", "demian-2026-08-16-b"],
-  "2026-08-19": ["lianbi-2026-08-19"],
-  "2026-08-21": ["diebian-2026-08-21", "lianbi-2026-08-21"],
-  "2026-08-22": ["diebian-2026-08-22"],
+  "2026-08-13": ["demian-2026-08-13", "shiguang-2026-08-13"],
+  "2026-08-14": ["auto-a7e934a8-2026-08-14", "lianbi-2026-08-14", "demian-2026-08-14", "shiguang-2026-08-14"],
+  "2026-08-15": ["auto-18bc983c-2026-08-15", "auto-e130be59-2026-08-15", "auto-e130be59-2026-08-15-1", "lianbi-2026-08-15", "shiguang-2026-08-15", "demian-2026-08-15", "guaiwu-2026-08-15"],
+  "2026-08-16": ["lianbi-2026-08-16", "demian-2026-08-16-a", "guaiwu-2026-08-16", "demian-2026-08-16-b"],
+  "2026-08-19": ["lianbi-2026-08-19", "shiguang-2026-08-19"],
+  "2026-08-21": ["diebian-2026-08-21", "lianbi-2026-08-21", "shiguang-2026-08-21", "guaiwu-2026-08-21"],
+  "2026-08-22": ["shiguang-2026-08-22", "diebian-2026-08-22", "guaiwu-2026-08-22"],
   "2026-08-23": ["lianbi-2026-08-23"],
-  "2026-08-28": ["auto-5629d219-2026-08-28-1", "diebian-2026-08-28", "fslsx-2026-08-28", "auto-5629d219-2026-08-28"],
-  "2026-08-29": ["diebian-2026-08-29", "lianbi-2026-08-29", "fslsx-2026-08-29"],
+  "2026-08-28": ["auto-5629d219-2026-08-28-1", "diebian-2026-08-28", "fslsx-2026-08-28", "shiguang-2026-08-28", "auto-5629d219-2026-08-28"],
+  "2026-08-29": ["diebian-2026-08-29", "lianbi-2026-08-29", "shiguang-2026-08-29", "fslsx-2026-08-29"],
+  "2026-08-30": ["shiguang-2026-08-30-a", "shiguang-2026-08-30-b"],
   "2026-09-03": ["auto-e522ca3b-2026-09-03"],
   "2026-09-04": ["tafan-2026-09-04"],
   "2026-09-05": ["auto-f7864157-2026-09-05", "auto-af6b1602-2026-09-05", "tafan-2026-09-05", "diebian-2026-09-05-a", "fslsx-2026-09-05", "diebian-2026-09-05-b"],
@@ -3744,7 +4215,7 @@ const PERF_DATES = {
   "2026-10-03": ["six-2026-10-03"],
   "2026-10-04": ["six-2026-10-04"],
   "2026-10-05": ["six-2026-10-05"],
-  "2026-10-06": ["tafan-2026-10-06", "six-2026-10-06"],
+  "2026-10-06": ["tafan-2026-10-06", "auto-09e69f06-2026-10-06", "six-2026-10-06"],
   "2026-10-07": ["tafan-2026-10-07", "six-2026-10-07"],
   "2026-10-08": ["six-2026-10-08"],
   "2026-10-09": ["six-2026-10-09"],
@@ -3763,7 +4234,7 @@ const PERF_DATES = {
   "2026-10-25": ["six-2026-10-25"],
   "2026-10-31": ["tafan-2026-10-31"],
   "2026-11-01": ["tafan-2026-11-01"],
-  "2026-11-06": ["tafan-2026-11-06", "fslsx-2026-11-06"],
+  "2026-11-06": ["auto-5ef3be3f-2026-11-06", "tafan-2026-11-06", "fslsx-2026-11-06"],
   "2026-11-07": ["tafan-2026-11-07", "fslsx-2026-11-07"],
   "2026-11-13": ["fslsx-2026-11-13"],
   "2026-11-14": ["fslsx-2026-11-14", "auto-3d2f3727-2026-11-14"],

@@ -277,6 +277,41 @@ KNOWN_SHOWS = [
             {"id": "fslsx-2026-11-14", "date": "2026-11-14", "time": "19:30", "venue": "广东省友谊剧院", "city": "广州", "cast": ["卡司以官方公布为准"], "price": "票价以官方公布为准", "is_all_female": False},
         ]
     },
+    {
+        "id": "shiguang", "title": "音乐剧《时光代理人》", "subtitle": "广州驻演 · 漫改音乐剧",
+        "troupe": "广州·珠影壹号新空间A馆", "is_all_female": False,
+        "note": "漫改音乐剧广州驻演（珠影壹号新空间A馆）。以下为近期场次与分场卡司（参考档期，以官方开票页为准）。",
+        "performances": [
+            {"id": "shiguang-2026-08-07", "date": "2026-08-07", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["唐浩瑜","叶锐","张芷妍","陈奕蓉","刘鑫"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-08-a", "date": "2026-08-08", "time": "14:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["巴文豪","武冠辰","张芷妍","沈恬","刘鑫"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-08-b", "date": "2026-08-08", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["钟子崴","武冠辰","张芷妍","沈恬","刘鑫"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-09-a", "date": "2026-08-09", "time": "14:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["唐浩瑜","叶锐","张芷妍","沈恬","刘鑫"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-09-b", "date": "2026-08-09", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["钟子崴","叶锐","张芷妍","陈奕蓉","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-13", "date": "2026-08-13", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["高尔金宝音","文亮棋","朱媛媛","刘珈茵","赵星尧"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-14", "date": "2026-08-14", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["高尔金宝音","武冠辰","朱媛媛","刘珈茵","赵星尧"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-15", "date": "2026-08-15", "time": "14:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["巴文豪","叶锐","朱媛媛","刘珈茵","赵星尧"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-19", "date": "2026-08-19", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["巴文豪","文亮棋","安吉儿","陈雨朦","赵星尧"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-21", "date": "2026-08-21", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["唐浩瑜","文亮棋","安吉儿","陈奕蓉","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-22", "date": "2026-08-22", "time": "14:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["巴文豪","文亮棋","安吉儿","陈雨朦","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-28", "date": "2026-08-28", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["栾靖宇","叶锐","安吉儿","徐晓玥","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-29", "date": "2026-08-29", "time": "14:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["栾靖宇","武冠辰","安吉儿","陈雨朦","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-30-a", "date": "2026-08-30", "time": "14:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["巴文豪","武冠辰","叶思琳","徐晓玥","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "shiguang-2026-08-30-b", "date": "2026-08-30", "time": "19:30", "venue": "珠影壹号新空间A馆", "city": "广州", "cast": ["栾靖宇","叶锐","叶思琳","陈雨朦","黄建豪"], "price": "票价以官方公布为准", "is_all_female": False},
+        ]
+    },
+    {
+        "id": "guaiwu", "title": "音乐剧《怪物》", "subtitle": "武汉驻演 · 双男主",
+        "troupe": "武汉·联创艺空间2号·寻境剧场", "is_all_female": False,
+        "note": "双男主音乐剧武汉驻演（联创艺空间2号·寻境剧场）。以下为近期场次与分场卡司（参考档期，以官方开票页为准）。",
+        "performances": [
+            {"id": "guaiwu-2026-08-07", "date": "2026-08-07", "time": "19:30", "venue": "联创艺空间2号·寻境剧场", "city": "武汉", "cast": ["周靖杰","张子扬"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "guaiwu-2026-08-08", "date": "2026-08-08", "time": "14:30", "venue": "联创艺空间2号·寻境剧场", "city": "武汉", "cast": ["张力升","黄子俊"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "guaiwu-2026-08-15", "date": "2026-08-15", "time": "19:30", "venue": "联创艺空间2号·寻境剧场", "city": "武汉", "cast": ["韩佳旭","谭建业"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "guaiwu-2026-08-16", "date": "2026-08-16", "time": "14:30", "venue": "联创艺空间2号·寻境剧场", "city": "武汉", "cast": ["王克遥","谭建业"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "guaiwu-2026-08-21", "date": "2026-08-21", "time": "19:30", "venue": "联创艺空间2号·寻境剧场", "city": "武汉", "cast": ["曾鑫","樊哲"], "price": "票价以官方公布为准", "is_all_female": False},
+            {"id": "guaiwu-2026-08-22", "date": "2026-08-22", "time": "19:30", "venue": "联创艺空间2号·寻境剧场", "city": "武汉", "cast": ["曾鑫","樊哲"], "price": "票价以官方公布为准", "is_all_female": False},
+        ]
+    },
 ]
 
 
@@ -323,14 +358,21 @@ DF_CITY_SOURCES = [
     ("长沙", "https://changshayinleju.df962388.com/"),
 ]
 
+# 全国聚合源：东方演出网「话剧歌剧」栏目（含音乐剧），覆盖无独立子域的城市
+# （广州/武汉/重庆 等）；与城市子域数据合并去重。该栏目为全站汇总，按标题过滤出音乐剧。
+DF_NATIONAL_SOURCES = [
+    ("全国(含广/武/渝)", "https://www.df962388.com/huajugeju/"),
+]
+
 CITY_HINTS = ["北京", "上海", "广州", "深圳", "杭州", "成都", "武汉", "南京", "重庆", "天津", "苏州",
               "西安", "长沙", "青岛", "郑州", "哈尔滨", "沈阳", "宁波", "无锡", "常州", "东莞", "佛山",
               "珠海", "厦门", "福州", "合肥", "昆明", "大连", "济南", "南昌", "南宁", "贵阳", "石家庄",
               "太原", "兰州", "海口", "三亚", "衢州", "台州", "舟山", "金华", "温州", "嘉兴", "绍兴", "南通"]
 
-def guess_city(venue):
+def guess_city(text):
+    text = text or ""
     for c in CITY_HINTS:
-        if c in (venue or ""):
+        if c in text:
             return c
     return "上海"  # 该站为上海音乐剧时间表
 
@@ -377,13 +419,13 @@ def parse_df_dates(raw):
     times = re.findall(r'(\d{1,2}:\d{2})', raw)
     return dates, times
 
-def scrape_df_city(city, url):
-    print(f"🎶 抓取东方演出网·{city}音乐剧时间表...")
+def scrape_df(url, label, fixed_city=None):
+    print(f"🎶 抓取东方演出网·{label}...")
     shows = []
     try:
         html = fetch_url(url)
         if not html:
-            _report(f"df962388_{city}", False, 0, "fetch 返回空（不可达/超时/证书）")
+            _report(f"df962388_{label}", False, 0, "fetch 返回空（不可达/超时/证书）")
             return shows
         links = list(re.finditer(r'<a[^>]+href="[^"]*yanchu/\d+\.html"[^>]*>(.*?)</a>', html, re.S))
         today = datetime.now().date()
@@ -408,6 +450,7 @@ def scrape_df_city(city, url):
             price_raw = pm.group(1).strip() if pm else ""
             price = ("¥" + price_raw.replace('-', ' — ')) if price_raw else "票价以官方公布为准"
             time_str = times[0] if times else ""
+            city = fixed_city if fixed_city else guess_city(title + " " + venue)
             for d in dates:
                 if d < today - timedelta(days=7):
                     continue
@@ -416,11 +459,11 @@ def scrape_df_city(city, url):
                     "venue": venue, "city": city, "price": price,
                     "cast": "以官方公布为准", "is_all_female": False, "source": "df962388",
                 })
-        print(f"  ✓ 东方演出网·{city}: {len(shows)} 条场次")
-        _report(f"df962388_{city}", True, len(shows), "", [s["title"] for s in shows[:8]])
+        print(f"  ✓ 东方演出网·{label}: {len(shows)} 条场次")
+        _report(f"df962388_{label}", True, len(shows), "", [s["title"] for s in shows[:8]])
     except Exception as e:
-        print(f"  ⚠️ 东方演出网·{city}抓取失败: {e}")
-        _report(f"df962388_{city}", False, 0, str(e))
+        print(f"  ⚠️ 东方演出网·{label}抓取失败: {e}")
+        _report(f"df962388_{label}", False, 0, str(e))
     return shows
 
 
@@ -578,7 +621,10 @@ def main():
             try:
                 all_scraped = []
                 for city, url in DF_CITY_SOURCES:
-                    all_scraped += scrape_df_city(city, url)
+                    all_scraped += scrape_df(url, city, fixed_city=city)
+                    time.sleep(SLEEP_BETWEEN)
+                for label, url in DF_NATIONAL_SOURCES:
+                    all_scraped += scrape_df(url, label)
                     time.sleep(SLEEP_BETWEEN)
                 all_scraped += scrape_saoju()
                 time.sleep(SLEEP_BETWEEN)
@@ -606,7 +652,7 @@ def main():
             "all_female_shows": len([s for s in shows if s.get('is_all_female')]),
             "all_female_performances": af_perfs,
             "cities": len(cities), "scraped_at": datetime.now().isoformat(),
-            "sources": ["known_seed", "df962388", "saoju"],
+            "sources": ["known_seed", "df962388", "df962388_national", "saoju"],
         },
         "shows": shows,
     }
