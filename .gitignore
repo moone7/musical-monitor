@@ -1,5 +1,4 @@
-# 运行时生成 / 缓存
-shows.json
+# 运行时生成 / 缓存（shows.json 由每日 workflow 生成并提交，作为每日快照）
 .fingerprint_cache
 __pycache__/
 *.pyc
