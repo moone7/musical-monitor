@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 35,
-    "total_performances": 202,
+    "total_shows": 32,
+    "total_performances": 199,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-05T23:51:54.507351",
+    "scraped_at": "2026-08-07T01:40:26.810291",
     "sources": [
       "known_seed",
       "df962388",
@@ -2576,28 +2576,6 @@
       ]
     },
     {
-      "id": "auto-b115987a",
-      "title": "上海音乐剧《快乐即逝》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-b115987a-2026-09-18",
-          "date": "2026-09-18",
-          "time": "19:30",
-          "venue": "上海文化广场xa0 主剧场",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
       "id": "auto-f7864157",
       "title": "中国煤矿文工团音乐剧场《广陵绝响》",
       "subtitle": "",
@@ -2730,28 +2708,6 @@
       ]
     },
     {
-      "id": "auto-65c808a1",
-      "title": "杭州法语音乐剧《福尔摩斯的音乐探险》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-65c808a1-2026-07-29",
-          "date": "2026-07-29",
-          "time": "19:30",
-          "venue": "杭州临平大剧院",
-          "city": "杭州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
       "id": "auto-11f29315",
       "title": "杭州法剧新浪潮首轮中巡·法语原版音乐剧《莫里哀》",
       "subtitle": "",
@@ -2847,6 +2803,19 @@
             "以官方公布为准"
           ],
           "price": "¥10.1 — 120",
+          "is_all_female": false,
+          "source": "df962388"
+        },
+        {
+          "id": "auto-ad9bf392-2026-09-05-1",
+          "date": "2026-09-05",
+          "time": "",
+          "venue": "郑州大剧院 戏曲厅",
+          "city": "郑州",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥60 — 198",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -3115,41 +3084,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-7c789546",
-      "title": "奇遇·古蜀三星堆——大型原创音乐剧·沉浸式古蜀文明史诗",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-7c789546-2026-08-07",
-          "date": "2026-08-07",
-          "time": "",
-          "venue": "四川省歌舞剧院",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥88 — 288",
-          "is_all_female": false,
-          "source": "df962388"
-        },
-        {
-          "id": "auto-7c789546-2031-12-31-1",
-          "date": "2031-12-31",
-          "time": "",
-          "venue": "四川省歌舞剧院",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥88 — 288",
           "is_all_female": false,
           "source": "df962388"
         }
