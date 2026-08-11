@@ -27,7 +27,7 @@ import re
 import time
 import copy
 import hashlib
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -609,6 +609,10 @@ def main():
     print(f"📅 运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
 
+    # 北京时间（不受 runner 时区影响，Actions=UTC / 本地=GMT+8 都统一显示北京时刻）
+    BJ = timezone(timedelta(hours=8))
+    ran_at_bj = datetime.now(BJ).strftime("%Y-%m-%d %H:%M")
+
     # 默认开启实时抓取；KNOWN_SHOWS 作为已核实剧目的高质量校准层
     # （保留逐场卡司与全女卡司判定；抓取层负责补全已知剧场次 + 自动发现新剧）。
     # 设 ENABLE_SCRAPE=0 可关闭抓取，仅用种子数据。
@@ -651,7 +655,7 @@ def main():
             "total_shows": len(shows), "total_performances": total_perfs,
             "all_female_shows": len([s for s in shows if s.get('is_all_female')]),
             "all_female_performances": af_perfs,
-            "cities": len(cities), "scraped_at": datetime.now().isoformat(),
+            "cities": len(cities), "scraped_at": ran_at_bj,
             "sources": ["known_seed", "df962388", "df962388_national", "saoju"],
         },
         "shows": shows,
@@ -660,14 +664,18 @@ def main():
 
     # 抓取报告：记录每个源在海内外 runner 的实际抓取结果（供验证自动化是否真正生效）
     new_shows = [s for s in shows if str(s.get('id', '')).startswith('new-')]
+    src_keys = [k for k in SCRAPE_REPORT if k != '_summary' and k != 'damai']
+    healthy = sum(1 for k in src_keys if SCRAPE_REPORT[k].get('reached'))
     SCRAPE_REPORT["_summary"] = {
-        "ran_at": datetime.now().isoformat(),
+        "ran_at": ran_at_bj,
         "enable_scrape": enable_scrape,
         "has_net": HAS_NET,
         "total_shows": len(shows),
         "total_performances": total_perfs,
         "auto_discovered_new": len(new_shows),
         "new_titles": [s.get('title') for s in new_shows][:20],
+        "sources_healthy": healthy,
+        "sources_total": len(src_keys),
     }
     Path("scrape_report.json").write_text(
         json.dumps(SCRAPE_REPORT, ensure_ascii=False, indent=2), encoding="utf-8"

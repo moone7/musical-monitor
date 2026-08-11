@@ -385,6 +385,21 @@ def main():
     report_date_badge = format_report_date_badge(today)
     data_updated = format_data_updated()
 
+    # 读取抓取报告：展示真实抓取时间（北京时间）与各数据源健康状态
+    last_scrape = f"最后生成 {data_updated}（北京时间）"
+    source_status = "✅ 自动抓取中"
+    try:
+        rep = json.loads(Path("scrape_report.json").read_text(encoding="utf-8"))
+        summ = rep.get("_summary", {})
+        ran = summ.get("ran_at") or data_updated
+        last_scrape = f"最后抓取 {ran}（北京时间）"
+        healthy = summ.get("sources_healthy")
+        src_total = summ.get("sources_total")
+        if isinstance(healthy, int) and isinstance(src_total, int) and src_total:
+            source_status = f"✅ {healthy}/{src_total} 数据源正常" if healthy >= src_total else f"⚠️ {healthy}/{src_total} 数据源正常（部分源暂不可达）"
+    except Exception:
+        pass
+
     tabs_html = generate_tabs(shows)
     panels_html = generate_panels(data, today)
 
@@ -410,6 +425,8 @@ def main():
         "{{OVERVIEW_CITIES}}": overview_cities,
         "{{OVERVIEW_DETAIL}}": overview_detail,
         "{{OVERVIEW_FLAGS}}": overview_flags,
+        "{{LAST_SCRAPE}}": last_scrape,
+        "{{SOURCE_STATUS}}": source_status,
     }
     html = template
     for placeholder, value in replacements.items():
