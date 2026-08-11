@@ -6,8 +6,8 @@
     "total_performances": 200,
     "all_female_shows": 5,
     "all_female_performances": 96,
-    "cities": 23,
-    "scraped_at": "2026-08-11 10:45",
+    "cities": 22,
+    "scraped_at": "2026-08-12 07:30",
     "sources": [
       "known_seed",
       "df962388",
@@ -2598,6 +2598,28 @@
       ]
     },
     {
+      "id": "auto-fc91e07f",
+      "title": "深圳音乐剧《破墙》",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-fc91e07f-2026-11-07",
+          "date": "2026-11-07",
+          "time": "19:30",
+          "venue": "龙岗国际艺术中心",
+          "city": "深圳",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
       "id": "auto-39814e64",
       "title": "深圳音乐剧《她的海》",
       "subtitle": "",
@@ -2629,13 +2651,13 @@
         {
           "id": "auto-ec1fa524-2026-09-09",
           "date": "2026-09-09",
-          "time": "20:00",
+          "time": "",
           "venue": "深圳保利剧院",
           "city": "深圳",
           "cast": [
             "以官方公布为准"
           ],
-          "price": "票价以官方公布为准",
+          "price": "¥280 — 1080",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -2724,6 +2746,28 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-a09790ff",
+      "title": "奇遇·古蜀三星堆——大型原创音乐剧·沉浸式古蜀文明史诗",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-a09790ff-2026-08-11",
+          "date": "2026-08-11",
+          "time": "",
+          "venue": "四川省歌舞剧院",
+          "city": "成都",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥88 — 998",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -3071,50 +3115,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-c79d7863",
-      "title": "杭州第三届钱塘国际戏剧嘉年华 | 法语原版音乐剧《茶花女》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-c79d7863-2026-12-18",
-          "date": "2026-12-18",
-          "time": "",
-          "venue": "金沙湖大剧院",
-          "city": "杭州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥99 — 980",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-b2f468c4",
-      "title": "济南原创音乐剧《时间去哪儿了》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-b2f468c4-2026-09-03",
-          "date": "2026-09-03",
-          "time": "",
-          "venue": "济南剧院",
-          "city": "济南",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥50 — 280",
           "is_all_female": false,
           "source": "df962388"
         }
