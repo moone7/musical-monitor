@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 34,
-    "total_performances": 200,
+    "total_shows": 38,
+    "total_performances": 204,
     "all_female_shows": 5,
     "all_female_performances": 96,
-    "cities": 22,
-    "scraped_at": "2026-08-12 07:30",
+    "cities": 23,
+    "scraped_at": "2026-08-13 07:30",
     "sources": [
       "known_seed",
       "df962388",
@@ -2598,6 +2598,28 @@
       ]
     },
     {
+      "id": "auto-93cfb847",
+      "title": "深圳踢踏音乐剧《哥仔姐仔踏着火》-湾剧场",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-93cfb847-2026-09-26",
+          "date": "2026-09-26",
+          "time": "14:30",
+          "venue": "WantU Space万有空间",
+          "city": "深圳",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
       "id": "auto-fc91e07f",
       "title": "深圳音乐剧《破墙》",
       "subtitle": "",
@@ -3115,6 +3137,72 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-6fca3923",
+      "title": "厦门音乐剧《东南望》",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-6fca3923-2026-09-24",
+          "date": "2026-09-24",
+          "time": "",
+          "venue": "厦门开心麻花人民剧场",
+          "city": "厦门",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥80 — 380",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-6fb8a974",
+      "title": "法语音乐剧《茶花女》武汉站",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-6fb8a974-2026-11-13",
+          "date": "2026-11-13",
+          "time": "",
+          "venue": "武汉琴台大剧院",
+          "city": "武汉",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥180 — 980",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-b98c133d",
+      "title": "原创音乐剧《#0528》镜框版 默认场馆名称",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-b98c133d-2026-10-16",
+          "date": "2026-10-16",
+          "time": "",
+          "venue": "合肥大剧院歌剧厅",
+          "city": "合肥",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥100 — 380",
           "is_all_female": false,
           "source": "df962388"
         }
