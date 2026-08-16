@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 35,
-    "total_performances": 201,
+    "total_shows": 36,
+    "total_performances": 202,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-16 07:12",
+    "scraped_at": "2026-08-17 07:11",
     "sources": [
       "known_seed",
       "df962388",
@@ -3137,6 +3137,28 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-3e0543c9",
+      "title": "音乐剧演员的Live！全女音乐季",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-3e0543c9-2026-08-22",
+          "date": "2026-08-22",
+          "time": "",
+          "venue": "BEACH NO.11 PARK",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥168 — 498",
           "is_all_female": false,
           "source": "df962388"
         }
