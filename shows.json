@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 35,
-    "total_performances": 203,
+    "total_shows": 36,
+    "total_performances": 202,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-19 07:13",
+    "scraped_at": "2026-08-20 07:14",
     "sources": [
       "known_seed",
       "df962388",
@@ -2616,19 +2616,6 @@
           "price": "票价以官方公布为准",
           "is_all_female": false,
           "source": "df962388"
-        },
-        {
-          "id": "auto-93cfb847-2026-09-26-1",
-          "date": "2026-09-26",
-          "time": "",
-          "venue": "湾剧场·万有空间 WantU Space",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥100 — 380",
-          "is_all_female": false,
-          "source": "df962388"
         }
       ]
     },
@@ -2649,19 +2636,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        },
-        {
-          "id": "auto-fc91e07f-2026-12-05-1",
-          "date": "2026-12-05",
-          "time": "",
-          "venue": "温岭大剧院",
-          "city": "台州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥100 — 580",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -2794,28 +2768,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-a09790ff",
-      "title": "奇遇·古蜀三星堆——大型原创音乐剧·沉浸式古蜀文明史诗",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-a09790ff-2026-08-11",
-          "date": "2026-08-11",
-          "time": "",
-          "venue": "四川省歌舞剧院",
-          "city": "成都",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥88 — 998",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -3147,22 +3099,66 @@
       ]
     },
     {
-      "id": "auto-dedc5af6",
-      "title": "国家艺术基金2026年度资助项目音乐剧《不负青山》",
+      "id": "auto-423b51d8",
+      "title": "音乐剧《喜欢你》》",
       "subtitle": "",
       "troupe": "",
       "is_all_female": false,
       "performances": [
         {
-          "id": "auto-dedc5af6-2026-08-30",
-          "date": "2026-08-30",
+          "id": "auto-423b51d8-2026-09-04",
+          "date": "2026-09-04",
           "time": "",
-          "venue": "桐乡市科技会展中心大剧院",
+          "venue": "湖北剧院",
           "city": "上海",
           "cast": [
             "以官方公布为准"
           ],
-          "price": "¥28 — 400",
+          "price": "¥100 — 380",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-a0cab689",
+      "title": "第七届全国少数民族文艺会演 音乐剧《潮起大湾》",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-a0cab689-2026-08-23",
+          "date": "2026-08-23",
+          "time": "",
+          "venue": "天桥剧场",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥80 — 280",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-6fcd3031",
+      "title": "《小城之春》音乐剧｜经典复刻1948（上海檐也二十四集）",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-6fcd3031-2026-09-25",
+          "date": "2026-09-25",
+          "time": "",
+          "venue": "檐也二十四集",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥198",
           "is_all_female": false,
           "source": "df962388"
         }
