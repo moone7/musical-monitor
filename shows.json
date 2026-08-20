@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 36,
-    "total_performances": 202,
+    "total_shows": 35,
+    "total_performances": 201,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-20 07:14",
+    "scraped_at": "2026-08-21 07:17",
     "sources": [
       "known_seed",
       "df962388",
@@ -3099,66 +3099,44 @@
       ]
     },
     {
-      "id": "auto-423b51d8",
-      "title": "音乐剧《喜欢你》》",
+      "id": "auto-4861a031",
+      "title": "上海【9月起新场次】环境式驻演音乐剧《阿波罗尼亚》",
       "subtitle": "",
       "troupe": "",
       "is_all_female": false,
       "performances": [
         {
-          "id": "auto-423b51d8-2026-09-04",
-          "date": "2026-09-04",
+          "id": "auto-4861a031-2026-09-02",
+          "date": "2026-09-02",
           "time": "",
-          "venue": "湖北剧院",
+          "venue": "阿波罗尼亚-一台好戏小剧场",
           "city": "上海",
           "cast": [
             "以官方公布为准"
           ],
-          "price": "¥100 — 380",
+          "price": "¥200 — 380",
           "is_all_female": false,
           "source": "df962388"
         }
       ]
     },
     {
-      "id": "auto-a0cab689",
-      "title": "第七届全国少数民族文艺会演 音乐剧《潮起大湾》",
+      "id": "auto-d15f6547",
+      "title": "上海9月起新场次环境式驻演音乐剧《桑塔露琪亚》",
       "subtitle": "",
       "troupe": "",
       "is_all_female": false,
       "performances": [
         {
-          "id": "auto-a0cab689-2026-08-23",
-          "date": "2026-08-23",
+          "id": "auto-d15f6547-2026-09-02",
+          "date": "2026-09-02",
           "time": "",
-          "venue": "天桥剧场",
+          "venue": "桑塔露琪亚-一台好戏小剧场",
           "city": "上海",
           "cast": [
             "以官方公布为准"
           ],
-          "price": "¥80 — 280",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-6fcd3031",
-      "title": "《小城之春》音乐剧｜经典复刻1948（上海檐也二十四集）",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-6fcd3031-2026-09-25",
-          "date": "2026-09-25",
-          "time": "",
-          "venue": "檐也二十四集",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥198",
+          "price": "¥299 — 399",
           "is_all_female": false,
           "source": "df962388"
         }
