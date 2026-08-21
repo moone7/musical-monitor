@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 35,
+    "total_shows": 33,
     "total_performances": 201,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-21 07:17",
+    "scraped_at": "2026-08-22 07:15",
     "sources": [
       "known_seed",
       "df962388",
@@ -2638,6 +2638,19 @@
           "price": "票价以官方公布为准",
           "is_all_female": false,
           "source": "df962388"
+        },
+        {
+          "id": "auto-fc91e07f-2026-11-20-1",
+          "date": "2026-11-20",
+          "time": "",
+          "venue": "青岛大剧院歌剧厅",
+          "city": "青岛",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥80 — 580",
+          "is_all_female": false,
+          "source": "df962388"
         }
       ]
     },
@@ -2724,6 +2737,54 @@
             "以官方公布为准"
           ],
           "price": "¥110.4 — 182.4",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-ef8e41e1",
+      "title": "杭州西安儿艺合家欢音乐剧《唐妞驾到》",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-ef8e41e1-2026-08-29",
+          "date": "2026-08-29",
+          "time": "",
+          "venue": "浙话艺术剧院",
+          "city": "杭州",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥100 — 280",
+          "is_all_female": false,
+          "source": "df962388"
+        },
+        {
+          "id": "auto-ef8e41e1-2026-08-15-1",
+          "date": "2026-08-15",
+          "time": "",
+          "venue": "天津光华剧院大剧场",
+          "city": "天津",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥40 — 540",
+          "is_all_female": false,
+          "source": "df962388"
+        },
+        {
+          "id": "auto-ef8e41e1-2026-08-15-2",
+          "date": "2026-08-15",
+          "time": "",
+          "venue": "光华剧院",
+          "city": "天津",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥40 — 540",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -2910,41 +2971,6 @@
       ]
     },
     {
-      "id": "auto-e130be59",
-      "title": "天津儿艺50周年演出季·合家欢音乐剧《唐妞驾到》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-e130be59-2026-08-15",
-          "date": "2026-08-15",
-          "time": "",
-          "venue": "天津光华剧院大剧场",
-          "city": "天津",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥40 — 540",
-          "is_all_female": false,
-          "source": "df962388"
-        },
-        {
-          "id": "auto-e130be59-2026-08-15-1",
-          "date": "2026-08-15",
-          "time": "",
-          "venue": "光华剧院",
-          "city": "天津",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥40 — 540",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
       "id": "auto-75a4aa95",
       "title": "天津音乐剧《狂炎奏鸣曲》",
       "subtitle": "",
@@ -3093,50 +3119,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-4861a031",
-      "title": "上海【9月起新场次】环境式驻演音乐剧《阿波罗尼亚》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-4861a031-2026-09-02",
-          "date": "2026-09-02",
-          "time": "",
-          "venue": "阿波罗尼亚-一台好戏小剧场",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥200 — 380",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-d15f6547",
-      "title": "上海9月起新场次环境式驻演音乐剧《桑塔露琪亚》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-d15f6547-2026-09-02",
-          "date": "2026-09-02",
-          "time": "",
-          "venue": "桑塔露琪亚-一台好戏小剧场",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥299 — 399",
           "is_all_female": false,
           "source": "df962388"
         }
