@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 33,
+    "total_shows": 32,
     "total_performances": 201,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-22 07:15",
+    "scraped_at": "2026-08-23 07:12",
     "sources": [
       "known_seed",
       "df962388",
@@ -895,6 +895,19 @@
           ],
           "price": "¥180 — 986",
           "is_all_female": false
+        },
+        {
+          "id": "witch-2026-11-06-12",
+          "date": "2026-11-06",
+          "time": "",
+          "venue": "景德镇陶溪川大剧院",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥126 — 406",
+          "is_all_female": false,
+          "source": "df962388"
         }
       ]
     },
@@ -2785,28 +2798,6 @@
             "以官方公布为准"
           ],
           "price": "¥40 — 540",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-a7e934a8",
-      "title": "[杭州]越韵音乐剧《花夜前行·千面》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-a7e934a8-2026-08-14",
-          "date": "2026-08-14",
-          "time": "",
-          "venue": "蝴蝶剧场-小百花越剧场",
-          "city": "杭州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥180 — 817",
           "is_all_female": false,
           "source": "df962388"
         }
