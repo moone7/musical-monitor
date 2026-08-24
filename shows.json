@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 31,
-    "total_performances": 198,
+    "total_shows": 33,
+    "total_performances": 199,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-08-24 07:12",
+    "scraped_at": "2026-08-25 07:15",
     "sources": [
       "known_seed",
       "df962388",
@@ -705,6 +705,19 @@
           ],
           "price": "¥180 — 580",
           "is_all_female": true
+        },
+        {
+          "id": "chimera-2026-12-19-28",
+          "date": "2026-12-19",
+          "time": "",
+          "venue": "广州塔剧场",
+          "city": "广州",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥280 — 580",
+          "is_all_female": false,
+          "source": "df962388"
         }
       ]
     },
@@ -895,19 +908,6 @@
           ],
           "price": "¥180 — 986",
           "is_all_female": false
-        },
-        {
-          "id": "witch-2026-11-06-12",
-          "date": "2026-11-06",
-          "time": "",
-          "venue": "景德镇陶溪川大剧院",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥126 — 406",
-          "is_all_female": false,
-          "source": "df962388"
         }
       ]
     },
@@ -2651,19 +2651,6 @@
           "price": "票价以官方公布为准",
           "is_all_female": false,
           "source": "df962388"
-        },
-        {
-          "id": "auto-fc91e07f-2026-11-20-1",
-          "date": "2026-11-20",
-          "time": "",
-          "venue": "青岛大剧院歌剧厅",
-          "city": "青岛",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥80 — 580",
-          "is_all_female": false,
-          "source": "df962388"
         }
       ]
     },
@@ -3062,6 +3049,50 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-67a6af02",
+      "title": "2026年度国家艺术基金资助项目 音乐剧《夜幕下的哈尔滨》",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-67a6af02-2026-09-01",
+          "date": "2026-09-01",
+          "time": "",
+          "venue": "珠海大剧院歌剧厅",
+          "city": "哈尔滨",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥180 — 680",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
+      "id": "auto-20340850",
+      "title": "西安原创音乐剧《#0528》镜框版",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-20340850-2026-12-05",
+          "date": "2026-12-05",
+          "time": "",
+          "venue": "陕西大剧院",
+          "city": "西安",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥180 — 680",
           "is_all_female": false,
           "source": "df962388"
         }
