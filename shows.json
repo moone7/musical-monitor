@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 32,
-    "total_performances": 197,
+    "total_shows": 31,
+    "total_performances": 196,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 22,
-    "scraped_at": "2026-09-03 08:52",
+    "scraped_at": "2026-09-04 08:33",
     "sources": [
       "known_seed",
       "df962388",
@@ -2576,6 +2576,28 @@
       ]
     },
     {
+      "id": "auto-0230f72c",
+      "title": "北京音乐剧奇遇之夜",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-0230f72c-2026-10-03",
+          "date": "2026-10-03",
+          "time": "19:30",
+          "venue": "三里屯·爱乐汇艺术空间",
+          "city": "北京",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥69.3 — 199.5",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
       "id": "auto-f7864157",
       "title": "中国煤矿文工团音乐剧场《广陵绝响》",
       "subtitle": "",
@@ -2680,28 +2702,6 @@
             "以官方公布为准"
           ],
           "price": "¥280 — 1080",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-af6b1602",
-      "title": "深圳文物回归主题音乐剧《博物馆奇遇记》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-af6b1602-2026-09-05",
-          "date": "2026-09-05",
-          "time": "",
-          "venue": "深圳市南山区文化馆",
-          "city": "深圳",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥110.4 — 182.4",
           "is_all_female": false,
           "source": "df962388"
         }
@@ -3036,28 +3036,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-b7d12c8f",
-      "title": "北京东方玄幻音乐剧《第一瞳术师》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-b7d12c8f-2026-09-26",
-          "date": "2026-09-26",
-          "time": "",
-          "venue": "天桥艺术中心",
-          "city": "北京",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥180 — 480",
           "is_all_female": false,
           "source": "df962388"
         }
