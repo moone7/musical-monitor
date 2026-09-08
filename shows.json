@@ -3,11 +3,11 @@
     "report_date": "auto",
     "data_updated": "auto",
     "total_shows": 30,
-    "total_performances": 195,
+    "total_performances": 194,
     "all_female_shows": 5,
     "all_female_performances": 96,
-    "cities": 23,
-    "scraped_at": "2026-09-07 08:31",
+    "cities": 22,
+    "scraped_at": "2026-09-08 08:49",
     "sources": [
       "known_seed",
       "df962388",
@@ -705,19 +705,6 @@
           ],
           "price": "¥180 — 580",
           "is_all_female": true
-        },
-        {
-          "id": "chimera-2026-10-10-28",
-          "date": "2026-10-10",
-          "time": "",
-          "venue": "北仑文化中心大剧院",
-          "city": "宁波",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥1 — 580",
-          "is_all_female": false,
-          "source": "df962388"
         }
       ]
     },
@@ -2567,6 +2554,28 @@
       ]
     },
     {
+      "id": "auto-c1d8fa39",
+      "title": "海上雅乐 喜马拉雅·风信—愈心音乐剧场",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-c1d8fa39-2026-11-14",
+          "date": "2026-11-14",
+          "time": "19:45",
+          "venue": "东方艺术中心-演奏厅",
+          "city": "上海",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "¥180 — 320",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
       "id": "auto-62c32f1c",
       "title": "上海非常林奕华&amp;当然有戏制作 音乐剧《有一天我和祝英台去美术馆》2.0",
       "subtitle": "",
@@ -2992,28 +3001,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-50db002e",
-      "title": "【衢州】衢州音乐剧“元”年演出季 中文原创音乐剧《简·爱》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-50db002e-2026-11-04",
-          "date": "2026-11-04",
-          "time": "19:00",
-          "venue": "衢州保利大剧院",
-          "city": "衢州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥50 — 680",
           "is_all_female": false,
           "source": "df962388"
         }
