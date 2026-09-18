@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 30,
-    "total_performances": 194,
+    "total_shows": 28,
+    "total_performances": 192,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 21,
-    "scraped_at": "2026-09-17 08:58",
+    "scraped_at": "2026-09-18 08:54",
     "sources": [
       "known_seed",
       "df962388",
@@ -2957,50 +2957,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-b3a283c1",
-      "title": "北京中戏音乐剧《牡丹亭》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-b3a283c1-2026-09-28",
-          "date": "2026-09-28",
-          "time": "",
-          "venue": "实验剧场",
-          "city": "北京",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥180 — 928",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-a5235366",
-      "title": "杭州音乐剧《阴天》中文版",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-a5235366-2026-11-20",
-          "date": "2026-11-20",
-          "time": "",
-          "venue": "金沙湖大剧院",
-          "city": "杭州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥80 — 580",
           "is_all_female": false,
           "source": "df962388"
         }
