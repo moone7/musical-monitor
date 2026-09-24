@@ -2,12 +2,12 @@
   "metadata": {
     "report_date": "auto",
     "data_updated": "auto",
-    "total_shows": 33,
-    "total_performances": 197,
+    "total_shows": 30,
+    "total_performances": 194,
     "all_female_shows": 5,
     "all_female_performances": 96,
     "cities": 21,
-    "scraped_at": "2026-09-23 09:04",
+    "scraped_at": "2026-09-24 08:58",
     "sources": [
       "known_seed",
       "df962388",
@@ -2642,6 +2642,41 @@
       ]
     },
     {
+      "id": "auto-2ed8e264",
+      "title": "深圳12月11-13日法语音乐剧《茶花女》",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-2ed8e264-2026-12-11",
+          "date": "2026-12-11",
+          "time": "20:00",
+          "venue": "深圳坪山大剧院",
+          "city": "深圳",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        },
+        {
+          "id": "auto-2ed8e264-2026-11-20-1930",
+          "date": "2026-11-20",
+          "time": "19:30",
+          "venue": "南京保利大剧院",
+          "city": "南京",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
       "id": "auto-0170f8ee",
       "title": "深圳音乐剧《卖火柴的小女孩》-湾剧场",
       "subtitle": "",
@@ -2818,63 +2853,6 @@
       ]
     },
     {
-      "id": "auto-107e3097",
-      "title": "成都原版音乐剧《剧院魅影》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-107e3097-2026-09-16",
-          "date": "2026-09-16",
-          "time": "",
-          "venue": "中演·成都大剧院",
-          "city": "成都",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥280 — 1380",
-          "is_all_female": false,
-          "source": "df962388"
-        },
-        {
-          "id": "auto-107e3097-2026-12-30-1930",
-          "date": "2026-12-30",
-          "time": "19:30",
-          "venue": "苏州湾大剧院",
-          "city": "苏州",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-45f6cd80",
-      "title": "2026·南京音乐剧节·法语原版音乐剧·《茶花女》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-45f6cd80-2026-11-20",
-          "date": "2026-11-20",
-          "time": "19:30",
-          "venue": "南京保利大剧院",
-          "city": "南京",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
       "id": "auto-3d2f3727",
       "title": "2025·南京音乐剧节·英文原版音乐剧《tick,tick...BOOM!倒数时刻》",
       "subtitle": "",
@@ -2985,6 +2963,28 @@
       ]
     },
     {
+      "id": "auto-b294f844",
+      "title": "苏州英文原版音乐剧《剧院魅影》[合作项目]",
+      "subtitle": "",
+      "troupe": "",
+      "is_all_female": false,
+      "performances": [
+        {
+          "id": "auto-b294f844-2026-12-30",
+          "date": "2026-12-30",
+          "time": "19:30",
+          "venue": "苏州湾大剧院",
+          "city": "苏州",
+          "cast": [
+            "以官方公布为准"
+          ],
+          "price": "票价以官方公布为准",
+          "is_all_female": false,
+          "source": "df962388"
+        }
+      ]
+    },
+    {
       "id": "auto-7b079d31",
       "title": "苏州高杨、张会芳主演·外百老汇经典音乐剧《长腿叔叔》 中文版",
       "subtitle": "",
@@ -3001,72 +3001,6 @@
             "以官方公布为准"
           ],
           "price": "票价以官方公布为准",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-6a40584c",
-      "title": "深圳音乐剧《四大美女》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-6a40584c-2026-11-27",
-          "date": "2026-11-27",
-          "time": "",
-          "venue": "龙岗国际艺术中心",
-          "city": "深圳",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥180 — 680",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-50ea53c7",
-      "title": "上海香港演戏家族原创音乐剧Musical",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-50ea53c7-2026-11-27",
-          "date": "2026-11-27",
-          "time": "",
-          "venue": "YOUNG剧场",
-          "city": "上海",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥180 — 480",
-          "is_all_female": false,
-          "source": "df962388"
-        }
-      ]
-    },
-    {
-      "id": "auto-e887d1d3",
-      "title": "武汉原创音乐剧《项链》",
-      "subtitle": "",
-      "troupe": "",
-      "is_all_female": false,
-      "performances": [
-        {
-          "id": "auto-e887d1d3-2026-09-30",
-          "date": "2026-09-30",
-          "time": "",
-          "venue": "民众·百年剧场",
-          "city": "武汉",
-          "cast": [
-            "以官方公布为准"
-          ],
-          "price": "¥49.9 — 154",
           "is_all_female": false,
           "source": "df962388"
         }
