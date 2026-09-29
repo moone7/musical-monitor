@@ -4,101 +4,101 @@
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:20:19.526378"
+    "ts": "2026-09-29T02:25:41.025366"
   },
   "df962388_北京": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:21:57.763524"
+    "ts": "2026-09-29T02:25:48.289889"
   },
   "df962388_深圳": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:22:37.075492"
+    "ts": "2026-09-29T02:25:55.729731"
   },
   "df962388_杭州": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:24:16.154265"
+    "ts": "2026-09-29T02:26:03.473226"
   },
   "df962388_成都": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:25:52.005704"
+    "ts": "2026-09-29T02:26:10.792518"
   },
   "df962388_南京": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:27:00.754952"
+    "ts": "2026-09-29T02:26:18.031702"
   },
   "df962388_天津": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:27:41.900779"
+    "ts": "2026-09-29T02:26:25.264497"
   },
   "df962388_西安": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:29:17.720459"
+    "ts": "2026-09-29T02:26:32.562340"
   },
   "df962388_苏州": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:30:57.705692"
+    "ts": "2026-09-29T02:26:39.887562"
   },
   "df962388_长沙": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（不可达/超时/证书）",
     "sample": [],
-    "ts": "2026-09-28T01:32:34.313899"
+    "ts": "2026-09-29T02:26:47.121992"
   },
   "df962388_全国(含广/武/渝)": {
-    "reached": false,
+    "reached": true,
     "count": 0,
-    "error": "fetch 返回空（不可达/超时/证书）",
+    "error": "",
     "sample": [],
-    "ts": "2026-09-28T01:34:11.758190"
+    "ts": "2026-09-29T02:26:50.100482"
   },
   "saoju": {
     "reached": true,
     "count": 0,
     "error": "",
     "sample": [],
-    "ts": "2026-09-28T01:34:16.465445"
+    "ts": "2026-09-29T02:26:53.136761"
   },
   "damai": {
     "reached": false,
     "count": 0,
     "error": "fetch 返回空（动态页/不可达）",
     "sample": [],
-    "ts": "2026-09-28T01:34:22.386940"
+    "ts": "2026-09-29T02:26:59.192984"
   },
   "_summary": {
-    "ran_at": "2026-09-28 09:19",
+    "ran_at": "2026-09-29 10:25",
     "enable_scrape": true,
     "has_net": true,
     "total_shows": 10,
     "total_performances": 172,
     "auto_discovered_new": 0,
     "new_titles": [],
-    "sources_healthy": 1,
+    "sources_healthy": 2,
     "sources_total": 12
   }
 }
